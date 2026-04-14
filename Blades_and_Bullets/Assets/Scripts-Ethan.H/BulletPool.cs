@@ -13,7 +13,10 @@ public class BulletPool : MonoBehaviour
 
     private void Awake()
     {
-        
+        for (int i = 0; i < bulletPoolStartingSize; i++)
+        {
+            CreateBullet();
+        }
     }
 
     private void CreateBullet()

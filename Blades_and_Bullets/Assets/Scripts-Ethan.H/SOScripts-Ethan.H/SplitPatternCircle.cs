@@ -12,7 +12,7 @@ public class SplitPatternCircle : SplitBulletPatternSO
         {
             float angle = i * (360f / splitCount);
             Vector2 dir = Quaternion.Euler(0f, 0f, angle) * Vector2.right;
-            bullet.SpawnChild(dir);
+            bullet.BulletSplit(dir);
         }
     }
     

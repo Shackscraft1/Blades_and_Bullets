@@ -5,16 +5,9 @@ using static UnityEngine.Rigidbody2D;
 public class BulletTypeSO : ScriptableObject
 {
 
-    public enum MovementType
-    {
-        Straight,
-        Sine,
-        Homing,
-        Spiral,
+   
 
-    }
-
-    public MovementType movementType;
+    
 
     public string bulletName;
     public Sprite sprite;
@@ -23,15 +16,10 @@ public class BulletTypeSO : ScriptableObject
     public float lifetime = 20f;
 
 
-    [Header("Sine")]
-    public float amplitude;
-    public float frequency;
+    [Header("Movement")]
+    public BulletMovementSO bulletMovement;
+    
 
-    [Header("Homing")]
-    public float turnSpeed;
-
-    [Header("Spiral")]
-    public float rotationSpeed;
 
     [Header("Split")]
     public bool canSplit;
@@ -42,19 +30,7 @@ public class BulletTypeSO : ScriptableObject
     public SplitBulletPatternSO splitBulletPattern;
 
     
-    public IMovementType CreateMovement()
-    {
-        switch (movementType)
-        {
-            case MovementType.Straight:
-                return new StraightBulletMovement(speed);
-            default:
-                return new StraightBulletMovement(speed);
-
-        }
-
-
-    }
+    
 
 
 
