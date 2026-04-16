@@ -25,7 +25,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Melee",
+                    "name": "Bomb",
                     "type": "Button",
                     "id": "646c0ce3-6e05-4dce-aeef-2cf555f4bc26",
                     "expectedControlType": "",
@@ -34,7 +34,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Bomb",
+                    "name": "Special",
                     "type": "Button",
                     "id": "1ba0cc6b-b086-469a-990f-8b0d83dc2bfd",
                     "expectedControlType": "",
@@ -89,28 +89,6 @@
                 {
                     "name": "",
                     "id": "2ac3af72-f30d-47ac-8f0a-7500bd9d3874",
-                    "path": "<Keyboard>/z",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Melee",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "16ef0231-aa76-46aa-9035-581de394d452",
-                    "path": "<Keyboard>/slash",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Melee",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "b6036b0e-996d-46f3-ae70-575aa9b7d680",
                     "path": "<Keyboard>/x",
                     "interactions": "",
                     "processors": "",
@@ -121,12 +99,34 @@
                 },
                 {
                     "name": "",
+                    "id": "16ef0231-aa76-46aa-9035-581de394d452",
+                    "path": "<Keyboard>/slash",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Bomb",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b6036b0e-996d-46f3-ae70-575aa9b7d680",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Special",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "b3a7cb44-501a-4b64-8fe0-14b334cf93cf",
                     "path": "<Keyboard>/period",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Bomb",
+                    "action": "Special",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
