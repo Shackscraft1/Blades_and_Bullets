@@ -8,7 +8,7 @@ public class AbilityBarProgress : MonoBehaviour
 {
     [SerializeField] private Image barImage;
     [SerializeField] private float duration = 0f;
-    public event EventHandler Ondeath;
+    
 
     private class OndeathArgs : EventArgs
     {
@@ -23,7 +23,7 @@ public class AbilityBarProgress : MonoBehaviour
         barImage.fillMethod = Image.FillMethod.Vertical;
         barImage.fillAmount = 0f;
         StartCoroutine(FillAbilityProgressBar());
-        Ondeath.Invoke?(this,  EventArgs.Empty);
+        
 
     }
 
