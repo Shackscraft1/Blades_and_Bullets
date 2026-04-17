@@ -10,19 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fbb38cf08b4905748b11fad3a2aa9372, type: 3}
-  m_Name: BulletTypeSO
+  m_Name: Bullet2
   m_EditorClassIdentifier: Assembly-CSharp::BulletTypeSO
-  movementType: 0
-  bulletName: 
-  sprite: {fileID: 0}
-  speed: 0
-  scale: 0
-  amplitude: 0
-  frequency: 0
-  turnSpeed: 0
-  rotationSpeed: 0
+  bulletName: BulletTest
+  sprite: {fileID: 222766975490885735, guid: a3a325c64e35f6b4e8d92ac49255a403, type: 3}
+  speed: 2
+  scale: 1
+  lifetime: 10
+  bulletMovement: {fileID: 11400000, guid: dca566e9e92bef248af2ea1a8ae7a2e1, type: 2}
   canSplit: 0
   splitTime: 0
-  splitCount: 0
+  splitMaxCount: 0
   splitAngleOffset: 0
   splitedBullet: {fileID: 0}
+  splitBulletPattern: {fileID: 0}

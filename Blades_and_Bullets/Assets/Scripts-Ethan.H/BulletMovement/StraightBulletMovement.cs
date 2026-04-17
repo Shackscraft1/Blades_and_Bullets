@@ -4,7 +4,7 @@ public class StraightBulletMovement : IMovementType
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
-    private float speed;
+    private readonly float speed;
     
     public void Init(Bullet bullet)
     {
