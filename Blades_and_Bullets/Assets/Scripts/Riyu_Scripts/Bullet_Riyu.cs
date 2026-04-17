@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class Bullet_Riyu : MonoBehaviour
 {
     [SerializeField]private float speed;
     private void Update()
