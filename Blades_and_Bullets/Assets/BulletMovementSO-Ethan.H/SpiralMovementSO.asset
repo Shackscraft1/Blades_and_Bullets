@@ -9,9 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 956dcb8d079618940914e3f8af1ccca7, type: 3}
-  m_Name: TestSine
-  m_EditorClassIdentifier: Assembly-CSharp::SineMovementSO
-  frequency: 7
-  amplitude: 5
-  speed: 3
+  m_Script: {fileID: 11500000, guid: f6b0d358bae1d7648b31fdc3f7b802b3, type: 3}
+  m_Name: SpiralMovementSO
+  m_EditorClassIdentifier: Assembly-CSharp::SpiralMovementSO
+  angleSpeed: 2
+  tightness: 2

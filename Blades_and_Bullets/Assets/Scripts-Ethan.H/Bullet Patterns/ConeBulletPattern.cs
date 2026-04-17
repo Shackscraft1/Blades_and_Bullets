@@ -11,7 +11,7 @@ public class ConeBulletPattern : BaseBulletPattern
     [SerializeField]
     private BulletTypeSO bulletType;
 
-
+    
 
 
 
