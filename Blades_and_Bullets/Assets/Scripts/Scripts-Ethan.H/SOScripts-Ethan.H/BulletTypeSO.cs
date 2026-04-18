@@ -5,6 +5,13 @@ using static UnityEngine.Rigidbody2D;
 public class BulletTypeSO : ScriptableObject
 {
 
+
+    public enum HurtBoxType
+    {
+        Circle,
+        Capsule
+
+    }
    
 
     
@@ -14,7 +21,15 @@ public class BulletTypeSO : ScriptableObject
     public float speed;
     public float scale;
     public float lifetime = 20f;
+    public HurtBoxType hurtBoxType;
 
+    [Header("Hurtbox")]
+    public float radius = 0.5f;
+    public Vector2 offset = Vector2.zero;
+    public Vector2 sizeCapsule = Vector2.zero;
+
+
+  
 
     [Header("Movement")]
     public BulletMovementSO bulletMovement;
@@ -28,6 +43,10 @@ public class BulletTypeSO : ScriptableObject
     public float splitAngleOffset;
     public BulletTypeSO splitedBullet;
     public SplitBulletPatternSO splitBulletPattern;
+
+    
+
+
 
     
     
