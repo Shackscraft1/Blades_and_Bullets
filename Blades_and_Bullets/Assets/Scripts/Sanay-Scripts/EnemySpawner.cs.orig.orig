@@ -1,11 +1,17 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+>>>>>>> main
 
 public class EnemySpawner : MonoBehaviour
 {
-<<<<<<< HEAD
 =======
+
+public class EnemySpawner : MonoBehaviour
+{
 <<<<<<< HEAD
 =======
 >>>>>>> main
@@ -178,12 +184,4 @@ public class EnemySpawner : MonoBehaviour
             );
         }
     }
-<<<<<<< HEAD
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> main
-=======
-}
->>>>>>> main
