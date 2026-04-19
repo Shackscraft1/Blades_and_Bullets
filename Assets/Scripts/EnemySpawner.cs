@@ -1,0 +1,142 @@
+using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+
+public class EnemySpawner : MonoBehaviour
+{
+    public GameObject enemyPrefab;
+
+    [Header("Paths")]
+    public BezierPath entryPath;
+    public BezierPath exitPath;
+
+    [Header("Formation")]
+    public Transform formationCenter;
+    public float slotSpacing = 0.3f;
+    public float vDepth = 0.18f;
+
+    [Header("Formation Movement Targets")]
+    public Vector3 middlePosition = new Vector3(0f, 4f, 0f);
+    public Vector3 leftPosition = new Vector3(-2f, 4f, 0f);
+    public Vector3 rightPosition = new Vector3(2f, 4f, 0f);
+    public float formationTravelSpeed = 2f;
+    public float waitAtLeft = 0.5f;
+    public float waitAtRight = 0.5f;
+    public float waitAtMiddle = 0.5f;
+
+    [Header("Entry Wave")]
+    public int enemyCount = 6;
+    public float timeGapBetweenEnemies = 0.35f;
+    public float entryDuration = 6f;
+
+    [Header("Exit Wave")]
+    public float exitDuration = 4f;
+    public float exitGapBetweenEnemies = 0.2f;
+
+    private List<Enemy> spawnedEnemies = new List<Enemy>();
+
+    void Start()
+    {
+        if (formationCenter != null)
+        {
+            formationCenter.position = middlePosition;
+        }
+
+        SpawnWave();
+        StartCoroutine(ControlWave());
+    }
+
+    void SpawnWave()
+    {
+        spawnedEnemies.Clear();
+
+        for (int i = 0; i < enemyCount; i++)
+        {
+            GameObject enemyObj = Instantiate(enemyPrefab);
+            Enemy enemy = enemyObj.GetComponent<Enemy>();
+
+            if (enemy != null)
+            {
+                enemy.entryPath = entryPath;
+                enemy.entryDuration = entryDuration;
+                enemy.entryStartOffset = -i * timeGapBetweenEnemies;
+
+                enemy.formationCenter = formationCenter;
+
+                float centeredIndex = i - (enemyCount - 1) / 2f;
+                float xOffset = centeredIndex * slotSpacing;
+                float yOffset = -Mathf.Abs(centeredIndex) * vDepth;
+
+                enemy.slotOffset = new Vector3(xOffset, yOffset, 0f);
+
+                spawnedEnemies.Add(enemy);
+            }
+        }
+    }
+
+    IEnumerator ControlWave()
+    {
+        yield return new WaitUntil(AllEnemiesInFormation);
+
+        yield return MoveFormationTo(leftPosition);
+        yield return new WaitForSeconds(waitAtLeft);
+
+        yield return MoveFormationTo(rightPosition);
+        yield return new WaitForSeconds(waitAtRight);
+
+        yield return MoveFormationTo(middlePosition);
+        yield return new WaitForSeconds(waitAtMiddle);
+
+        StartExitWave();
+    }
+
+    IEnumerator MoveFormationTo(Vector3 targetPosition)
+    {
+        if (formationCenter == null)
+            yield break;
+
+        while (Vector3.Distance(formationCenter.position, targetPosition) > 0.02f)
+        {
+            formationCenter.position = Vector3.MoveTowards(
+                formationCenter.position,
+                targetPosition,
+                formationTravelSpeed * Time.deltaTime
+            );
+
+            yield return null;
+        }
+
+        formationCenter.position = targetPosition;
+    }
+
+    bool AllEnemiesInFormation()
+    {
+        if (spawnedEnemies.Count == 0) return false;
+
+        foreach (Enemy enemy in spawnedEnemies)
+        {
+            if (enemy == null) continue;
+
+            if (enemy.currentPhase != Enemy.Phase.Formation)
+                return false;
+        }
+
+        return true;
+    }
+
+    void StartExitWave()
+    {
+        for (int i = 0; i < spawnedEnemies.Count; i++)
+        {
+            Enemy enemy = spawnedEnemies[i];
+
+            if (enemy == null) continue;
+
+            enemy.StartExit(
+                exitPath,
+                exitDuration,
+                -i * exitGapBetweenEnemies
+            );
+        }
+    }
+}
