@@ -1,3 +1,14 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
+>>>>>>> Feature_Implementation_Testgrounds
+
+public class EnemySpawner : MonoBehaviour
+{
+=======
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,13 +20,17 @@ public class EnemySpawner : MonoBehaviour
 <<<<<<< HEAD
 =======
 >>>>>>> main
+>>>>>>> main
     //Trying to get them to use the pool
     public BulletPool bulletPool;
 
 
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 >>>>>>> Feature_Implementation_Testgrounds
+>>>>>>> main
 >>>>>>> main
     public GameObject enemyPrefab;
 
@@ -60,10 +75,15 @@ public class EnemySpawner : MonoBehaviour
 
 =======
 <<<<<<< HEAD
+
+
+=======
+<<<<<<< HEAD
 =======
 
 
 >>>>>>> Feature_Implementation_Testgrounds
+>>>>>>> main
 >>>>>>> main
         SpawnWave();
         StartCoroutine(ControlWave());
@@ -79,8 +99,11 @@ public class EnemySpawner : MonoBehaviour
 <<<<<<< HEAD
 =======
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
             Enemy enemy = enemyObj.GetComponent<Enemy>();
 =======
+>>>>>>> main
 >>>>>>> main
             //Trying to give enemies a pool
 
@@ -91,7 +114,10 @@ public class EnemySpawner : MonoBehaviour
             
 <<<<<<< HEAD
 =======
+<<<<<<< HEAD
+=======
 >>>>>>> Feature_Implementation_Testgrounds
+>>>>>>> main
 >>>>>>> main
 
             if (enemy != null)
@@ -179,6 +205,9 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 <<<<<<< HEAD
+}
+=======
+<<<<<<< HEAD
 <<<<<<< HEAD
 }
 =======
@@ -186,4 +215,5 @@ public class EnemySpawner : MonoBehaviour
 >>>>>>> main
 =======
 }
+>>>>>>> main
 >>>>>>> main
