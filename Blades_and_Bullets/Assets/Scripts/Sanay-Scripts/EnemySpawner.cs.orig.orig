@@ -1,10 +1,22 @@
+using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 public class EnemySpawner : MonoBehaviour
 {
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> main
     //Trying to get them to use the pool
     public BulletPool bulletPool;
 
 
+<<<<<<< HEAD
+=======
+>>>>>>> Feature_Implementation_Testgrounds
+>>>>>>> main
     public GameObject enemyPrefab;
 
     [Header("Paths")]
@@ -43,8 +55,16 @@ public class EnemySpawner : MonoBehaviour
             formationCenter.position = middlePosition;
         }
 
+<<<<<<< HEAD
 
 
+=======
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> Feature_Implementation_Testgrounds
+>>>>>>> main
         SpawnWave();
         StartCoroutine(ControlWave());
     }
@@ -56,6 +76,12 @@ public class EnemySpawner : MonoBehaviour
         for (int i = 0; i < enemyCount; i++)
         {
             GameObject enemyObj = Instantiate(enemyPrefab);
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+            Enemy enemy = enemyObj.GetComponent<Enemy>();
+=======
+>>>>>>> main
             //Trying to give enemies a pool
 
             enemyObj.GetComponentInChildren<BulletSpawner>().Init(bulletPool);
@@ -63,6 +89,10 @@ public class EnemySpawner : MonoBehaviour
 
             Enemy enemy = enemyObj.GetComponent<Enemy>();
             
+<<<<<<< HEAD
+=======
+>>>>>>> Feature_Implementation_Testgrounds
+>>>>>>> main
 
             if (enemy != null)
             {
@@ -148,4 +178,12 @@ public class EnemySpawner : MonoBehaviour
             );
         }
     }
+<<<<<<< HEAD
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> main
+=======
+}
+>>>>>>> main

@@ -1,5 +1,7 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+<<<<<<< HEAD
+=======
 --- !u!1 &3532422812671314861
 GameObject:
   m_ObjectHideFlags: 0
@@ -141,6 +143,7 @@ MonoBehaviour:
   bulletCount: 4
   spreadAngle: 30
   bulletType: {fileID: 11400000, guid: beeeabf4a37edba43bc883a0fb878091, type: 2}
+>>>>>>> main
 --- !u!1 &7887196092594566398
 GameObject:
   m_ObjectHideFlags: 0
@@ -173,11 +176,15 @@ Transform:
   m_LocalPosition: {x: 0.0893, y: -0.0439, z: 0}
   m_LocalScale: {x: 0.573, y: 0.3963, z: 1}
   m_ConstrainProportionsScale: 0
+<<<<<<< HEAD
+  m_Children: []
+=======
   m_Children:
   - {fileID: 5935527763667161099}
   - {fileID: 5368412385144314204}
   - {fileID: 4509958740336082287}
   - {fileID: 5556534911603756106}
+>>>>>>> main
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7148443068082442948
@@ -346,6 +353,8 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+<<<<<<< HEAD
+=======
 --- !u!1 &8143182391382274093
 GameObject:
   m_ObjectHideFlags: 0
@@ -392,3 +401,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BulletPool
   bulletPrefab: {fileID: 1013922471934456146, guid: bad876a32bdc4a047b20e717869a0b03, type: 3}
   bulletPoolStartingSize: 100
+>>>>>>> main
