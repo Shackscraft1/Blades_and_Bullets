@@ -2,11 +2,16 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-   
-    
+    public BulletPool pool;
+    public GameObject enemy;
 
-    // Update is called once per frame
+
+
+    private void Start()
+    {
+        enemy.GetComponentInChildren<BulletSpawner>().Init(pool);
+        
+    }
     void Update()
     {
         

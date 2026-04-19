@@ -25,7 +25,7 @@ public class BulletSpawner : MonoBehaviour
         Bullet bullet = bulletPool.GetBullet();
         bullet.transform.position = transform.position;
         bullet.transform.rotation = Quaternion.identity;
-        bullet.Init(bulletTypeSO, direction);
+        bullet.Init(bulletTypeSO, direction.normalized);
 
     }
 
