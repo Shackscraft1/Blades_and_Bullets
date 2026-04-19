@@ -27,6 +27,7 @@ public class ConeBulletPattern : BaseBulletPattern
             //Note:When not aiming this should be the default direction
             Vector2 dir = Quaternion.Euler(0, 0, angle) * -transform.up;
             spawner.Fire(bulletType, dir);
+            
         }
 
         
