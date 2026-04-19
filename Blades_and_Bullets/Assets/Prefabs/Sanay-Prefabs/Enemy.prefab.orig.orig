@@ -143,6 +143,10 @@ MonoBehaviour:
   bulletCount: 4
   spreadAngle: 30
   bulletType: {fileID: 11400000, guid: beeeabf4a37edba43bc883a0fb878091, type: 2}
+<<<<<<< HEAD
+>>>>>>> main
+=======
+>>>>>>> Feature_Implementation_Testgrounds
 >>>>>>> Feature_Implementation_Testgrounds
 --- !u!1 &7887196092594566398
 GameObject:
@@ -184,6 +188,10 @@ Transform:
   - {fileID: 5368412385144314204}
   - {fileID: 4509958740336082287}
   - {fileID: 5556534911603756106}
+<<<<<<< HEAD
+>>>>>>> main
+=======
+>>>>>>> Feature_Implementation_Testgrounds
 >>>>>>> Feature_Implementation_Testgrounds
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -401,4 +409,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BulletPool
   bulletPrefab: {fileID: 1013922471934456146, guid: bad876a32bdc4a047b20e717869a0b03, type: 3}
   bulletPoolStartingSize: 100
+<<<<<<< HEAD
+>>>>>>> main
+=======
+>>>>>>> Feature_Implementation_Testgrounds
 >>>>>>> Feature_Implementation_Testgrounds
