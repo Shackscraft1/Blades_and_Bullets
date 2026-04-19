@@ -3,12 +3,21 @@ using UnityEngine;
 public class BulletSpawner : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    [SerializeField]
-    private BulletPool bulletPool;
-   
-
 
     
+
+
+    private BulletPool bulletPool;
+
+
+   public void Init(BulletPool pool)
+    {
+        bulletPool = pool;
+
+    }
+
+
+
 
     public void Fire(BulletTypeSO bulletTypeSO, Vector2 direction) 
     
