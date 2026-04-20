@@ -1,11 +1,16 @@
 using System;
 using System.Collections;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GameControllerScript : MonoBehaviour
 {
     [SerializeField] private Image abilityBarImage;
+    [SerializeField] private TextMeshProUGUI highScoreText;
+    [SerializeField] private TextMeshProUGUI currentScoreText;
+    
     public static EventHandler AbilityActiveStatus; 
     [SerializeField] private Slider hpSlider;
     private float duration = 1f;
@@ -16,9 +21,28 @@ public class GameControllerScript : MonoBehaviour
         abilityBarImage.type = Image.Type.Filled;
         abilityBarImage.fillMethod = Image.FillMethod.Vertical;
         abilityBarImage.fillAmount = 0f;
+        hpSlider.value = 1f;
         Player.ModifyAbilityCooldown +=ModifyAbilityCooldown;
-        StartCoroutine(FillAbilityProgressBar());
+        HitBoxEvent.PlayerGetsHit += PlayerGetsHit;
 
+    }
+
+    void OnDestroy()
+    {
+        Player.ModifyAbilityCooldown -=ModifyAbilityCooldown;
+        HitBoxEvent.PlayerGetsHit -= PlayerGetsHit;
+    }
+
+    private void PlayerGetsHit(object sender, EventArgs e)
+    {
+        duration -= .1f;
+        hpSlider.value = duration;
+    }
+
+    private void ScoreChange(int scoreText)
+    {
+        
+        currentScoreText.text =  ($"Score\n  {scoreText.ToString("D4")}");
     }
 
     private void ModifyAbilityCooldown(object sender, Player.ModifyAbilityCooldownArgs e)
@@ -32,15 +56,5 @@ public class GameControllerScript : MonoBehaviour
         else abilityBarImage.fillAmount = e.changeAmount;
     }
     
-    IEnumerator FillAbilityProgressBar()
-    {
-        while (duration >= 0f)
-        {
-            yield return new WaitForSeconds(1f);
-            duration -= .1f;
-            hpSlider.value = duration;
-        }
-        
-        
-    }
+    
 }
