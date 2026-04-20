@@ -1,6 +1,3 @@
-using UnityEngine;
-using UnityEngine.InputSystem;
-using System;
 
 public class Player : MonoBehaviour
 {
@@ -46,7 +43,15 @@ public class Player : MonoBehaviour
     public int points = 0;
     private bool inputEnabled = true;
     
-
+    
+    //Special slash variables
+    public static EventHandler<ModifyAbilityCooldownArgs> ModifyAbilityCooldown;
+    public class ModifyAbilityCooldownArgs : EventArgs
+    {
+        public float changeAmount;
+    }
+    private bool _specialSlashActive;
+    
 
     private void Awake()
     {
@@ -58,9 +63,16 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        GameControllerScript.AbilityActiveStatus += AbilityActiveStatus;
         hitboxMesh = hitbox.GetComponent<MeshRenderer>();
         hitboxMesh.enabled = false;
     }
+
+    private void AbilityActiveStatus(object sender, EventArgs e)
+    {
+        _specialSlashActive = true;
+    }
+
     private void Update()
     {
         bombCooldown -= Time.deltaTime;
@@ -105,8 +117,7 @@ public class Player : MonoBehaviour
     {
         if(Keyboard.current.zKey.wasPressedThisFrame || Keyboard.current.periodKey.wasPressedThisFrame)
         {
-            specialSlash.SetActive(true);
-            currentSwingTime = 3f;
+            SpecialSlash();
         }
         
         if(Keyboard.current.bKey.wasPressedThisFrame || Keyboard.current.slashKey.wasPressedThisFrame)
@@ -196,6 +207,20 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void SpecialSlash()
+    {
+        if (!_specialSlashActive)
+        {
+            //this invoke line of code will be temporary until the logic for obtaining ability charge is implemented
+            ModifyAbilityCooldown?.Invoke(this, new ModifyAbilityCooldownArgs{changeAmount = .1f});
+            return;
+        }
+        specialSlash.SetActive(true);
+        currentSwingTime = 3f;
+        _specialSlashActive = false;
+        ModifyAbilityCooldown?.Invoke(this, new ModifyAbilityCooldownArgs{changeAmount = 0f});
+    }
+
     private void Death()
     {
         lives--;
@@ -206,5 +231,7 @@ public class Player : MonoBehaviour
         // Shoot Event
         // Death Animation
     }
+    
+    
 
 }
