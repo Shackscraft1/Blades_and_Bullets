@@ -98,7 +98,7 @@ public class Player : MonoBehaviour
             specialSlash.SetActive(false);
         }
         // Debug.Log(bombCooldown);
-        Debug.Log("Lives: " + lives + " , Bombs: " + bombs);
+       // Debug.Log("Lives: " + lives + " , Bombs: " + bombs);
     }
 
     private void HandleInteraction()
@@ -205,6 +205,17 @@ public class Player : MonoBehaviour
         deathTimer = 4f;
         // Shoot Event
         // Death Animation
+    }
+
+    //Interact with bullet 
+    
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        
+        
+        Debug.Log(lives);
+        Death();
     }
 
 }
