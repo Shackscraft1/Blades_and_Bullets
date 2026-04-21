@@ -1,3 +1,6 @@
+using System;
+using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
@@ -115,6 +118,7 @@ public class Player : MonoBehaviour
 
     private void HandleInteraction()
     {
+        
         if(Keyboard.current.zKey.wasPressedThisFrame || Keyboard.current.periodKey.wasPressedThisFrame)
         {
             SpecialSlash();
