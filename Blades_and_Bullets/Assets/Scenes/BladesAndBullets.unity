@@ -1362,6 +1362,9 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1937136267326504230, guid: 28e92fb28f56d3046896fa18cb41c03c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1074761826}
     - targetCorrespondingSourceObject: {fileID: 3541565061010879148, guid: 28e92fb28f56d3046896fa18cb41c03c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 468673276}
@@ -1369,6 +1372,32 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 2000477048}
   m_SourcePrefab: {fileID: 100100000, guid: 28e92fb28f56d3046896fa18cb41c03c, type: 3}
+--- !u!1 &1074761825 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1937136267326504230, guid: 28e92fb28f56d3046896fa18cb41c03c, type: 3}
+  m_PrefabInstance: {fileID: 1074761824}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1074761826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1074761825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4caa0fbef05f79468b1b5875598d1ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player
+  speed: 1
+  hitbox: {fileID: 468673271}
+  slash: {fileID: 43110133}
+  focusSlash: {fileID: 908503208}
+  specialSlash: {fileID: 1781501326}
+  bombPrefab: {fileID: 7852227032564224379, guid: 76274bad4f31d8247a6a9b73dcd2ca75, type: 3}
+  lives: 3
+  bombs: 3
+  points: 0
 --- !u!1 &1397026960
 GameObject:
   m_ObjectHideFlags: 0
