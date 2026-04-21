@@ -1,6 +1,6 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using System;
 
 public class Player : MonoBehaviour
 {
@@ -118,6 +118,7 @@ public class Player : MonoBehaviour
 
     private void HandleInteraction()
     {
+        
         if(Keyboard.current.zKey.wasPressedThisFrame || Keyboard.current.periodKey.wasPressedThisFrame)
         {
             SpecialSlash();
@@ -234,5 +235,7 @@ public class Player : MonoBehaviour
         // Shoot Event
         // Death Animation
     }
+    
+    
 
 }
