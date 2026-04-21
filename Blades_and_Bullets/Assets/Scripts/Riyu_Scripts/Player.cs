@@ -1,6 +1,6 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System;
 
 public class Player : MonoBehaviour
 {
@@ -45,6 +45,14 @@ public class Player : MonoBehaviour
     public int bombs = 3;
     public int points = 0;
     private bool inputEnabled = true;
+
+    //Bullet pool to return
+    [SerializeField]
+    BulletPool bulletPool;
+    //To see if its a bullet
+    [SerializeField]
+    Bullet bulletComp;
+
     
     
     //Special slash variables
@@ -54,6 +62,8 @@ public class Player : MonoBehaviour
         public float changeAmount;
     }
     private bool _specialSlashActive;
+    //Player gets hit logic
+    public static EventHandler PlayerGetsHit;
     
 
     private void Awake()
@@ -97,6 +107,7 @@ public class Player : MonoBehaviour
         } else
         {
             Debug.Log("You Lost");
+           Time.timeScale = 0f; //When you lose pause game
         }
         
         if (swingTime <= 0 && currentSwingTime <= 0 && inputEnabled)
@@ -113,12 +124,11 @@ public class Player : MonoBehaviour
             specialSlash.SetActive(false);
         }
         // Debug.Log(bombCooldown);
-        Debug.Log("Lives: " + lives + " , Bombs: " + bombs);
+       // Debug.Log("Lives: " + lives + " , Bombs: " + bombs);
     }
 
     private void HandleInteraction()
     {
-        
         if(Keyboard.current.zKey.wasPressedThisFrame || Keyboard.current.periodKey.wasPressedThisFrame)
         {
             SpecialSlash();
@@ -230,12 +240,28 @@ public class Player : MonoBehaviour
         lives--;
         Instantiate(bombPrefab, transform.position, Quaternion.Euler(90f, 0f, 0f));
         bombCooldown = 8f;
-        inputEnabled = false;
+        inputEnabled = false; //Changing from input false to hitbox disabled
         deathTimer = 4f;
         // Shoot Event
         // Death Animation
     }
     
     
+
+
+
+
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+       
+        bulletPool.ReturnBulletToPool(collision.GetComponentInParent<Bullet>());
+        PlayerGetsHit?.Invoke(this, EventArgs.Empty);
+
+
+    }
+
+
 
 }

@@ -270,6 +270,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 268024433}
+  - component: {fileID: 268024434}
   - component: {fileID: 268024435}
   m_Layer: 5
   m_Name: PlayerHP
@@ -299,6 +300,19 @@ RectTransform:
   m_AnchoredPosition: {x: 8.4, y: -116.86}
   m_SizeDelta: {x: 216.82, y: 28.14}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &268024434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 268024432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f7355958acc4cb04a339f47f5a4308d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HpSliderBar
+  slider: {fileID: 1591974323}
 --- !u!114 &268024435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1194,6 +1208,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1572655628}
+  - {fileID: 1922419008}
   m_Father: {fileID: 1823738263}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
@@ -1269,6 +1284,10 @@ PrefabInstance:
       propertyPath: bombPrefab
       value: 
       objectReference: {fileID: 7852227032564224379, guid: 76274bad4f31d8247a6a9b73dcd2ca75, type: 3}
+    - target: {fileID: 5834384164355766021, guid: 28e92fb28f56d3046896fa18cb41c03c, type: 3}
+      propertyPath: bulletComp
+      value: 
+      objectReference: {fileID: 1013922471934456146, guid: bad876a32bdc4a047b20e717869a0b03, type: 3}
     - target: {fileID: 5834384164355766021, guid: 28e92fb28f56d3046896fa18cb41c03c, type: 3}
       propertyPath: focusSlash
       value: 
@@ -1632,8 +1651,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0.00029909, y: -215.97}
-  m_SizeDelta: {x: 528.48, y: 431.71}
+  m_AnchoredPosition: {x: 0.00060888, y: -250}
+  m_SizeDelta: {x: 528.48, y: 499.76}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1572655629
 MonoBehaviour:
@@ -1912,11 +1931,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1777348335}
   m_CullTransparentMesh: 1
---- !u!1 &1781501326 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1223437978986464926, guid: 28e92fb28f56d3046896fa18cb41c03c, type: 3}
-  m_PrefabInstance: {fileID: 1074761824}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1823738259
 GameObject:
   m_ObjectHideFlags: 0
@@ -1929,7 +1943,7 @@ GameObject:
   - component: {fileID: 1823738262}
   - component: {fileID: 1823738261}
   - component: {fileID: 1823738260}
-  - component: {fileID: 1823738265}
+  - component: {fileID: 1823738264}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1988,7 +2002,7 @@ Canvas:
   serializedVersion: 3
   m_RenderMode: 1
   m_Camera: {fileID: 519420031}
-  m_PlaneDistance: 1
+  m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
@@ -1999,7 +2013,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: -10
+  m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!224 &1823738263
 RectTransform:
@@ -2024,7 +2038,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1823738265
+--- !u!114 &1823738264
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2033,13 +2047,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1823738259}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e69612652e0e6df5d99054e208cb5b9b, type: 3}
+  m_Script: {fileID: 11500000, guid: ed86a4a5539d054a3baab7ff22fe1c1c, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GameControllerScript
-  abilityBarImage: {fileID: 1777348337}
-  highScoreText: {fileID: 756862874}
-  currentScoreText: {fileID: 1869675992}
-  hpSlider: {fileID: 1591974323}
+  m_EditorClassIdentifier: Assembly-CSharp::AbilityBarProgress
+  barImage: {fileID: 1777348337}
+  duration: 0
 --- !u!1 &1869675990
 GameObject:
   m_ObjectHideFlags: 0
