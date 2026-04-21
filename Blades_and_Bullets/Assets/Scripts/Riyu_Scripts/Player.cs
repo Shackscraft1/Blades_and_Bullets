@@ -62,6 +62,8 @@ public class Player : MonoBehaviour
         public float changeAmount;
     }
     private bool _specialSlashActive;
+    //Player gets hit logic
+    public static EventHandler PlayerGetsHit;
     
 
     private void Awake()
@@ -256,6 +258,7 @@ public class Player : MonoBehaviour
     {
        
         bulletPool.ReturnBulletToPool(collision.GetComponentInParent<Bullet>());
+        PlayerGetsHit?.Invoke(this, EventArgs.Empty);
 
 
     }

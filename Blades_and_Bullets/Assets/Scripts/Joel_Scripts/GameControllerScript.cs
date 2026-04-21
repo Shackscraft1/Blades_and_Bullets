@@ -23,14 +23,14 @@ public class GameControllerScript : MonoBehaviour
         abilityBarImage.fillAmount = 0f;
         hpSlider.value = 1f;
         Player.ModifyAbilityCooldown +=ModifyAbilityCooldown;
-        HitBoxEvent.PlayerGetsHit += PlayerGetsHit;
+        Player.PlayerGetsHit += PlayerGetsHit;
 
     }
 
     void OnDestroy()
     {
         Player.ModifyAbilityCooldown -=ModifyAbilityCooldown;
-        HitBoxEvent.PlayerGetsHit -= PlayerGetsHit;
+        Player.PlayerGetsHit -= PlayerGetsHit;
     }
 
     private void PlayerGetsHit(object sender, EventArgs e)
