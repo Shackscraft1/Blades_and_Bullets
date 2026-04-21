@@ -1253,6 +1253,8 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.8
       objectReference: {fileID: 0}
+<<<<<<< HEAD
+=======
     - target: {fileID: 5834384164355766021, guid: 28e92fb28f56d3046896fa18cb41c03c, type: 3}
       propertyPath: slash
       value: 
@@ -1277,6 +1279,7 @@ PrefabInstance:
       propertyPath: specialSlash
       value: 
       objectReference: {fileID: 1781501326}
+>>>>>>> main
     - target: {fileID: 6383524398608957223, guid: 28e92fb28f56d3046896fa18cb41c03c, type: 3}
       propertyPath: slash
       value: 
