@@ -1,3 +1,6 @@
+using UnityEngine;
+using UnityEngine.InputSystem;
+using System;
 
 public class Player : MonoBehaviour
 {
@@ -231,7 +234,5 @@ public class Player : MonoBehaviour
         // Shoot Event
         // Death Animation
     }
-    
-    
 
 }
