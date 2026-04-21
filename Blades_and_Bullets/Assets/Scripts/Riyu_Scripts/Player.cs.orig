@@ -1,9 +1,6 @@
-<<<<<<< HEAD
-=======
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
->>>>>>> main
+using System;
 
 public class Player : MonoBehaviour
 {
@@ -49,6 +46,9 @@ public class Player : MonoBehaviour
     public int points = 0;
     private bool inputEnabled = true;
     
+<<<<<<< HEAD
+
+=======
     
     //Special slash variables
     public static EventHandler<ModifyAbilityCooldownArgs> ModifyAbilityCooldown;
@@ -58,6 +58,7 @@ public class Player : MonoBehaviour
     }
     private bool _specialSlashActive;
     
+>>>>>>> Joel_UI_Milestone1
 
     private void Awake()
     {
@@ -69,6 +70,11 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+<<<<<<< HEAD
+        hitboxMesh = hitbox.GetComponent<MeshRenderer>();
+        hitboxMesh.enabled = false;
+    }
+=======
         GameControllerScript.AbilityActiveStatus += AbilityActiveStatus;
         hitboxMesh = hitbox.GetComponent<MeshRenderer>();
         hitboxMesh.enabled = false;
@@ -79,6 +85,7 @@ public class Player : MonoBehaviour
         _specialSlashActive = true;
     }
 
+>>>>>>> Joel_UI_Milestone1
     private void Update()
     {
         bombCooldown -= Time.deltaTime;
@@ -121,10 +128,14 @@ public class Player : MonoBehaviour
 
     private void HandleInteraction()
     {
-        
         if(Keyboard.current.zKey.wasPressedThisFrame || Keyboard.current.periodKey.wasPressedThisFrame)
         {
+<<<<<<< HEAD
+            specialSlash.SetActive(true);
+            currentSwingTime = 3f;
+=======
             SpecialSlash();
+>>>>>>> Joel_UI_Milestone1
         }
         
         if(Keyboard.current.bKey.wasPressedThisFrame || Keyboard.current.slashKey.wasPressedThisFrame)
@@ -214,6 +225,8 @@ public class Player : MonoBehaviour
         }
     }
 
+<<<<<<< HEAD
+=======
     private void SpecialSlash()
     {
         if (!_specialSlashActive)
@@ -228,6 +241,7 @@ public class Player : MonoBehaviour
         ModifyAbilityCooldown?.Invoke(this, new ModifyAbilityCooldownArgs{changeAmount = 0f});
     }
 
+>>>>>>> Joel_UI_Milestone1
     private void Death()
     {
         lives--;
@@ -238,7 +252,10 @@ public class Player : MonoBehaviour
         // Shoot Event
         // Death Animation
     }
+<<<<<<< HEAD
+=======
     
     
+>>>>>>> Joel_UI_Milestone1
 
 }
