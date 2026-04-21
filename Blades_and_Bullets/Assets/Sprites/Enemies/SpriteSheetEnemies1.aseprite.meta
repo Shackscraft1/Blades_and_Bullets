@@ -102,7 +102,7 @@ ScriptedImporter:
     generateIndividualEvents: 1
     generateSpriteAtlas: 1
   importFileNodeState: 1
-  platformSettingsDirtyTick: 639121742716094117
+  platformSettingsDirtyTick: 639123042470080746
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -129,7 +129,7 @@ ScriptedImporter:
   animatedSpriteImportData:
   - name: SpriteSheetEnemies1
     originalName: 
-    pivot: {x: 0.5267624, y: -0.55932206}
+    pivot: {x: 0.50123614, y: -0.4375}
     alignment: 9
     border: {x: 0, y: 0, z: 0, w: 0}
     customData: 
@@ -137,9 +137,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 766
-      height: 472
-    spriteID: 1424c7b313292b844a37593ee1d92fd6
+      width: 809
+      height: 512
+    spriteID: d4904a1ef737ca84ca9b46ebdc0a285b
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -147,9 +147,9 @@ ScriptedImporter:
     indices: 
     edges: []
     tessellationDetail: 0
-    uvTransform: {x: 0, y: -260}
+    uvTransform: {x: 2, y: -220}
   spriteSheetImportData:
-  - name: SpriteSheetEnemies1_1
+  - name: boulderIdleF
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -157,11 +157,179 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 446
-      y: 343
+      x: 104
+      y: 421
+      width: 41
+      height: 33
+    spriteID: 54780ac5adb380a43b5197087f7d389d
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: boulderIdleL
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 149
+      y: 421
+      width: 41
+      height: 33
+    spriteID: 7930ae76343de6145ba3fd3890fb265f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: boulderIdleR
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 194
+      y: 421
+      width: 41
+      height: 33
+    spriteID: d73f40ae1fc76014293db485a69fdd04
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: boulderIdleB
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 239
+      y: 421
+      width: 41
+      height: 33
+    spriteID: 96796dd9fa01bb74e997ca7f53ee454f
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: boulderMoveLeftFootF
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 104
+      y: 383
+      width: 41
+      height: 33
+    spriteID: 88db10d9bca5e4546a1a5f76a6e77e43
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: boulderMoveLeftFootL
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 149
+      y: 383
+      width: 41
+      height: 33
+    spriteID: 1c734909d37537449958761ba4b66b57
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: boulderMoveLeftFootR
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 194
+      y: 383
+      width: 41
+      height: 33
+    spriteID: e70c81a16e0cd33428beb64c50e0c926
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: boulderMoveLeftFootB
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 239
+      y: 383
+      width: 41
+      height: 33
+    spriteID: 88b48c32ef75b23409774c2cf96a10c9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: Blue_FairyI1
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 448
+      y: 383
       width: 37
       height: 40
-    spriteID: e232e10b81156684abf8f27a5a605c7c
+    spriteID: 504e412ef5169bf47a5515056094f06f
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -170,7 +338,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: SpriteSheetEnemies1_2
+  - name: Blue_FairyI2
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -178,95 +346,11 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 102
-      y: 381
-      width: 41
-      height: 33
-    spriteID: 375b5c7d9aa801744918a52b69826658
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  - name: SpriteSheetEnemies1_3
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 147
-      y: 381
-      width: 41
-      height: 33
-    spriteID: af8d35430e31bd14b8491f005ab2cd70
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  - name: SpriteSheetEnemies1_4
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 192
-      y: 381
-      width: 41
-      height: 33
-    spriteID: 6588a0e187beb884cb16f315770d687d
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  - name: SpriteSheetEnemies1_5
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 237
-      y: 381
-      width: 41
-      height: 33
-    spriteID: 7c384b1ddffc53245bc2fb7008e93640
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  - name: SpriteSheetEnemies1_6
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 487
-      y: 343
+      x: 489
+      y: 383
       width: 37
       height: 40
-    spriteID: e57813612a47fe94db134d1c9a243475
+    spriteID: 4dc031310399fb245b27d7018bbb6692
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -275,7 +359,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: SpriteSheetEnemies1_7
+  - name: Blue_FairyI3
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -283,11 +367,11 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 528
-      y: 343
+      x: 530
+      y: 383
       width: 37
       height: 40
-    spriteID: 073985cba9468cd4b8a560ffff9ce1d4
+    spriteID: c33228c051ab7fe42b2e9fa2bc59beb2
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -296,7 +380,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: SpriteSheetEnemies1_8
+  - name: SpriteSheetEnemies1_59
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -304,95 +388,11 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 102
-      y: 343
-      width: 41
-      height: 33
-    spriteID: 7cfffb253d8af244ea8af2077ba8b88c
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  - name: SpriteSheetEnemies1_9
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 147
-      y: 343
-      width: 41
-      height: 33
-    spriteID: 3657cc4182648ed4f9c9e9b685e31869
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  - name: SpriteSheetEnemies1_10
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 192
-      y: 343
-      width: 41
-      height: 33
-    spriteID: 7e536ca1c92c15b4599bd0e0f30cbe97
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  - name: SpriteSheetEnemies1_11
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 237
-      y: 343
-      width: 41
-      height: 33
-    spriteID: 8f135ee01adc971489f34c9415354054
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  - name: SpriteSheetEnemies1_12
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 311
-      y: 362
+      x: 313
+      y: 402
       width: 9
       height: 8
-    spriteID: 5fc6f0932885f774b80a7643b9ee97c9
+    spriteID: 1d822c8362e3173478fa6f7ef9d92b79
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -401,7 +401,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: SpriteSheetEnemies1_13
+  - name: ProjectileAnim1_Red
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -409,11 +409,53 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 102
-      y: 305
+      x: 726
+      y: 377
+      width: 15
+      height: 15
+    spriteID: 54931e606c61bc14c9a4babeda4873a9
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: ProjectileAnim2_Red
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 749
+      y: 373
+      width: 23
+      height: 23
+    spriteID: 6036f60f152f57d4bab5af7f3f3bc094
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: boulderMoveRightFootF
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 104
+      y: 345
       width: 41
       height: 33
-    spriteID: 408d76173db86bf43b1cb7d0f7d45498
+    spriteID: 3102f98296c74ab4a83adb436c374aef
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -422,7 +464,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: SpriteSheetEnemies1_14
+  - name: boulderMoveRightFootL
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -430,11 +472,11 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 147
-      y: 305
+      x: 149
+      y: 345
       width: 41
       height: 33
-    spriteID: a575d4e1b75bf954dbf304209205f43c
+    spriteID: 2df520382bc8b5e479f59209d223dd5b
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -443,7 +485,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: SpriteSheetEnemies1_15
+  - name: boulderMoveRightFootR
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -451,11 +493,11 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 192
-      y: 305
+      x: 194
+      y: 345
       width: 41
       height: 33
-    spriteID: 0681ec3724e53324e9e1d077ca81dcfa
+    spriteID: 1e3f1cb2c325ba34a921012c52d8fb6a
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -464,7 +506,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: SpriteSheetEnemies1_16
+  - name: boulderMoveRightFootB
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -472,11 +514,11 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 237
-      y: 305
+      x: 239
+      y: 345
       width: 41
       height: 33
-    spriteID: 5af4d3a0169c8e04e99d8d927683a6d4
+    spriteID: a8523eca0e097f04b80357294e2ad4fe
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -485,7 +527,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: SpriteSheetEnemies1_17
+  - name: Blue_FairyTurn1
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -493,11 +535,11 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 446
-      y: 299
+      x: 448
+      y: 339
       width: 37
       height: 40
-    spriteID: bdf2ae4803f227342ab12585c606762c
+    spriteID: 76c4ba78ed183774b870331e4c42b7df
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -506,7 +548,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: SpriteSheetEnemies1_18
+  - name: Blue_FairyTurn2
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -514,11 +556,11 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 487
-      y: 299
+      x: 489
+      y: 339
       width: 37
       height: 40
-    spriteID: eeae5b70cc389c647bb80f69596bb328
+    spriteID: 51ee1d683f9182f449472d9cb73ab8dc
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -527,7 +569,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: SpriteSheetEnemies1_19
+  - name: Blue_FairyTurn3
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -535,11 +577,11 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 528
-      y: 299
+      x: 530
+      y: 339
       width: 37
       height: 40
-    spriteID: 35908563278b05f4ea25845baf6432ff
+    spriteID: f3ccd18977d335a489c8ed19745e73b9
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -548,7 +590,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: SpriteSheetEnemies1_20
+  - name: ProjectileAnim1_Green
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -556,11 +598,32 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 720
-      y: 333
+      x: 726
+      y: 350
+      width: 15
+      height: 15
+    spriteID: 8bedafcc446303f468d9e008d0127242
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: ProjectileAnim2_Green
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 749
+      y: 346
       width: 23
       height: 23
-    spriteID: dce11d2afd324ef44bca83fe6587bc4a
+    spriteID: a1487efe5dfb4a1478d163d468e85ad1
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -569,7 +632,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: SpriteSheetEnemies1_21
+  - name: FragmentExplode
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -577,116 +640,11 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 747
-      y: 333
-      width: 23
-      height: 23
-    spriteID: 162cb36075f9efa4aa75a85df571258d
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  - name: SpriteSheetEnemies1_22
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 720
-      y: 306
-      width: 23
-      height: 23
-    spriteID: 43f90594a85733d429d9d5d9fff45440
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  - name: SpriteSheetEnemies1_23
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 747
-      y: 306
-      width: 23
-      height: 23
-    spriteID: 0d43845aabb38274fa67342e49ae7045
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  - name: SpriteSheetEnemies1_30
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 720
-      y: 279
-      width: 23
-      height: 23
-    spriteID: 9e4827c68b82d0447975a8d755901e9f
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  - name: SpriteSheetEnemies1_31
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 747
-      y: 279
-      width: 23
-      height: 23
-    spriteID: 70fd7caf37894cc438007f5e5545843b
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  - name: SpriteSheetEnemies1_36
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 196
-      y: 269
+      x: 198
+      y: 309
       width: 33
       height: 29
-    spriteID: d18d097354ced7f49aff420d3d581b12
+    spriteID: 7e8416e31256ad54b879308d2a6cb337
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -695,7 +653,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: SpriteSheetEnemies1_38
+  - name: ProjectileAnim1_Orange
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -703,11 +661,32 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 720
-      y: 252
+      x: 726
+      y: 323
+      width: 15
+      height: 15
+    spriteID: 6a83fc146b75c7741b7959c245df4b25
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: ProjectileAnim2_Orange
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 749
+      y: 319
       width: 23
       height: 23
-    spriteID: cc93dfacea1424e49b975ed30ca3278c
+    spriteID: a5aee3b5cd7ae864d95b1cbd40b06472
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -716,7 +695,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: SpriteSheetEnemies1_39
+  - name: ProjectileAnim1_Blue
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -724,11 +703,32 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 747
-      y: 252
+      x: 726
+      y: 296
+      width: 15
+      height: 15
+    spriteID: 999b19f8bed9ae3449cc3fc40e5da563
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: ProjectileAnim2_Blue
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 749
+      y: 292
       width: 23
       height: 23
-    spriteID: 7c92832bfcf471548aa0b977189ce470
+    spriteID: 0023fb3682797f0458d9d92aa9063ac8
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -737,7 +737,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: SpriteSheetEnemies1_40
+  - name: Red_FairyI1
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -745,11 +745,11 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 446
-      y: 212
+      x: 448
+      y: 252
       width: 37
       height: 39
-    spriteID: 43d172311c7892f4bb809e53c3ea552c
+    spriteID: 326f6713ff0736a4883ef587acb58294
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -758,7 +758,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: SpriteSheetEnemies1_41
+  - name: Red_FairyI2
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -766,11 +766,11 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 488
-      y: 212
+      x: 490
+      y: 252
       width: 35
       height: 39
-    spriteID: 4f3709e83b15406488d4a7a2f5119226
+    spriteID: 62d1e6a1ae010e44186ed3cb2fa56120
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -779,7 +779,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: SpriteSheetEnemies1_42
+  - name: Red_FairyI3
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -787,11 +787,11 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 528
-      y: 212
+      x: 530
+      y: 252
       width: 37
       height: 39
-    spriteID: d06343a7962141b4aab99295324a2985
+    spriteID: a35ec73b12620ea4e86e72a33b6be151
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -800,7 +800,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: SpriteSheetEnemies1_43
+  - name: SpriteSheetEnemies1_115
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -808,11 +808,32 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 720
-      y: 225
+      x: 635
+      y: 287
+      width: 11
+      height: 8
+    spriteID: 248488bb65ba08644843c5e33e491e78
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: ProjectileAnim2_Purple
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 749
+      y: 265
       width: 23
       height: 23
-    spriteID: 6d85e5777f2c96948b990eb8949e01dd
+    spriteID: 99684a872cfd1234dba57163aea16f90
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -821,7 +842,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: SpriteSheetEnemies1_44
+  - name: ProjectileAnim1_Purple
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -829,11 +850,11 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 747
-      y: 225
-      width: 23
-      height: 23
-    spriteID: 4ddbd5a2eb8f7824aa843dee0c6093a3
+      x: 726
+      y: 269
+      width: 15
+      height: 15
+    spriteID: 8440b6eefaac6044a8d97bd565ab4c90
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -842,7 +863,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: SpriteSheetEnemies1_45
+  - name: Red_FairyTurn1
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -850,11 +871,11 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 446
-      y: 169
+      x: 448
+      y: 209
       width: 37
       height: 39
-    spriteID: fd110596b720f5c4785a9ee2c201f67f
+    spriteID: 8dd24aa799f7f0f439559d58f874b60d
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -863,7 +884,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: SpriteSheetEnemies1_46
+  - name: Red_FairyTurn2
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -871,11 +892,11 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 488
-      y: 169
+      x: 490
+      y: 209
       width: 35
       height: 39
-    spriteID: 2394c74cee622ab4ca9761f1a487f95a
+    spriteID: ee75f42ad2c7db24a9083a6e96690831
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -884,7 +905,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: SpriteSheetEnemies1_47
+  - name: Red_FairyTurn3
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -892,11 +913,11 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 528
-      y: 169
+      x: 530
+      y: 209
       width: 37
       height: 39
-    spriteID: 9470d15383ce63c46a328a2f5681c058
+    spriteID: 4967a57393534934f865d5136cb8d94b
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -905,7 +926,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: SpriteSheetEnemies1_48
+  - name: ProjectileAnim1_Yellow
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -913,11 +934,32 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 720
-      y: 198
+      x: 726
+      y: 242
+      width: 15
+      height: 15
+    spriteID: f86719a747dc94b458897f7b58cf5461
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: ProjectileAnim2_Yellow
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 749
+      y: 238
       width: 23
       height: 23
-    spriteID: 003bd43b99dcdd840b2a8739b84468b4
+    spriteID: c28fa7c011afb9c4d9f4de7d4812ed07
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -926,7 +968,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: SpriteSheetEnemies1_49
+  - name: SpriteSheetEnemies1_145
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -934,11 +976,32 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 747
-      y: 198
+      x: 44
+      y: 226
+      width: 10
+      height: 9
+    spriteID: fd4c281bed082ff47818aabdaca738ad
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 0, y: 0}
+  - name: FullProjectileBlue
+    originalName: 
+    pivot: {x: 0.5, y: 0.5}
+    alignment: 0
+    border: {x: 0, y: 0, z: 0, w: 0}
+    customData: 
+    rect:
+      serializedVersion: 2
+      x: 342
+      y: 103
       width: 23
       height: 23
-    spriteID: f71b7313d1bd1574abe7d41b8c78c0a7
+    spriteID: 774daafb87976854fb41d68052326b70
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -947,7 +1010,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: SpriteSheetEnemies1_50
+  - name: FullProjectileRed
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -955,11 +1018,11 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 340
-      y: 63
+      x: 368
+      y: 103
       width: 23
       height: 23
-    spriteID: 9abb439fdb5b7fa4d9c2d2da9123c8a1
+    spriteID: 8d0c36c47d83f0e4c90a6a9d5b0738db
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -968,7 +1031,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: SpriteSheetEnemies1_51
+  - name: MarylinEnchaIdle1
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -976,32 +1039,11 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 366
-      y: 63
-      width: 23
-      height: 23
-    spriteID: 61798f44fb8941d45b2cad343ffb28b0
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  - name: SpriteSheetEnemies1_52
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 422
+      x: 469
       y: 4
-      width: 37
-      height: 68
-    spriteID: 1620db393e3362f44a284fdf35b122c4
+      width: 67
+      height: 103
+    spriteID: 286f1bd9f74eb434aaf16c42d2fb3a9b
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -1010,7 +1052,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: SpriteSheetEnemies1_53
+  - name: FullProjectilePurple
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -1018,11 +1060,11 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 340
-      y: 37
+      x: 342
+      y: 77
       width: 23
       height: 23
-    spriteID: 04313c6c49879a246a38334f77e966d2
+    spriteID: e9b274b9433c7014db5e047dddd409d9
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -1031,7 +1073,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: SpriteSheetEnemies1_54
+  - name: FullProjectileGreen
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -1039,11 +1081,11 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 366
-      y: 37
+      x: 368
+      y: 77
       width: 23
       height: 23
-    spriteID: 0db9a5a06ffbe024eab5b13ae3b79536
+    spriteID: c8539c41f7a793a49b378cc5d0deb912
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -1052,7 +1094,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: SpriteSheetEnemies1_55
+  - name: FullProjectileYellow
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -1060,11 +1102,11 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 340
-      y: 11
+      x: 342
+      y: 51
       width: 23
       height: 23
-    spriteID: 0d9ec784d4dbcca478c954405cf24680
+    spriteID: 6fe64699f81278446a6169966de28e8f
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -1073,7 +1115,7 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
-  - name: SpriteSheetEnemies1_56
+  - name: FullProjectileOrange
     originalName: 
     pivot: {x: 0.5, y: 0.5}
     alignment: 0
@@ -1081,11 +1123,11 @@ ScriptedImporter:
     customData: 
     rect:
       serializedVersion: 2
-      x: 366
-      y: 11
+      x: 368
+      y: 51
       width: 23
       height: 23
-    spriteID: 8261f498561e5ea4e93c5e83ee0ce1d1
+    spriteID: 2f6dc40bb68412b428e0961fa219ca27
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -1116,7 +1158,7 @@ ScriptedImporter:
         y: 0
         width: 815
         height: 737
-      spriteId: 1424c7b313292b844a37593ee1d92fd6
+      spriteId: d4904a1ef737ca84ca9b46ebdc0a285b
     linkedCells: []
     tileCells: []
     tileSetIndex: 0
@@ -1151,4 +1193,4 @@ ScriptedImporter:
   secondarySpriteTextures: []
   spritePackingTag: 
   canvasSize: {x: 815, y: 737}
-  previousTextureSize: {x: 1024, y: 512}
+  previousTextureSize: {x: 1024, y: 1024}
