@@ -45,6 +45,14 @@ public class Player : MonoBehaviour
     public int bombs = 3;
     public int points = 0;
     private bool inputEnabled = true;
+
+    //Bullet pool to return
+    [SerializeField]
+    BulletPool bulletPool;
+    //To see if its a bullet
+    [SerializeField]
+    Bullet bulletComp;
+
     
 
 
@@ -82,6 +90,7 @@ public class Player : MonoBehaviour
         } else
         {
             Debug.Log("You Lost");
+           Time.timeScale = 0f; //When you lose pause game
         }
         
         if (swingTime <= 0 && currentSwingTime <= 0 && inputEnabled)
@@ -201,21 +210,25 @@ public class Player : MonoBehaviour
         lives--;
         Instantiate(bombPrefab, transform.position, Quaternion.Euler(90f, 0f, 0f));
         bombCooldown = 8f;
-        inputEnabled = false;
+        inputEnabled = false; //Changing from input false to hitbox disabled
         deathTimer = 4f;
         // Shoot Event
         // Death Animation
     }
 
-    //Interact with bullet 
-    
+
+
+
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        
-        
-        Debug.Log(lives);
-        Death();
+       
+        bulletPool.ReturnBulletToPool(collision.GetComponentInParent<Bullet>());
+
+
     }
+
+
 
 }
