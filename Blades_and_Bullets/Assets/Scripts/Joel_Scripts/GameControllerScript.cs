@@ -35,7 +35,7 @@ public class GameControllerScript : MonoBehaviour
 
     private void PlayerGetsHit(object sender, EventArgs e)
     {
-        duration -= .1f;
+        duration -= .05f;
         hpSlider.value = duration;
     }
 

@@ -255,9 +255,14 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-       
-        bulletPool.ReturnBulletToPool(collision.GetComponentInParent<Bullet>());
-        PlayerGetsHit?.Invoke(this, EventArgs.Empty);
+
+        if (collision != null)
+        {
+            //dequeuing bullets triggers an error, still trying to find a fix
+            /*bulletPool.ReturnBulletToPool(collision.GetComponentInParent<Bullet>());*/
+            PlayerGetsHit?.Invoke(this, EventArgs.Empty);
+        }
+        
 
 
     }
