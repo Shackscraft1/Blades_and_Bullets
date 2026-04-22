@@ -259,7 +259,7 @@ public class Player : MonoBehaviour
         if (collision != null)
         {
             //dequeuing bullets triggers an error, still trying to find a fix
-            /*bulletPool.ReturnBulletToPool(collision.GetComponentInParent<Bullet>());*/
+            bulletPool.ReturnBulletToPool(collision.GetComponentInParent<Bullet>());
             PlayerGetsHit?.Invoke(this, EventArgs.Empty);
         }
         

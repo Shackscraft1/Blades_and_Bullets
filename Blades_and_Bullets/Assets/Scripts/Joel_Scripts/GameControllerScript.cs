@@ -1,7 +1,5 @@
 using System;
-using System.Collections;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -13,7 +11,7 @@ public class GameControllerScript : MonoBehaviour
     
     public static EventHandler AbilityActiveStatus; 
     [SerializeField] private Slider hpSlider;
-    private float duration = 1f;
+    private float _currentPlayerHp = 1f;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -35,11 +33,13 @@ public class GameControllerScript : MonoBehaviour
 
     private void PlayerGetsHit(object sender, EventArgs e)
     {
-        duration -= .05f;
-        hpSlider.value = duration;
+        _currentPlayerHp -= .05f;
+        hpSlider.value = _currentPlayerHp;
+        if (_currentPlayerHp <= 0f) HpDropsToZero();
+        
     }
 
-    private void ScoreChange(int scoreText)
+    private void ScoreChange(float scoreText)
     {
         
         currentScoreText.text =  ($"Score\n  {scoreText.ToString("D4")}");
@@ -55,6 +55,10 @@ public class GameControllerScript : MonoBehaviour
         }
         else abilityBarImage.fillAmount = e.changeAmount;
     }
-    
+
+    private void HpDropsToZero()
+    {
+        
+    }
     
 }
