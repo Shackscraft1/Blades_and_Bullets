@@ -18,7 +18,7 @@ namespace Game.Collectibles.Data
         [Min(0f)][SerializeField] private float lifetime = 12f;
 
         [Header("magnet")]
-        [Min(0f)][SerializeField] private float magnetRange = 2.5f;
+        [Min(0f)][SerializeField] private float magnetRange = 1f;
         [Min(0f)][SerializeField] private float magnetMoveSpeed = 8f;
         [Min(0f)][SerializeField] private float autoCollectMoveSpeed = 12f; // faster movement speed used during top-of-screen auto-collect
         [SerializeField] private bool allowAutoCollect = true; // determines whether this collectible can be pulled in by the global auto-collect rule

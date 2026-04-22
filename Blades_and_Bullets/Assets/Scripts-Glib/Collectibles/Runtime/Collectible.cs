@@ -51,9 +51,9 @@ namespace Game.Collectibles.Runtime
                 return;
             }
 
-            if (spriteRenderer != null && collectibleType.Sprite != null)
+            if (spriteRenderer != null)
             {
-                spriteRenderer.sprite = collectibleType.Sprite; // prefer the sprite defined on the collectible data asset when available
+                spriteRenderer.sprite = collectibleType.Sprite; // assign the sprite defined by the specific collectible type so one prefab can represent multiple pickup variants
             }
 
             if (triggerCollider == null)
@@ -64,16 +64,6 @@ namespace Game.Collectibles.Runtime
             if (triggerCollider != null)
             {
                 triggerCollider.isTrigger = true; // pickups should use trigger collection, not physical collision response
-            }
-
-            if (spriteRenderer != null)
-            {
-                spriteRenderer.sprite = collectibleType.Sprite; // visual is fully data-driven by the scriptableobject
-            }
-
-            if (spriteRenderer != null)
-            {
-                spriteRenderer.color = collectibleType.DebugColor; // tints the placeholder sprite so each collectible type is visually distinguishable during testing
             }
 
             Vector2 normalizedDriftDirection = initialDriftDirection.sqrMagnitude > 0f ? initialDriftDirection.normalized : Vector2.down;
@@ -240,7 +230,7 @@ namespace Game.Collectibles.Runtime
 
             if (spriteRenderer != null)
             {
-                //spriteRenderer.sprite = null; // clears the previous sprite so pooled objects do not briefly show stale visuals before re-init. NOT CLEARING WHILE TESTING
+                spriteRenderer.sprite = null; // clears the previous sprite so pooled objects do not briefly show stale visuals before re-init. NOT CLEARING WHILE TESTING
                 spriteRenderer.color = Color.white; // resets pooled renderer tint so previous pickup colors do not leak into the next reuse
             }
         }

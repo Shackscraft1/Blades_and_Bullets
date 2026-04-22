@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Game.Collectibles::Game.Collectibles.Data.CollectibleTypeSO
   kind: 1
   displayName: Power
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 03dbec5afdd0d18418d98f0e675738ce, type: 3}
   debugColor: {r: 1, g: 1, b: 1, a: 1}
   value: 1
   lifetime: 12
