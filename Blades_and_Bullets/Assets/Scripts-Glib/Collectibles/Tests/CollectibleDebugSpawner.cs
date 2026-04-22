@@ -17,7 +17,7 @@ namespace Game.Collectibles.Tests
 
         [Header("spawn settings")]
         [SerializeField] private Vector2 spawnOffset = new Vector2(0f, 4f); // prevents spawning on top of the player
-        [Min(0f)][SerializeField] private float randomHorizontalOffset = 2f; // spreads debug spawns left/right
+        [Min(0f)][SerializeField] private float randomHorizontalOffset = 4f; // spreads debug spawns left/right
         [SerializeField] private bool logSpawns = true; //debugging
 
         private void Update()
