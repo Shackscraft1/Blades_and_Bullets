@@ -474,6 +474,43 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4423337180095834655, guid: bad876a32bdc4a047b20e717869a0b03, type: 3}
+    - target: {fileID: 1937136267326504230, guid: 28e92fb28f56d3046896fa18cb41c03c, type: 3}
+      propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3676197288477339373, guid: 28e92fb28f56d3046896fa18cb41c03c, type: 3}
+      propertyPath: m_Actions
+      value: 
+      objectReference: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+    - target: {fileID: 4725407195328121157, guid: 28e92fb28f56d3046896fa18cb41c03c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5834384164355766021, guid: 28e92fb28f56d3046896fa18cb41c03c, type: 3}
+      propertyPath: slash
+      value: 
+      objectReference: {fileID: 1516337456}
+    - target: {fileID: 5834384164355766021, guid: 28e92fb28f56d3046896fa18cb41c03c, type: 3}
+      propertyPath: hitbox
+      value: 
+      objectReference: {fileID: 1996075931}
+    - target: {fileID: 5834384164355766021, guid: 28e92fb28f56d3046896fa18cb41c03c, type: 3}
+      propertyPath: bombPrefab
+      value: 
+      objectReference: {fileID: 7852227032564224379, guid: 76274bad4f31d8247a6a9b73dcd2ca75, type: 3}
+    - target: {fileID: 5834384164355766021, guid: 28e92fb28f56d3046896fa18cb41c03c, type: 3}
+      propertyPath: bulletPool
+      value: 
+      objectReference: {fileID: 1416525179}
+    - target: {fileID: 5834384164355766021, guid: 28e92fb28f56d3046896fa18cb41c03c, type: 3}
+      propertyPath: focusSlash
+      value: 
+      objectReference: {fileID: 1824549046}
+    - target: {fileID: 5834384164355766021, guid: 28e92fb28f56d3046896fa18cb41c03c, type: 3}
+      propertyPath: specialSlash
+      value: 
+      objectReference: {fileID: 246773637}
+    - target: {fileID: 7929682069977287586, guid: 28e92fb28f56d3046896fa18cb41c03c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 14.189194
       objectReference: {fileID: 0}
@@ -518,6 +555,8 @@ PrefabInstance:
       value: BulletTest
       objectReference: {fileID: 0}
     m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
