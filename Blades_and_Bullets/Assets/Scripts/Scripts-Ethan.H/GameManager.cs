@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         enemy.GetComponentInChildren<BulletSpawner>().Init(pool);
+        player.GetComponentInChildren<PlayerBulletSpawner>().Init(pool);
         
         
     }
