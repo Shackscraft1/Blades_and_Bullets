@@ -9,6 +9,10 @@ public class PlayerAnim : MonoBehaviour
     private const string IS_WALKING_RIGHT = "isMovingRight";
     private const string IS_WALKING_UP = "isMovingUp";
     private const string IS_WALKING_DOWN = "isMovingDown";
+    private const string IS_UNFOCUSED = "isAttackUnfocused"; // trigger version
+    private const string IS_UNFOCUSED1 = "isAttackUnfocus";
+    private const string IS_FOCUSED = "isAttackFocused";
+    private const string IS_SPECIAL = "isSpecial";
     public Animator animator;
 
     void Update()
@@ -47,6 +51,32 @@ public class PlayerAnim : MonoBehaviour
         else
         {
             animator.SetBool(IS_WALKING_DOWN, false);
+        }
+
+        if (Keyboard.current.zKey.wasPressedThisFrame)
+        {
+            animator.SetBool(IS_UNFOCUSED1, true);
+        }
+        else
+        {
+            animator.SetBool(IS_UNFOCUSED1, false);
+        }
+        if (Keyboard.current.cKey.isPressed)
+        {
+            animator.SetBool(IS_FOCUSED, true);
+        }
+        else
+        {
+            animator.SetBool(IS_FOCUSED, false);
+        }
+
+        if (Keyboard.current.xKey.wasPressedThisFrame)
+        {
+            animator.SetBool(IS_SPECIAL, true);
+        }
+        else
+        {
+            animator.SetBool(IS_SPECIAL, false);
         }
     }
 
