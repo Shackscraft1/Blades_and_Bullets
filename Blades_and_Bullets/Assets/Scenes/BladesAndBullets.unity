@@ -475,6 +475,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1725476259248025556, guid: e18af2c475fb8a74c8058e3468478c8b, type: 3}
+      propertyPath: bulletSpawner
+      value: 
+      objectReference: {fileID: 1907209367}
     - target: {fileID: 6369403047704383477, guid: e18af2c475fb8a74c8058e3468478c8b, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -773,11 +777,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &653309077 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1223437978986464926, guid: 28e92fb28f56d3046896fa18cb41c03c, type: 3}
-  m_PrefabInstance: {fileID: 903058857}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &682582185
 GameObject:
   m_ObjectHideFlags: 0
@@ -1907,6 +1906,17 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1737919575 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5834384164355766021, guid: 28e92fb28f56d3046896fa18cb41c03c, type: 3}
+  m_PrefabInstance: {fileID: 832875579}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1737919569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4caa0fbef05f79468b1b5875598d1ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player
 --- !u!1 &1777348335
 GameObject:
   m_ObjectHideFlags: 0
@@ -2118,9 +2128,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fdf328292f203e46a8cc6f88eb68782, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  pool: {fileID: 486828559}
+  pool: {fileID: 1902621379}
   enemy: {fileID: 486828558}
-  player: {fileID: 0}
+  player: {fileID: 1737919575}
 --- !u!1 &1869675990
 GameObject:
   m_ObjectHideFlags: 0
@@ -2342,11 +2352,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1986840588 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6251426065606292002, guid: 28e92fb28f56d3046896fa18cb41c03c, type: 3}
-  m_PrefabInstance: {fileID: 903058857}
+--- !u!114 &1907209367 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7461527852764876852, guid: e18af2c475fb8a74c8058e3468478c8b, type: 3}
+  m_PrefabInstance: {fileID: 486828557}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49c77ca8dd5ff19458a9c0c3d00d39aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BulletSpawner
 --- !u!1 &2035956492
 GameObject:
   m_ObjectHideFlags: 0
@@ -2402,3 +2418,4 @@ SceneRoots:
   - {fileID: 1467911755}
   - {fileID: 486828557}
   - {fileID: 832875579}
+  - {fileID: 1902621380}
