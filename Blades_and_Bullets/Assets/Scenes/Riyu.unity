@@ -569,34 +569,6 @@ PrefabInstance:
       propertyPath: specialSlash
       value: 
       objectReference: {fileID: 246773637}
-    - target: {fileID: 6383524398608957223, guid: 28e92fb28f56d3046896fa18cb41c03c, type: 3}
-      propertyPath: slash
-      value: 
-      objectReference: {fileID: 1516337456}
-    - target: {fileID: 6383524398608957223, guid: 28e92fb28f56d3046896fa18cb41c03c, type: 3}
-      propertyPath: speed
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 6383524398608957223, guid: 28e92fb28f56d3046896fa18cb41c03c, type: 3}
-      propertyPath: bullet
-      value: 
-      objectReference: {fileID: 1013922471934456146, guid: bad876a32bdc4a047b20e717869a0b03, type: 3}
-    - target: {fileID: 6383524398608957223, guid: 28e92fb28f56d3046896fa18cb41c03c, type: 3}
-      propertyPath: bombPrefab
-      value: 
-      objectReference: {fileID: 2836767526451022910, guid: f9ec6a2534028594094a3774722cc96f, type: 3}
-    - target: {fileID: 6383524398608957223, guid: 28e92fb28f56d3046896fa18cb41c03c, type: 3}
-      propertyPath: bulletPool
-      value: 
-      objectReference: {fileID: 1416525179}
-    - target: {fileID: 6383524398608957223, guid: 28e92fb28f56d3046896fa18cb41c03c, type: 3}
-      propertyPath: focusSlash
-      value: 
-      objectReference: {fileID: 1824549046}
-    - target: {fileID: 6383524398608957223, guid: 28e92fb28f56d3046896fa18cb41c03c, type: 3}
-      propertyPath: specialSlash
-      value: 
-      objectReference: {fileID: 246773637}
     - target: {fileID: 7929682069977287586, guid: 28e92fb28f56d3046896fa18cb41c03c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -6.09
