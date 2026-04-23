@@ -170,7 +170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4caa0fbef05f79468b1b5875598d1ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
-  speed: 15
+  speed: 10
   hitbox: {fileID: 3593035649434873760}
   slash: {fileID: 4987818048595853479, guid: d7e87856376ebb34b821882125810bf7, type: 3}
   focusSlash: {fileID: 2928054705895004748, guid: 029bfbac892232c40907b622e4f2588a, type: 3}
@@ -261,7 +261,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_MaskInteraction: 0
   m_Sprite: {fileID: -9000922824688767207, guid: 4ae5f3912bbd19944af092c119c3826e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

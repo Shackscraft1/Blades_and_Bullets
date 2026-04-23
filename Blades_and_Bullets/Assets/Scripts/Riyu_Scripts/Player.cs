@@ -283,6 +283,7 @@ public class Player : MonoBehaviour
     public void Death()
     {
         // lives--;
+        
         Instantiate(bombPrefab, transform.position, Quaternion.Euler(0f, 0f, 0f));
         bombCooldown = 8f;
         transform.position = new Vector3(-3f, -4f, transform.position.z);
