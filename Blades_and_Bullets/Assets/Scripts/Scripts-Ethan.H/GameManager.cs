@@ -10,8 +10,19 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+
+     
+
+        
+        
+
+
         enemy.GetComponentInChildren<BulletSpawner>().Init(pool);
         player.GetComponentInChildren<PlayerBulletSpawner>().Init(pool);
+<<<<<<< Updated upstream
+=======
+       
+>>>>>>> Stashed changes
         
         
     }

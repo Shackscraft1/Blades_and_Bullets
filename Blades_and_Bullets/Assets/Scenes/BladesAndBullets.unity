@@ -467,8 +467,57 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 313262757}
   m_CullTransparentMesh: 1
+<<<<<<< Updated upstream
 --- !u!1001 &486828557
 PrefabInstance:
+=======
+--- !u!1 &319967629
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 319967630}
+  - component: {fileID: 319967631}
+  m_Layer: 0
+  m_Name: PlayerBulletSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &319967630
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 319967629}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1737919577}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &319967631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 319967629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13567685a124246418ceea13bd1befa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerBulletSpawner
+--- !u!1 &377800469
+GameObject:
+>>>>>>> Stashed changes
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
@@ -1129,7 +1178,16 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 6383524398608957223, guid: 28e92fb28f56d3046896fa18cb41c03c, type: 3}
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 7929682069977287586, guid: 28e92fb28f56d3046896fa18cb41c03c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2142622044}
+    - targetCorrespondingSourceObject: {fileID: 7929682069977287586, guid: 28e92fb28f56d3046896fa18cb41c03c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 319967630}
+    - targetCorrespondingSourceObject: {fileID: 7929682069977287586, guid: 28e92fb28f56d3046896fa18cb41c03c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1961456781}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1937136267326504230, guid: 28e92fb28f56d3046896fa18cb41c03c, type: 3}
       insertIndex: -1
@@ -1907,6 +1965,22 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1737919575 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5834384164355766021, guid: 28e92fb28f56d3046896fa18cb41c03c, type: 3}
+  m_PrefabInstance: {fileID: 832875579}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1737919569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4caa0fbef05f79468b1b5875598d1ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player
+--- !u!4 &1737919577 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7929682069977287586, guid: 28e92fb28f56d3046896fa18cb41c03c, type: 3}
+  m_PrefabInstance: {fileID: 832875579}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1777348335
 GameObject:
   m_ObjectHideFlags: 0
@@ -2118,9 +2192,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fdf328292f203e46a8cc6f88eb68782, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+<<<<<<< Updated upstream
   pool: {fileID: 486828559}
   enemy: {fileID: 486828558}
   player: {fileID: 0}
+=======
+  pool: {fileID: 729607376}
+  player: {fileID: 1737919575}
+>>>>>>> Stashed changes
 --- !u!1 &1869675990
 GameObject:
   m_ObjectHideFlags: 0
@@ -2296,7 +2375,58 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -177.6}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
+<<<<<<< Updated upstream
 --- !u!1 &1902621378
+=======
+--- !u!1 &1961456780
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1961456781}
+  - component: {fileID: 1961456782}
+  m_Layer: 0
+  m_Name: PlayerPattern
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1961456781
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1961456780}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1737919577}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1961456782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1961456780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ee7dd980c8c063439847321643f86c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerBulletPattern
+  bulletSpawner: {fileID: 0}
+  playerBulletSpawner: {fileID: 319967631}
+  bulletTypeSO: {fileID: 11400000, guid: b206a380bd0458145a89729a08a1670d, type: 2}
+--- !u!1 &1980935505
+>>>>>>> Stashed changes
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2387,11 +2517,157 @@ RectTransform:
   m_AnchoredPosition: {x: -135.76001, y: -15.973}
   m_SizeDelta: {x: 271.52, y: 446.43}
   m_Pivot: {x: 0.5, y: 0.5}
+<<<<<<< Updated upstream
+=======
+--- !u!1 &2037327414
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2037327415}
+  m_Layer: 0
+  m_Name: P6
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2037327415
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2037327414}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 21.03, y: 9.11, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 158403083}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+>>>>>>> Stashed changes
 --- !u!1 &2086418027 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3541565061010879148, guid: 28e92fb28f56d3046896fa18cb41c03c, type: 3}
   m_PrefabInstance: {fileID: 832875579}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
+=======
+--- !u!1 &2110409043
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2110409045}
+  - component: {fileID: 2110409044}
+  m_Layer: 0
+  m_Name: WaveSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2110409044
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2110409043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f04fdac4ee621854b8dcbb13debc6571, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemySpawner
+  bulletPool: {fileID: 729607376}
+  enemyPrefab: {fileID: 3959193303880153687, guid: 9442b7cd2a9f4c4488753434410c1ef3, type: 3}
+  entryPath: {fileID: 209661564}
+  exitPath: {fileID: 158403082}
+  formationCenter: {fileID: 1497231890}
+  slotSpacing: 0.6
+  vDepth: 0.5
+  middleOffset: {x: 0, y: 0, z: 0}
+  leftOffset: {x: -3, y: 0, z: 0}
+  rightOffset: {x: 2, y: 0, z: 0}
+  formationTravelSpeed: 3
+  waitAtLeft: 1
+  waitAtRight: 1
+  waitAtMiddle: 1
+  enemyCount: 10
+  timeGapBetweenEnemies: 0.3
+  entryDuration: 6
+  exitDuration: 6
+  exitGapBetweenEnemies: 0.6
+--- !u!4 &2110409045
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2110409043}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.18, y: 3.84, z: 0}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2142622043
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2142622044}
+  - component: {fileID: 2142622045}
+  m_Layer: 0
+  m_Name: PlayerShooter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2142622044
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2142622043}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1737919577}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2142622045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2142622043}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b206bef87c5c8b44ab5ee22813ed9f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerShooter
+  fireRate: 1
+  bulletPattern: {fileID: 1961456782}
+>>>>>>> Stashed changes
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -2402,3 +2678,13 @@ SceneRoots:
   - {fileID: 1467911755}
   - {fileID: 486828557}
   - {fileID: 832875579}
+<<<<<<< Updated upstream
+=======
+  - {fileID: 1497231890}
+  - {fileID: 1980935506}
+  - {fileID: 729607377}
+  - {fileID: 2110409045}
+  - {fileID: 209661565}
+  - {fileID: 158403083}
+  - {fileID: 1232934338}
+>>>>>>> Stashed changes

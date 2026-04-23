@@ -27,6 +27,7 @@ public class PlayerShooter : MonoBehaviour
         {
 
             timer = 0f;
+            Debug.Log("Bullet fired");
 
             bulletPattern.FirePattern();
         }
