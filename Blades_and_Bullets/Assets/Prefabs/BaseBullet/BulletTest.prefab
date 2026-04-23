@@ -81,7 +81,7 @@ GameObject:
   - component: {fileID: 7292007927800721365}
   m_Layer: 0
   m_Name: Hitbox Circle
-  m_TagString: Untagged
+  m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -241,7 +241,7 @@ GameObject:
   - component: {fileID: 5043458752863228672}
   m_Layer: 0
   m_Name: BulletTest
-  m_TagString: Untagged
+  m_TagString: EnemyBullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

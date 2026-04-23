@@ -1,18 +1,16 @@
 using UnityEngine;
 
-public class Bomb : MonoBehaviour
+public class SpecialSlash : MonoBehaviour
 {
-
-    void Update()
+    
+    private float speed = 50f;
+    private void Update()
     {
-        if (transform.localScale.x < 100)
-        {
-            transform.localScale += new Vector3(.4f, .4f, 0f);
-        } else
-        {
-            Destroy(gameObject);
-        } 
-
+        transform.position += transform.up * speed * Time.deltaTime;
+    }
+    private void Start()
+    {
+        Destroy(gameObject, .075f);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -40,4 +38,5 @@ public class Bomb : MonoBehaviour
         bullet.DespawnBullet();
 
     }
+
 }

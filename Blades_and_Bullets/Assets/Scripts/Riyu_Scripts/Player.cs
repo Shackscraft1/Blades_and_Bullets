@@ -33,25 +33,32 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject bombPrefab;
 
 
+
+
     // [SerializeField] private GameObject bulletPrefab;
-    private float swingTime = 0f;
-    private float swingTimeMax = 1f;
+    // private float swingTime = 0f;
+    // private float swingTimeMax = 1f;
+    // private float currentSwingTime = 0f;    
     private float bombCooldown;
-    private float currentSwingTime = 0f;
     private float deathTimer;
-    private MeshRenderer hitboxMesh;
-    // private GameInput gameInput
+    private SpriteRenderer hitboxMesh;
+    private Collider2D hitboxCollider;
     public int lives = 3;
     public int bombs = 3;
     public int points = 0;
     private bool inputEnabled = true;
+    private float shootTime = .3f;
+    private float shootTimeMax = .3f;
+    private bool specialSlashAnimation = false;
+    private float specialSlashTimeMax = 4f;
+    private float specialSlashTime = 0f;
+    private float specialSlashSingleTime = 0f;
 
-    //Bullet pool to return
-    [SerializeField]
-    BulletPool bulletPool;
-    //To see if its a bullet
-    [SerializeField]
-    Bullet bulletComp;
+
+    // Bullet pool to return
+    // [SerializeField] BulletPool bulletPool;
+    // To see if its a bullet
+    // [SerializeField] Bullet bulletComp;
 
     
     
@@ -70,14 +77,14 @@ public class Player : MonoBehaviour
     {
         Instance = this;
         moveState = MoveState.Normal;
-        slash.SetActive(false);
-        focusSlash.SetActive(false);
+        // slash.SetActive(false);
+        // focusSlash.SetActive(false);
     }
 
     private void Start()
     {
         GameControllerScript.AbilityActiveStatus += AbilityActiveStatus;
-        hitboxMesh = hitbox.GetComponent<MeshRenderer>();
+        hitboxMesh = hitbox.GetComponent<SpriteRenderer>();
         hitboxMesh.enabled = false;
     }
 
@@ -89,7 +96,22 @@ public class Player : MonoBehaviour
     private void Update()
     {
         bombCooldown -= Time.deltaTime;
-        swingTime -= Time.deltaTime;
+        shootTime -= Time.deltaTime;
+        if (specialSlashTime > 0f)
+        {
+            specialSlashTime -= Time.deltaTime;
+            specialSlashSingleTime -= Time.deltaTime;
+            if (specialSlashSingleTime < 0f)
+            {
+                Instantiate(specialSlash, transform.position, transform.rotation, transform);
+                specialSlashSingleTime = .005f;
+            } 
+
+            if (specialSlashTime <= 0f)
+            {
+                specialSlashAnimation = false;
+            } 
+        }
 
         if (inputEnabled)
         {
@@ -100,29 +122,33 @@ public class Player : MonoBehaviour
             if (deathTimer < 0)
             {
                 inputEnabled = true;
+                hitboxCollider.enabled = true;
             } else
             {
                 deathTimer -= Time.deltaTime;
             }
         } else
         {
-            Debug.Log("You Lost");
            Time.timeScale = 0f; //When you lose pause game
         }
         
-        if (swingTime <= 0 && currentSwingTime <= 0 && inputEnabled)
+        if (shootTime <= 0f && !specialSlashAnimation)
         {
-           HandleSwing();            
+            HandleShoot();
         }
-        if(currentSwingTime > 0)
-        {
-            currentSwingTime -= Time.deltaTime;
-        } else
-        {
-            slash.SetActive(false);
-            focusSlash.SetActive(false);
-            specialSlash.SetActive(false);
-        }
+        // if (swingTime <= 0 && currentSwingTime <= 0 && inputEnabled)
+        // {
+        //    HandleSwing();            
+        // }
+        // if(currentSwingTime > 0)
+        // {
+        //     currentSwingTime -= Time.deltaTime;
+        // } else
+        // {
+        //     slash.SetActive(false);
+        //     focusSlash.SetActive(false);
+        //     specialSlash.SetActive(false);
+        // }
         // Debug.Log(bombCooldown);
        // Debug.Log("Lives: " + lives + " , Bombs: " + bombs);
     }
@@ -146,19 +172,6 @@ public class Player : MonoBehaviour
                 Debug.Log("No Bombs");
             }
         }
-        // Test Keybinds
-
-        if (Keyboard.current.hKey.wasPressedThisFrame)
-        {
-            lives--;
-        }
-
-        if (Keyboard.current.vKey.wasPressedThisFrame)
-        {
-            Death();
-        }
-
-
     }
     private void HandleMovement()
     {
@@ -201,7 +214,27 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void HandleSwing()
+    // private void HandleSwing()
+    // {
+    //     if (Keyboard.current.spaceKey.isPressed)
+    //     {
+    //         switch (moveState)
+    //         {
+    //             default:
+    //         case MoveState.Normal:
+    //             slash.SetActive(true);
+    //             currentSwingTime = .5f;
+    //             break;
+    //         case MoveState.Focused:
+    //             focusSlash.SetActive(true);
+    //             currentSwingTime = .5f;
+    //             break;     
+    //         }
+    //         swingTime = swingTimeMax;
+    //     }
+    // }
+
+    private void HandleShoot()
     {
         if (Keyboard.current.spaceKey.isPressed)
         {
@@ -209,15 +242,13 @@ public class Player : MonoBehaviour
             {
                 default:
             case MoveState.Normal:
-                slash.SetActive(true);
-                currentSwingTime = .5f;
+                Instantiate(slash, transform.position, transform.rotation);
                 break;
             case MoveState.Focused:
-                focusSlash.SetActive(true);
-                currentSwingTime = .5f;
+                Instantiate(focusSlash, transform.position, transform.rotation);
                 break;     
             }
-            swingTime = swingTimeMax;
+            shootTime = shootTimeMax;
         }
     }
 
@@ -227,45 +258,43 @@ public class Player : MonoBehaviour
         {
             //this invoke line of code will be temporary until the logic for obtaining ability charge is implemented
             ModifyAbilityCooldown?.Invoke(this, new ModifyAbilityCooldownArgs{changeAmount = .1f});
-            return;
+            // return;
         }
-        specialSlash.SetActive(true);
-        currentSwingTime = 3f;
+        // specialSlash.SetActive(true);
+        // currentSwingTime = 3f;
         _specialSlashActive = false;
         ModifyAbilityCooldown?.Invoke(this, new ModifyAbilityCooldownArgs{changeAmount = 0f});
+        specialSlashAnimation = true;
+        specialSlashTime = specialSlashTimeMax;
+
     }
 
-    private void Death()
+    public void Death()
     {
-        lives--;
-        Instantiate(bombPrefab, transform.position, Quaternion.Euler(90f, 0f, 0f));
+        // lives--;
+        Instantiate(bombPrefab, transform.position, Quaternion.Euler(0f, 0f, 0f));
         bombCooldown = 8f;
+        transform.position = new Vector3(-3f, -4f, transform.position.z);
         inputEnabled = false; //Changing from input false to hitbox disabled
-        deathTimer = 4f;
+        deathTimer = 2f;
+        hitboxCollider = hitbox.GetComponent<Collider2D>();
+        hitboxCollider.enabled = false;
+        PlayerGetsHit?.Invoke(this, EventArgs.Empty);
         // Shoot Event
         // Death Animation
     }
     
-    
 
-
-
-
-
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-
-        if (collision != null)
-        {
-            //dequeuing bullets triggers an error, still trying to find a fix
-            bulletPool.ReturnBulletToPool(collision.GetComponentInParent<Bullet>());
-            PlayerGetsHit?.Invoke(this, EventArgs.Empty);
-        }
-        
-
-
-    }
+    // private void OnTriggerEnter2D(Collider2D collision)
+    // {
+    //     if (collision != null)
+    //     {
+    //         //dequeuing bullets triggers an error, still trying to find a fix
+    //         bulletPool.ReturnBulletToPool(collision.GetComponentInParent<Bullet>());
+    //         Death();
+    //         PlayerGetsHit?.Invoke(this, EventArgs.Empty);
+    //     }
+    // }
 
 
 

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class GameControllerScript : MonoBehaviour
 {
+    public static GameControllerScript Instance {get; private set;}
     [SerializeField] private Image abilityBarImage;
     [SerializeField] private TextMeshProUGUI highScoreText;
     [SerializeField] private TextMeshProUGUI currentScoreText;
@@ -16,6 +17,7 @@ public class GameControllerScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        Instance = this;
         abilityBarImage.type = Image.Type.Filled;
         abilityBarImage.fillMethod = Image.FillMethod.Vertical;
         abilityBarImage.fillAmount = 0f;
