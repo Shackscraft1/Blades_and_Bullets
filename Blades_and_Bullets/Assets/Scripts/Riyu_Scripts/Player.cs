@@ -64,6 +64,9 @@ public class Player : MonoBehaviour
     private bool _specialSlashActive;
     //Player gets hit logic
     public static EventHandler PlayerGetsHit;
+
+    //Firing bullets Logic;
+    public static EventHandler PlayerFiresBullet;
     
 
     private void Awake()
@@ -129,9 +132,11 @@ public class Player : MonoBehaviour
 
     private void HandleInteraction()
     {
-        if(Keyboard.current.zKey.wasPressedThisFrame || Keyboard.current.periodKey.wasPressedThisFrame)
+        if(Keyboard.current.zKey.isPressed || Keyboard.current.periodKey.wasPressedThisFrame)
         {
             SpecialSlash();
+            //Handle firing player bullets here
+            FireBullets();
         }
         
         if(Keyboard.current.bKey.wasPressedThisFrame || Keyboard.current.slashKey.wasPressedThisFrame)
@@ -158,6 +163,12 @@ public class Player : MonoBehaviour
             Death();
         }
 
+
+    }
+
+    private void FireBullets()
+    {
+        PlayerFiresBullet?.Invoke(this, EventArgs.Empty);
 
     }
     private void HandleMovement()
@@ -245,12 +256,7 @@ public class Player : MonoBehaviour
         // Shoot Event
         // Death Animation
     }
-    
-    
-
-
-
-
+   
 
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -1306,7 +1306,7 @@ PrefabInstance:
     - target: {fileID: 5834384164355766021, guid: 28e92fb28f56d3046896fa18cb41c03c, type: 3}
       propertyPath: bulletPool
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 729607376}
     - target: {fileID: 5834384164355766021, guid: 28e92fb28f56d3046896fa18cb41c03c, type: 3}
       propertyPath: focusSlash
       value: 
@@ -2626,8 +2626,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1fdf328292f203e46a8cc6f88eb68782, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  pool: {fileID: 0}
-  enemy: {fileID: 0}
+  pool: {fileID: 729607376}
+  enemy: {fileID: 3959193303880153687, guid: 9442b7cd2a9f4c4488753434410c1ef3, type: 3}
   player: {fileID: 0}
 --- !u!1 &1869675990
 GameObject:

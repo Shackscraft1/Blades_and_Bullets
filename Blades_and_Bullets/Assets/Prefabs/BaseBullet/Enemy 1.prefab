@@ -344,7 +344,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f973ce84165858845a03dbe969a532d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ConeBulletPattern
-  spawner: {fileID: 5572379025498812032}
+  bulletSpawner: {fileID: 5572379025498812032}
+  playerBulletSpawner: {fileID: 0}
   bulletCount: 4
   spreadAngle: 25
   bulletType: {fileID: 11400000, guid: beeeabf4a37edba43bc883a0fb878091, type: 2}
