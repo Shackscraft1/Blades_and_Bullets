@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Game.Collectibles::Game.Collectibles.Data.CollectibleTypeSO
   kind: 3
   displayName: Life
-  sprite: {fileID: 21300000, guid: a9bc9e64ef2bd5f4c8765809a5593feb, type: 3}
+  sprite: {fileID: -1233136881578066333, guid: a1041ebcb7322fc48acdf9b1728b43b0, type: 3}
   debugColor: {r: 1, g: 1, b: 1, a: 1}
   value: 1
   lifetime: 12
