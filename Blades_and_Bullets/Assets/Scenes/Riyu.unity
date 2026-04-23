@@ -541,10 +541,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 3676197288477339373, guid: 28e92fb28f56d3046896fa18cb41c03c, type: 3}
-      propertyPath: m_Actions
-      value: 
-      objectReference: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
     - target: {fileID: 4725407195328121157, guid: 28e92fb28f56d3046896fa18cb41c03c, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -573,31 +569,31 @@ PrefabInstance:
       propertyPath: specialSlash
       value: 
       objectReference: {fileID: 246773637}
-    - target: {fileID: 0}
+    - target: {fileID: 6383524398608957223, guid: 28e92fb28f56d3046896fa18cb41c03c, type: 3}
       propertyPath: slash
       value: 
       objectReference: {fileID: 1516337456}
-    - target: {fileID: 0}
+    - target: {fileID: 6383524398608957223, guid: 28e92fb28f56d3046896fa18cb41c03c, type: 3}
       propertyPath: speed
       value: 40
       objectReference: {fileID: 0}
-    - target: {fileID: 0}
+    - target: {fileID: 6383524398608957223, guid: 28e92fb28f56d3046896fa18cb41c03c, type: 3}
       propertyPath: bullet
       value: 
       objectReference: {fileID: 1013922471934456146, guid: bad876a32bdc4a047b20e717869a0b03, type: 3}
-    - target: {fileID: 0}
+    - target: {fileID: 6383524398608957223, guid: 28e92fb28f56d3046896fa18cb41c03c, type: 3}
       propertyPath: bombPrefab
       value: 
       objectReference: {fileID: 2836767526451022910, guid: f9ec6a2534028594094a3774722cc96f, type: 3}
-    - target: {fileID: 0}
+    - target: {fileID: 6383524398608957223, guid: 28e92fb28f56d3046896fa18cb41c03c, type: 3}
       propertyPath: bulletPool
       value: 
       objectReference: {fileID: 1416525179}
-    - target: {fileID: 0}
+    - target: {fileID: 6383524398608957223, guid: 28e92fb28f56d3046896fa18cb41c03c, type: 3}
       propertyPath: focusSlash
       value: 
       objectReference: {fileID: 1824549046}
-    - target: {fileID: 0}
+    - target: {fileID: 6383524398608957223, guid: 28e92fb28f56d3046896fa18cb41c03c, type: 3}
       propertyPath: specialSlash
       value: 
       objectReference: {fileID: 246773637}
@@ -642,7 +638,7 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 0}
+    - {fileID: 6383524398608957223, guid: 28e92fb28f56d3046896fa18cb41c03c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:

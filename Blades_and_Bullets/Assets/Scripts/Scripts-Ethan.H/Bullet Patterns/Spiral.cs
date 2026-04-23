@@ -18,7 +18,7 @@ public class SpiralBulletPattern : BaseBulletPattern
 
         Vector2 dir = new Vector2(Mathf.Cos(radian), Mathf.Sin(radian));
 
-       bulletSpawner.Fire(bulletType, dir);
+       spawner.Fire(bulletType, dir);
 
         
     }
