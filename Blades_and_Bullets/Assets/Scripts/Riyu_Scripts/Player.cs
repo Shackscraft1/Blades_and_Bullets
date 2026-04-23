@@ -1,6 +1,6 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System;
 
 public class Player : MonoBehaviour
 {
@@ -129,7 +129,6 @@ public class Player : MonoBehaviour
 
     private void HandleInteraction()
     {
-        
         if(Keyboard.current.zKey.wasPressedThisFrame || Keyboard.current.periodKey.wasPressedThisFrame)
         {
             SpecialSlash();
@@ -256,9 +255,14 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-       
-        bulletPool.ReturnBulletToPool(collision.GetComponentInParent<Bullet>());
-        PlayerGetsHit?.Invoke(this, EventArgs.Empty);
+
+        if (collision != null)
+        {
+            //dequeuing bullets triggers an error, still trying to find a fix
+            bulletPool.ReturnBulletToPool(collision.GetComponentInParent<Bullet>());
+            PlayerGetsHit?.Invoke(this, EventArgs.Empty);
+        }
+        
 
 
     }

@@ -26,8 +26,8 @@ Transform:
   m_GameObject: {fileID: 754404927774659757}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.87900007, y: 1.836, z: 5}
+  m_LocalPosition: {x: -0.0051, y: -0.0722, z: 0}
+  m_LocalScale: {x: 2.5682335, y: 2.9518974, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7929682069977287586}
@@ -81,7 +81,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 4578367805546361156, guid: be6745eaf1666e54480a59b7bf0d63c0, type: 3}
   m_Color: {r: 0.4730095, g: 0.7735849, b: 0.25178, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -214,6 +214,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7929682069977287586}
+  - component: {fileID: 6383524398608957223}
   - component: {fileID: 3676197288477339373}
   - component: {fileID: 5834384164355766021}
   m_Layer: 0
@@ -245,6 +246,29 @@ Transform:
   - {fileID: 8054417726045154704}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6383524398608957223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1937136267326504230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4caa0fbef05f79468b1b5875598d1ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player
+  speed: 30
+  hitbox: {fileID: 3541565061010879148}
+  slash: {fileID: 0}
+  focusSlash: {fileID: 0}
+  specialSlash: {fileID: 0}
+  bombPrefab: {fileID: 0}
+  lives: 3
+  bombs: 3
+  points: 0
+  bulletPool: {fileID: 0}
+  bulletComp: {fileID: 0}
 --- !u!114 &3676197288477339373
 MonoBehaviour:
   m_ObjectHideFlags: 0
