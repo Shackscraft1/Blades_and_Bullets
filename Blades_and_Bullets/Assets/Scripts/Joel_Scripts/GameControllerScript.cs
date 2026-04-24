@@ -10,8 +10,11 @@ public class GameControllerScript : MonoBehaviour
     [SerializeField] private TextMeshProUGUI currentScoreText;
     
     public static EventHandler AbilityActiveStatus; 
+    public static EventHandler OnPlayerDeath; 
     [SerializeField] private Slider hpSlider;
     private float _currentPlayerHp = 1f;
+    private int _currentScore = 0;
+    
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -22,13 +25,21 @@ public class GameControllerScript : MonoBehaviour
         hpSlider.value = 1f;
         Player.ModifyAbilityCooldown +=ModifyAbilityCooldown;
         Player.PlayerGetsHit += PlayerGetsHit;
+        SlashScript.OnSlashingSomething += OnSlashingSomething;
 
     }
+
+    private void OnSlashingSomething(object sender, EventArgs e)
+    {
+        _currentScore += 100;
+        ScoreChange(_currentScore);
+}
 
     void OnDestroy()
     {
         Player.ModifyAbilityCooldown -=ModifyAbilityCooldown;
         Player.PlayerGetsHit -= PlayerGetsHit;
+        SlashScript.OnSlashingSomething -= OnSlashingSomething;
     }
 
     private void PlayerGetsHit(object sender, EventArgs e)
@@ -39,10 +50,11 @@ public class GameControllerScript : MonoBehaviour
         
     }
 
-    private void ScoreChange(float scoreText)
+    private void ScoreChange(int scoreText)
     {
         
-        currentScoreText.text =  ($"Score\n  {scoreText.ToString("D4")}");
+        currentScoreText.text =  ($"Score: {scoreText.ToString("D4")}");
+        highScoreText.text =  ($"HighScore: {scoreText.ToString("D4")}");
     }
 
     private void ModifyAbilityCooldown(object sender, Player.ModifyAbilityCooldownArgs e)
@@ -58,7 +70,7 @@ public class GameControllerScript : MonoBehaviour
 
     private void HpDropsToZero()
     {
-        
+        OnPlayerDeath?.Invoke(this, EventArgs.Empty);
     }
     
 }

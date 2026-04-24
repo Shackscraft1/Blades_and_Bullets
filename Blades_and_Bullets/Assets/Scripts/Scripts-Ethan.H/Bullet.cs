@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -77,6 +78,21 @@ public class Bullet : MonoBehaviour
         }
 
         gameObject.SetActive(true);
+    }
+
+    private void Start()
+    {
+        SlashScript.OnSlashingSomething +=OnSlashingSomething;
+    }
+
+    private void OnDestroy()
+    {
+        SlashScript.OnSlashingSomething -=OnSlashingSomething;
+    }
+
+    private void OnSlashingSomething(object sender, SlashScript.OnSlashingSomethingArgs e)
+    {
+        if(e.TargetHit.Equals(gameObject)) Destroy(gameObject);
     }
 
     private void SetTriggers()

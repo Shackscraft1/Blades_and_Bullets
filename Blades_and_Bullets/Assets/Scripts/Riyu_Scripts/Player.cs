@@ -39,7 +39,7 @@ public class Player : MonoBehaviour
     private float bombCooldown;
     private float currentSwingTime = 0f;
     private float deathTimer;
-    private MeshRenderer hitboxMesh;
+    
     // private GameInput gameInput
     public int lives = 3;
     public int bombs = 3;
@@ -64,6 +64,9 @@ public class Player : MonoBehaviour
     private bool _specialSlashActive;
     //Player gets hit logic
     public static EventHandler PlayerGetsHit;
+
+    //Firing bullets Logic;
+    public static EventHandler PlayerFiresBullet;
     
 
     private void Awake()
@@ -77,8 +80,27 @@ public class Player : MonoBehaviour
     private void Start()
     {
         GameControllerScript.AbilityActiveStatus += AbilityActiveStatus;
-        hitboxMesh = hitbox.GetComponent<MeshRenderer>();
-        hitboxMesh.enabled = false;
+        SlashScript.OnSlashingSomething += OnSlashingSomething;
+        GameControllerScript.OnPlayerDeath += OnPlayerDeath;
+ 
+    }
+
+    private void OnPlayerDeath(object sender, EventArgs e)
+    {
+        Destroy(gameObject);
+    }
+
+    private void OnDestroy()
+    {
+        GameControllerScript.AbilityActiveStatus -= AbilityActiveStatus;
+        SlashScript.OnSlashingSomething -= OnSlashingSomething;
+        GameControllerScript.OnPlayerDeath -= OnPlayerDeath;
+    }
+
+    private void OnSlashingSomething(object sender, SlashScript.OnSlashingSomethingArgs e)
+    {
+        ModifyAbilityCooldown?.Invoke(this, new ModifyAbilityCooldownArgs{changeAmount = .03f});
+        
     }
 
     private void AbilityActiveStatus(object sender, EventArgs e)
@@ -129,7 +151,12 @@ public class Player : MonoBehaviour
 
     private void HandleInteraction()
     {
-        if(Keyboard.current.zKey.wasPressedThisFrame || Keyboard.current.periodKey.wasPressedThisFrame)
+        if(Keyboard.current.zKey.isPressed || Keyboard.current.periodKey.wasPressedThisFrame)
+        {
+            //Handle firing player bullets here
+            FireBullets();
+        }
+        if(Keyboard.current.cKey.isPressed || Keyboard.current.cKey.wasPressedThisFrame)
         {
             SpecialSlash();
         }
@@ -160,6 +187,12 @@ public class Player : MonoBehaviour
 
 
     }
+
+    private void FireBullets()
+    {
+        PlayerFiresBullet?.Invoke(this, EventArgs.Empty);
+
+    }
     private void HandleMovement()
     {
         Vector2 moveVector = new Vector2(0f, 0f);
@@ -186,11 +219,11 @@ public class Player : MonoBehaviour
             endMoveVector.x *= .4f;
             endMoveVector.y *= .4f;
             moveState = MoveState.Focused;
-            hitboxMesh.enabled = true;
+            
         } else
         {
             moveState = MoveState.Normal;
-            hitboxMesh.enabled = false;
+            
 
         }
         transform.position += endMoveVector * speed * Time.deltaTime;
@@ -223,14 +256,9 @@ public class Player : MonoBehaviour
 
     private void SpecialSlash()
     {
-        if (!_specialSlashActive)
-        {
-            //this invoke line of code will be temporary until the logic for obtaining ability charge is implemented
-            ModifyAbilityCooldown?.Invoke(this, new ModifyAbilityCooldownArgs{changeAmount = .1f});
-            return;
-        }
+        if (!_specialSlashActive) return;
         specialSlash.SetActive(true);
-        currentSwingTime = 3f;
+        currentSwingTime = 1f;
         _specialSlashActive = false;
         ModifyAbilityCooldown?.Invoke(this, new ModifyAbilityCooldownArgs{changeAmount = 0f});
     }

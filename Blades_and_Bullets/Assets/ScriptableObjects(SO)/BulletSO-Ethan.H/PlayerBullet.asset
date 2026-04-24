@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fbb38cf08b4905748b11fad3a2aa9372, type: 3}
-  m_Name: Bullet2
+  m_Name: PlayerBullet
   m_EditorClassIdentifier: Assembly-CSharp::BulletTypeSO
-  bulletName: BulletTest
-  sprite: {fileID: 222766975490885735, guid: a3a325c64e35f6b4e8d92ac49255a403, type: 3}
-  speed: 2
-  scale: 3
-  lifetime: 10
+  bulletName: PlayerBullet
+  sprite: {fileID: 3023584191608914547, guid: 6aa2ad75e7fba716b80edda1276129d9, type: 3}
+  speed: 4
+  scale: 1
+  lifetime: 20
   hurtBoxType: 0
-  radius: 0.5
+  radius: 0.1
   offset: {x: 0, y: 0}
   sizeCapsule: {x: 0, y: 0}
-  bulletMovement: {fileID: 11400000, guid: dca566e9e92bef248af2ea1a8ae7a2e1, type: 2}
+  bulletMovement: {fileID: 11400000, guid: 63436d39183300744ade073d02cf32ae, type: 2}
   canSplit: 0
   splitTime: 0
   splitMaxCount: 0

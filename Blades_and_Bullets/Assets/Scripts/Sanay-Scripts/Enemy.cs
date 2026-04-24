@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour
@@ -58,6 +59,7 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
+        SlashScript.OnSlashingSomething += OnSlashingSomething;
         currentHP = maxHP;
         entryTimer = entryStartOffset;
 
@@ -65,6 +67,17 @@ public class Enemy : MonoBehaviour
         {
             transform.position = entryPath.GetPoint(0f);
         }
+    }
+
+    private void OnSlashingSomething(object sender, SlashScript.OnSlashingSomethingArgs e)
+    {
+        
+        if(e.TargetHit.Equals(gameObject)) Destroy(gameObject);
+    }
+    
+    private void OnDestroy()
+    {
+        SlashScript.OnSlashingSomething -=OnSlashingSomething;
     }
 
     void Update()

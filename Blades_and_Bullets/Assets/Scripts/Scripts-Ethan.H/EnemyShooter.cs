@@ -49,7 +49,8 @@ public class EnemyShooter : MonoBehaviour
         }
 
        
-        if (timer2 >= fireRate2) {
+        if (timer2 >= fireRate2) 
+        {
             timer2 = 0f;
 
            bulletPattern2.FirePattern();

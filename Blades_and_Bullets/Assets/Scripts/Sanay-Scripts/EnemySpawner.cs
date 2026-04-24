@@ -4,10 +4,7 @@ using System.Collections.Generic;
 
 public class EnemySpawner : MonoBehaviour
 {
-    //Trying to get them to use the pool
     public BulletPool bulletPool;
-
-
     public GameObject enemyPrefab;
 
     [Header("Paths")]
@@ -19,10 +16,10 @@ public class EnemySpawner : MonoBehaviour
     public float slotSpacing = 0.3f;
     public float vDepth = 0.18f;
 
-    [Header("Formation Movement Targets")]
-    public Vector3 middlePosition = new Vector3(0f, 4f, 0f);
-    public Vector3 leftPosition = new Vector3(-2f, 4f, 0f);
-    public Vector3 rightPosition = new Vector3(2f, 4f, 0f);
+    [Header("Formation Movement Offsets")]
+    public Vector3 middleOffset = Vector3.zero;
+    public Vector3 leftOffset = new Vector3(-2f, 0f, 0f);
+    public Vector3 rightOffset = new Vector3(2f, 0f, 0f);
     public float formationTravelSpeed = 2f;
     public float waitAtLeft = 0.5f;
     public float waitAtRight = 0.5f;
@@ -38,15 +35,18 @@ public class EnemySpawner : MonoBehaviour
     public float exitGapBetweenEnemies = 0.2f;
 
     private List<Enemy> spawnedEnemies = new List<Enemy>();
+    private Vector3 formationBasePosition;
 
     void Start()
     {
-        if (formationCenter != null)
+        if (formationCenter == null)
         {
-            formationCenter.position = middlePosition;
+            Debug.LogError("FormationCenter is not assigned.");
+            return;
         }
 
-
+        // Use whatever position you placed in the scene by hand.
+        formationBasePosition = formationCenter.position;
 
         SpawnWave();
         StartCoroutine(ControlWave());
@@ -59,20 +59,16 @@ public class EnemySpawner : MonoBehaviour
         for (int i = 0; i < enemyCount; i++)
         {
             GameObject enemyObj = Instantiate(enemyPrefab);
-            //Trying to give enemies a pool
 
             enemyObj.GetComponentInChildren<BulletSpawner>().Init(bulletPool);
 
-
             Enemy enemy = enemyObj.GetComponent<Enemy>();
-            
 
             if (enemy != null)
             {
                 enemy.entryPath = entryPath;
                 enemy.entryDuration = entryDuration;
                 enemy.entryStartOffset = -i * timeGapBetweenEnemies;
-
                 enemy.formationCenter = formationCenter;
 
                 float centeredIndex = i - (enemyCount - 1) / 2f;
@@ -90,13 +86,13 @@ public class EnemySpawner : MonoBehaviour
     {
         yield return new WaitUntil(AllEnemiesInFormation);
 
-        yield return MoveFormationTo(leftPosition);
+        yield return MoveFormationTo(formationBasePosition + leftOffset);
         yield return new WaitForSeconds(waitAtLeft);
 
-        yield return MoveFormationTo(rightPosition);
+        yield return MoveFormationTo(formationBasePosition + rightOffset);
         yield return new WaitForSeconds(waitAtRight);
 
-        yield return MoveFormationTo(middlePosition);
+        yield return MoveFormationTo(formationBasePosition + middleOffset);
         yield return new WaitForSeconds(waitAtMiddle);
 
         StartExitWave();
