@@ -35,7 +35,18 @@ public class SpecialSlash : MonoBehaviour
         // }
 
         Bullet bullet = other.GetComponentInParent<Bullet>();
-        bullet.DespawnBullet();
+        if (bullet != null)
+        {
+            bullet.DespawnBullet();
+        }
+
+        Enemy enemy = other.GetComponentInParent<Enemy>();
+
+        if (enemy != null)
+        {
+            Destroy(enemy.gameObject);
+            Destroy(gameObject); 
+        }
 
     }
 

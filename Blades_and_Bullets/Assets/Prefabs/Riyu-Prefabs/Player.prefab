@@ -172,6 +172,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Player
   speed: 10
   hitbox: {fileID: 3593035649434873760}
+  sprite: {fileID: 754404927774659757}
   slash: {fileID: 4987818048595853479, guid: d7e87856376ebb34b821882125810bf7, type: 3}
   focusSlash: {fileID: 2928054705895004748, guid: 029bfbac892232c40907b622e4f2588a, type: 3}
   specialSlash: {fileID: 2928054705895004748, guid: 2fef8a57d4faece41bef12015af8e893, type: 3}

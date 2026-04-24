@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
     
     [SerializeField] private float speed;
     [SerializeField] private GameObject hitbox;
+    [SerializeField] private GameObject sprite;
     [SerializeField] private GameObject slash;
     [SerializeField] private GameObject focusSlash;
     [SerializeField] private GameObject specialSlash;
@@ -42,6 +43,7 @@ public class Player : MonoBehaviour
     private float bombCooldown;
     private float deathTimer;
     private SpriteRenderer hitboxMesh;
+    private SpriteRenderer Playersprite;
     private Collider2D hitboxCollider;
     public int lives = 3;
     public int bombs = 3;
@@ -88,6 +90,7 @@ public class Player : MonoBehaviour
     {
         GameControllerScript.AbilityActiveStatus += AbilityActiveStatus;
         hitboxMesh = hitbox.GetComponent<SpriteRenderer>();
+        Playersprite = sprite.GetComponent<SpriteRenderer>();
         hitboxMesh.enabled = false;
     }
 
@@ -126,6 +129,7 @@ public class Player : MonoBehaviour
             {
                 inputEnabled = true;
                 hitboxCollider.enabled = true;
+                Playersprite.enabled = true;
             } else
             {
                 deathTimer -= Time.deltaTime;
@@ -169,7 +173,7 @@ public class Player : MonoBehaviour
         {   
             if (bombs > 0 && bombCooldown <= 0)
             {
-                Instantiate(bombPrefab, transform.position, Quaternion.Euler(90f, 0f, 0f));
+                Instantiate(bombPrefab, transform.position, Quaternion.Euler(0f, 0f, 0f));
                 bombCooldown = 6f;
                 bombs--;
             } else
@@ -287,8 +291,10 @@ public class Player : MonoBehaviour
         Instantiate(bombPrefab, transform.position, Quaternion.Euler(0f, 0f, 0f));
         bombCooldown = 8f;
         transform.position = new Vector3(-3f, -4f, transform.position.z);
-        inputEnabled = false; //Changing from input false to hitbox disabled
         deathTimer = 2f;
+        inputEnabled = false; //Changing from input false to hitbox disabled
+        Playersprite.enabled = false;
+        hitboxMesh.enabled = false;
         hitboxCollider = hitbox.GetComponent<Collider2D>();
         hitboxCollider.enabled = false;
         PlayerGetsHit?.Invoke(this, EventArgs.Empty);

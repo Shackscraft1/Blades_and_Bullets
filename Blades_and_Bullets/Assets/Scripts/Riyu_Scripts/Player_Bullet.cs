@@ -16,7 +16,7 @@ public class Player_Bullet : MonoBehaviour
     {
 
         Debug.Log("Hit");
-        Enemy enemy = other.gameObject.GetComponent<Enemy>();
+        Enemy enemy = other.GetComponentInParent<Enemy>();
 
         if (enemy != null)
         {
