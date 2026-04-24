@@ -23,7 +23,7 @@ public class PlayerBulletSpawner : MonoBehaviour
         bullet.transform.position = transform.position;
         bullet.transform.rotation = Quaternion.identity;
         //We change it later once we get enemies at main scene.
-        bullet.gameObject.layer = 2;
+       // bullet.gameObject.layer = 2;
         bullet.Init(bulletTypeSO, direction.normalized);
 
     }
