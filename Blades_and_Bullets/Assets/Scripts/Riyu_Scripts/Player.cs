@@ -143,21 +143,6 @@ public class Player : MonoBehaviour
         {
             HandleShoot();
         }
-        // if (swingTime <= 0 && currentSwingTime <= 0 && inputEnabled)
-        // {
-        //    HandleSwing();            
-        // }
-        // if(currentSwingTime > 0)
-        // {
-        //     currentSwingTime -= Time.deltaTime;
-        // } else
-        // {
-        //     slash.SetActive(false);
-        //     focusSlash.SetActive(false);
-        //     specialSlash.SetActive(false);
-        // }
-        // Debug.Log(bombCooldown);
-       // Debug.Log("Lives: " + lives + " , Bombs: " + bombs);
     }
 
     private void HandleInteraction()
@@ -228,6 +213,7 @@ public class Player : MonoBehaviour
             // Shoot event for Quick Collect
         }
     }
+    // 
 
     // private void HandleSwing()
     // {
