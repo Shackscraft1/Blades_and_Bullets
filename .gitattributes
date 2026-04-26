@@ -1,3 +1,4 @@
+[attr]unityyaml -text merge=unityyamlmerge diff
 *.unity                  merge=unityyamlmerge
 *.prefab                 merge=unityyamlmerge
 *.mat                    merge=unityyamlmerge
