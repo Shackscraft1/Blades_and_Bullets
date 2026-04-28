@@ -454,6 +454,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::WaveTimeline
   waveEvents:
   - {fileID: 1409335164}
+  - {fileID: 1472018195}
   waveCreator: {fileID: 1604462008}
 --- !u!4 &427643203
 Transform:

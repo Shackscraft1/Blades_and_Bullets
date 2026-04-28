@@ -17,13 +17,13 @@ MonoBehaviour:
   entryDuration: 6
   entryGap: 0.35
   endBehavior: 2
+  spawnInFormation: 1
   slotSpacing: 0.3
   vDepth: 0.18
-  doFormation: 0
   middleOffset: {x: 0, y: 0, z: 0}
-  leftOffset: {x: -2, y: 0, z: 0}
-  rightOffset: {x: 2, y: 0, z: 0}
-  formationTravelSpeed: 2
+  leftOffset: {x: -12, y: 0, z: 0}
+  rightOffset: {x: 12, y: 0, z: 0}
+  formationTravelSpeed: 20
   waitAtLeft: 0.5
   waitAtRight: 0.5
   waitAtMiddle: 0.5
