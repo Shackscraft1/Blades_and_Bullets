@@ -113,7 +113,7 @@ public class Bullet : MonoBehaviour
             //    capsuleCollider.offset = bulletTypeSO.offset;
             //    break;
 
-        }
+        
 
 
 
