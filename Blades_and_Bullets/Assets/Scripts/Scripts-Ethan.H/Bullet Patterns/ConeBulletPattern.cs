@@ -26,6 +26,9 @@ public class ConeBulletPattern : BaseBulletPattern
             float angle = startingAngle + step * i;
             //Note:When not aiming this should be the default direction
             Vector2 dir = Quaternion.Euler(0, 0, angle) * -transform.up;
+            float angleDeg = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+            Quaternion rot = Quaternion.Euler(0, 0, angleDeg);
+
             bulletSpawner.Fire(bulletType, dir);
             
         }

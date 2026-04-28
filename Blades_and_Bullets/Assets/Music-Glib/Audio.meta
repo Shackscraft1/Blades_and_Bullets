@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Blades_and_Bullets/Assets/Music-Glib/Audio.meta
 guid: 15347403b4c9a15439f90fa93dddd837
+========
+guid: 68fc47950e839884789f9c7bdafeef50
+>>>>>>>> Feature_Implementation:Blades_and_Bullets/Assets/Prefabs-Glib/Collectibles.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

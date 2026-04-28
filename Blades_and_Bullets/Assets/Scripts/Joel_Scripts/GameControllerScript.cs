@@ -26,7 +26,13 @@ public class GameControllerScript : MonoBehaviour
         Player.ModifyAbilityCooldown +=ModifyAbilityCooldown;
         Player.PlayerGetsHit += PlayerGetsHit;
         SlashScript.OnSlashingSomething += OnSlashingSomething;
+        SavedDataJSON.OnHighScoreDataGathered +=OnHighScoreDataGathered;
 
+    }
+
+    private void OnHighScoreDataGathered(object sender, SavedDataJSON.OnHighScoreDataGatheredArgs e)
+    {
+        throw new NotImplementedException();
     }
 
     private void OnSlashingSomething(object sender, EventArgs e)
@@ -40,6 +46,7 @@ public class GameControllerScript : MonoBehaviour
         Player.ModifyAbilityCooldown -=ModifyAbilityCooldown;
         Player.PlayerGetsHit -= PlayerGetsHit;
         SlashScript.OnSlashingSomething -= OnSlashingSomething;
+        SavedDataJSON.OnHighScoreDataGathered -=OnHighScoreDataGathered;
     }
 
     private void PlayerGetsHit(object sender, EventArgs e)
@@ -71,6 +78,12 @@ public class GameControllerScript : MonoBehaviour
     private void HpDropsToZero()
     {
         OnPlayerDeath?.Invoke(this, EventArgs.Empty);
+        SaveScore();
+    }
+
+    public void SaveScore()
+    {
+        
     }
     
 }
