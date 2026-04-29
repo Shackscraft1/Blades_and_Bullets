@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Bullet2
   m_EditorClassIdentifier: Assembly-CSharp::BulletTypeSO
   bulletName: BulletTest
-  sprite: {fileID: 222766975490885735, guid: a3a325c64e35f6b4e8d92ac49255a403, type: 3}
+  sprite: {fileID: -8794435479085918097, guid: f281f23eba70d884cbca15cdda71b3ac, type: 3}
   speed: 2
   scale: 3
   lifetime: 10
