@@ -96,7 +96,7 @@ public class Player : MonoBehaviour
     {
         GameControllerScript.AbilityActiveStatus -= AbilityActiveStatus;
         SlashScript.OnSlashingSomething -= OnSlashingSomething;
-        
+        GameControllerScript.OnPlayerDeath -= OnPlayerDeath;
     }
 
     private void OnSlashingSomething(object sender, SlashScript.OnSlashingSomethingArgs e)
@@ -285,11 +285,9 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
         if (collision.GetComponentInParent<Bullet>() != null)
         {
-            
-            PlayerGetsHit?.Invoke(this, EventArgs.Empty);
+		PlayerGetsHit?.Invoke(this, EventArgs.Empty);
         }
         
 
