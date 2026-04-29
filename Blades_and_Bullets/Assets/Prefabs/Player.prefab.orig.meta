@@ -1,5 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Blades_and_Bullets/Assets/Prefabs/Player.prefab.orig.meta
 guid: 50f99595d1909d10d959f1a72210128d
+========
+guid: ec1101781a9fa9e4eb2eec0506aae7f8
+folderAsset: yes
+>>>>>>>> main:Blades_and_Bullets/Assets/Animator/Enemies/EnemyProjectiles.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

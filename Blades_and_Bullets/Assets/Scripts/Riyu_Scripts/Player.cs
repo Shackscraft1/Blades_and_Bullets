@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System;
+using Unity.VisualScripting;
 
 public class Player : MonoBehaviour
 {
@@ -173,6 +174,12 @@ public class Player : MonoBehaviour
         PlayerFiresBullet?.Invoke(this, EventArgs.Empty);
 
     }
+
+    private void FireBullets()
+    {
+        PlayerFiresBullet?.Invoke(this, EventArgs.Empty);
+
+    }
     private void HandleMovement()
     {
         Vector2 moveVector = new Vector2(0f, 0f);
@@ -199,11 +206,11 @@ public class Player : MonoBehaviour
             endMoveVector.x *= .4f;
             endMoveVector.y *= .4f;
             moveState = MoveState.Focused;
-            hitboxMesh.enabled = true;
+            
         } else
         {
             moveState = MoveState.Normal;
-            hitboxMesh.enabled = false;
+            
 
         }
         transform.position += endMoveVector * speed * Time.deltaTime;

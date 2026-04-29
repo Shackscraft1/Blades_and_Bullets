@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Blades_and_Bullets/Assets/Scripts-Glib/Collectibles.meta
+guid: 9d8e4db566887714698f4130a63a04d7
+========
 guid: c8561db71e1bee14386138343541b862
+>>>>>>>> main:Blades_and_Bullets/Assets/Animator.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
