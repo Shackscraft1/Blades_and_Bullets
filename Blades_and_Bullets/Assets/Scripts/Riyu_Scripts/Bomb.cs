@@ -37,7 +37,10 @@ public class Bomb : MonoBehaviour
         // }
 
         Bullet bullet = other.GetComponentInParent<Bullet>();
-        bullet.DespawnBullet();
+        if (bullet != null)
+        {
+            bullet.DespawnBullet();
+        }
 
     }
 }
