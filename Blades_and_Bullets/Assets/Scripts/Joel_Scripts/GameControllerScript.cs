@@ -14,7 +14,21 @@ public class GameControllerScript : MonoBehaviour
     [SerializeField] private Slider hpSlider;
     private float _currentPlayerHp = 1f;
     private int _currentScore = 0;
+    private int _HighScore = 0;
     
+    public static EventHandler<OnHighScoreDataGatheredArgs> OnNewHighScoreChange;
+
+    public class OnHighScoreDataGatheredArgs : EventArgs
+    {
+        public int newHighScore;
+    }
+    private enum HighScoreAchieved
+    {
+        NoHighScore,
+        NewHighScore
+    }
+    private HighScoreAchieved _highSoreState = HighScoreAchieved.NoHighScore;
+  
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -32,14 +46,15 @@ public class GameControllerScript : MonoBehaviour
 
     private void OnHighScoreDataGathered(object sender, SavedDataJSON.OnHighScoreDataGatheredArgs e)
     {
-        throw new NotImplementedException();
+        _HighScore = e.highScore;
+        highScoreText.text =  ($"HighScore: {_HighScore.ToString("D6")}");
     }
 
     private void OnSlashingSomething(object sender, EventArgs e)
     {
         _currentScore += 100;
         ScoreChange(_currentScore);
-}
+    }
 
     void OnDestroy()
     {
@@ -57,11 +72,15 @@ public class GameControllerScript : MonoBehaviour
         
     }
 
-    private void ScoreChange(int scoreText)
+    private void ScoreChange(int scoreChange)
     {
-        
-        currentScoreText.text =  ($"Score: {scoreText.ToString("D4")}");
-        highScoreText.text =  ($"HighScore: {scoreText.ToString("D4")}");
+        currentScoreText.text =  ($"Score: {scoreChange.ToString("D6")}");
+        if (scoreChange >= _HighScore)
+        {
+            _HighScore = scoreChange;
+            highScoreText.text =  ($"HighScore: {_HighScore.ToString("D6")}");
+            _highSoreState =  HighScoreAchieved.NewHighScore;
+        }
     }
 
     private void ModifyAbilityCooldown(object sender, Player.ModifyAbilityCooldownArgs e)
@@ -77,13 +96,8 @@ public class GameControllerScript : MonoBehaviour
 
     private void HpDropsToZero()
     {
+        if(_highSoreState.Equals(HighScoreAchieved.NewHighScore)) OnNewHighScoreChange?.Invoke(this, new OnHighScoreDataGatheredArgs{newHighScore = _HighScore});
         OnPlayerDeath?.Invoke(this, EventArgs.Empty);
-        SaveScore();
-    }
-
-    public void SaveScore()
-    {
-        
     }
     
 }

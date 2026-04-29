@@ -91,7 +91,7 @@ public class Bullet : MonoBehaviour
 
     private void OnSlashingSomething(object sender, SlashScript.OnSlashingSomethingArgs e)
     {
-        if(e.TargetHit.Equals(gameObject)) Destroy(gameObject);
+        if(e.TargetHit.Equals(gameObject)) DespawnBullet();
     }
 
     //private void SetTriggers()

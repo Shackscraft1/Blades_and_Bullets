@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using System;
+using Unity.VisualScripting;
 
 public class Player : MonoBehaviour
 {
@@ -87,6 +88,7 @@ public class Player : MonoBehaviour
 
     private void OnPlayerDeath(object sender, EventArgs e)
     {
+        GameControllerScript.OnPlayerDeath -= OnPlayerDeath;
         Destroy(gameObject);
     }
 
@@ -94,7 +96,7 @@ public class Player : MonoBehaviour
     {
         GameControllerScript.AbilityActiveStatus -= AbilityActiveStatus;
         SlashScript.OnSlashingSomething -= OnSlashingSomething;
-        GameControllerScript.OnPlayerDeath -= OnPlayerDeath;
+        
     }
 
     private void OnSlashingSomething(object sender, SlashScript.OnSlashingSomethingArgs e)
@@ -284,10 +286,9 @@ public class Player : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if (collision != null)
+        if (collision.GetComponentInParent<Bullet>() != null)
         {
-            //dequeuing bullets triggers an error, still trying to find a fix
-            bulletPool.ReturnBulletToPool(collision.GetComponentInParent<Bullet>());
+            
             PlayerGetsHit?.Invoke(this, EventArgs.Empty);
         }
         
