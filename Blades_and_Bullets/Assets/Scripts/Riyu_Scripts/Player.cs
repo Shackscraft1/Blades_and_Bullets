@@ -169,11 +169,11 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void FireBullets()
-    {
-        PlayerFiresBullet?.Invoke(this, EventArgs.Empty);
+    // private void FireBullets()
+    // {
+    //     PlayerFiresBullet?.Invoke(this, EventArgs.Empty);
 
-    }
+    // }
 
     private void FireBullets()
     {
