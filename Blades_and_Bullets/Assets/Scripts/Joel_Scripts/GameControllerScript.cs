@@ -8,8 +8,8 @@ public class GameControllerScript : MonoBehaviour
     [SerializeField] private Image abilityBarImage;
     [SerializeField] private TextMeshProUGUI highScoreText;
     [SerializeField] private TextMeshProUGUI currentScoreText;
-    
     public static EventHandler AbilityActiveStatus; 
+    
     public static EventHandler OnPlayerDeath; 
     [SerializeField] private Slider hpSlider;
     private float _currentPlayerHp = 1f;
@@ -82,6 +82,7 @@ public class GameControllerScript : MonoBehaviour
             _highSoreState =  HighScoreAchieved.NewHighScore;
         }
     }
+    
 
     private void ModifyAbilityCooldown(object sender, Player.ModifyAbilityCooldownArgs e)
     {
@@ -98,6 +99,7 @@ public class GameControllerScript : MonoBehaviour
     {
         if(_highSoreState.Equals(HighScoreAchieved.NewHighScore)) OnNewHighScoreChange?.Invoke(this, new OnHighScoreDataGatheredArgs{newHighScore = _HighScore});
         OnPlayerDeath?.Invoke(this, EventArgs.Empty);
+        
     }
-    
+
 }
