@@ -985,7 +985,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -2.1, y: -3}
+  m_AnchoredPosition: {x: -2.0999985, y: -3}
   m_SizeDelta: {x: -3.43, y: -6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &682582187
@@ -2502,6 +2502,7 @@ GameObject:
   - component: {fileID: 1823738265}
   - component: {fileID: 1823738260}
   - component: {fileID: 1823738264}
+  - component: {fileID: 1823738266}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -2627,6 +2628,18 @@ MonoBehaviour:
   pool: {fileID: 729607376}
   enemy: {fileID: 3959193303880153687, guid: 9442b7cd2a9f4c4488753434410c1ef3, type: 3}
   player: {fileID: 0}
+--- !u!114 &1823738266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1823738259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d0e12645e121fa78ac79b5c5c1efdfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SavedDataJSON
 --- !u!1 &1869675990
 GameObject:
   m_ObjectHideFlags: 0
