@@ -3,6 +3,7 @@ using UnityEngine;
 public class SpecialSlash : MonoBehaviour
 {
     
+    /*
     private float speed = 50f;
     private void Update()
     {
@@ -47,7 +48,8 @@ public class SpecialSlash : MonoBehaviour
             Destroy(enemy.gameObject);
             Destroy(gameObject); 
         }
+        */
 
-    }
+    
 
 }

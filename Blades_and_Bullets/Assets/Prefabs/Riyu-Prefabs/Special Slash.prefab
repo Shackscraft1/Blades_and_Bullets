@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7590680366367424207}
   - component: {fileID: 1859684158074848211}
   - component: {fileID: 3269717698868021644}
-  - component: {fileID: -2998517050505635508}
+  - component: {fileID: 1205735277954425417}
   m_Layer: 0
   m_Name: Special Slash
   m_TagString: Untagged
@@ -167,7 +167,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!114 &-2998517050505635508
+--- !u!114 &1205735277954425417
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -176,6 +176,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 2928054705895004748}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cdb3a5e82ede964ea88dfb71f1aa73f, type: 3}
+  m_Script: {fileID: 11500000, guid: 2c7053327775be11b8da8782b7ff668e, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SpecialSlash
+  m_EditorClassIdentifier: Assembly-CSharp::SlashScript

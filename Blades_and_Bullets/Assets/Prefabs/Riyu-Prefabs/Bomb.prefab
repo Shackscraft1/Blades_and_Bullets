@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2706394427456815671}
   - component: {fileID: 6749748311536251157}
   - component: {fileID: 4458794904140040038}
+  - component: {fileID: 3102862232210512021}
   m_Layer: 0
   m_Name: Bomb
   m_TagString: Untagged
@@ -169,3 +170,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 172b3c24604a16f4c94704e255cb8a8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bomb
+--- !u!114 &3102862232210512021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8692893170456775137}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c7053327775be11b8da8782b7ff668e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SlashScript

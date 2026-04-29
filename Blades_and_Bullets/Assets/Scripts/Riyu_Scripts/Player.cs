@@ -90,14 +90,26 @@ public class Player : MonoBehaviour
     private void Start()
     {
         GameControllerScript.AbilityActiveStatus += AbilityActiveStatus;
+        SlashScript.OnSlashingSomething +=OnSlashingSomething;
         hitboxMesh = hitbox.GetComponent<SpriteRenderer>();
         Playersprite = sprite.GetComponent<SpriteRenderer>();
         hitboxMesh.enabled = false;
     }
 
+    private void OnSlashingSomething(object sender, SlashScript.OnSlashingSomethingArgs e)
+    {
+        ModifyAbilityCooldown?.Invoke(this, new ModifyAbilityCooldownArgs{changeAmount = .02f});
+    }
+
     private void AbilityActiveStatus(object sender, EventArgs e)
     {
         _specialSlashActive = true;
+    }
+
+    private void OnDestroy()
+    {
+        SlashScript.OnSlashingSomething -=OnSlashingSomething;
+        GameControllerScript.AbilityActiveStatus -= AbilityActiveStatus;
     }
 
     private void Update()
@@ -111,7 +123,7 @@ public class Player : MonoBehaviour
             if (specialSlashSingleTime < 0f)
             {
                 Instantiate(specialSlash, transform.position, transform.rotation, transform);
-                specialSlashSingleTime = .005f;
+                specialSlashSingleTime = 4f;
             } 
 
             if (specialSlashTime <= 0f)
@@ -262,12 +274,7 @@ public class Player : MonoBehaviour
 
     private void SpecialSlash()
     {
-        if (!_specialSlashActive)
-        {
-            //this invoke line of code will be temporary until the logic for obtaining ability charge is implemented
-            ModifyAbilityCooldown?.Invoke(this, new ModifyAbilityCooldownArgs{changeAmount = .1f});
-            // return;
-        }
+        if (!_specialSlashActive) return;
         // specialSlash.SetActive(true);
         // currentSwingTime = 3f;
         _specialSlashActive = false;
@@ -296,16 +303,14 @@ public class Player : MonoBehaviour
     }
     
 
-    // private void OnTriggerEnter2D(Collider2D collision)
-    // {
-    //     if (collision != null)
-    //     {
-    //         //dequeuing bullets triggers an error, still trying to find a fix
-    //         bulletPool.ReturnBulletToPool(collision.GetComponentInParent<Bullet>());
-    //         Death();
-    //         PlayerGetsHit?.Invoke(this, EventArgs.Empty);
-    //     }
-    // }
+     private void OnTriggerEnter2D(Collider2D collision)
+     {
+         if (collision.GetComponentInParent<Bullet>() != null)
+         {
+             
+             PlayerGetsHit?.Invoke(this, EventArgs.Empty);
+         }
+     }
 
 
 

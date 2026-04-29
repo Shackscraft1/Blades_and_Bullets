@@ -64,7 +64,7 @@ public class SavedDataJSON : MonoBehaviour
         
         string json = string.Empty;
         using (StreamReader reader =
-               new StreamReader(Application.dataPath + Path.AltDirectorySeparatorChar + "SavedHighScore.json")) json = reader.ReadToEnd();
+               new StreamReader(Application.persistentDataPath + Path.AltDirectorySeparatorChar + "SavedHighScore.json")) json = reader.ReadToEnd();
         data = JsonUtility.FromJson<HighScoreData>(json);
         
         if (data == null)
