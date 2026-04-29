@@ -5,15 +5,14 @@ public class Bomb : MonoBehaviour
 
     void Update()
     {
-        if (transform.localScale.x < 200)
+        if (transform.localScale.x < 100)
         {
-            transform.localScale += new Vector3(.4f, 0f, .4f);
+            transform.localScale += new Vector3(.4f, .4f, 0f);
         } else
         {
             Destroy(gameObject);
-        }
-
-
+        } 
 
     }
+    
 }
