@@ -120,7 +120,7 @@ Transform:
   m_GameObject: {fileID: 1937136267326504230}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.103, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -175,13 +175,14 @@ MonoBehaviour:
   speed: 10
   hitbox: {fileID: 3593035649434873760}
   slash: {fileID: 4987818048595853479, guid: d7e87856376ebb34b821882125810bf7, type: 3}
-  sprite: {fileID: 754404927774659757}
   focusSlash: {fileID: 2928054705895004748, guid: 029bfbac892232c40907b622e4f2588a, type: 3}
   specialSlash: {fileID: 2928054705895004748, guid: 2fef8a57d4faece41bef12015af8e893, type: 3}
   bombPrefab: {fileID: 8692893170456775137, guid: 60c7af1bed16f5f4e96668f6a5c30846, type: 3}
   lives: 3
   bombs: 3
   points: 0
+  bulletPool: {fileID: 0}
+  bulletComp: {fileID: 0}
 --- !u!61 &83631453407380104
 BoxCollider2D:
   m_ObjectHideFlags: 0
