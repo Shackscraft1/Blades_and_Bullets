@@ -25,7 +25,7 @@ public class WaveEnemy : MonoBehaviour
     public Phase currentPhase {  get; private set; }
 
     private BezierPath entryPath;
-    private float entryDuration;
+    private float speed;
     private float entryStartOffset;
     private Transform formationCenter;
     private Vector3 slotOffset;
@@ -66,7 +66,7 @@ public class WaveEnemy : MonoBehaviour
        EndBehavior behavior)
     {
         entryPath = path;
-        entryDuration = duration;
+        speed = duration;
         entryStartOffset = startOffset;
         formationCenter = center;
         slotOffset = formationSlotOffset;
@@ -76,6 +76,16 @@ public class WaveEnemy : MonoBehaviour
         flyTimer = 0f;
   
         currentPhase = Phase.Entry;
+
+        if (entryPath != null)
+        {
+            float t = Mathf.Clamp01(entryStartOffset / speed);
+
+            if (t < 0f)
+                t = 0f;
+
+            transform.position = entryPath.GetPoint(t) + slotOffset + new Vector3(-10,0,0);
+        }
     }
 
 
@@ -150,7 +160,7 @@ public class WaveEnemy : MonoBehaviour
 
         phaseTimer += Time.deltaTime;
 
-        float t = (phaseTimer + entryStartOffset) / entryDuration;
+        float t = (phaseTimer + entryStartOffset) / speed;
 
         if (t < 0f)
             return;
@@ -196,7 +206,7 @@ public class WaveEnemy : MonoBehaviour
         Vector2 p2 = entryPath.GetPoint(1f);
         Vector2 tangent = (p2 - p1).normalized;
 
-        float angle = Random.Range(-100f, 100f);
+        float angle = Random.Range(-50f, 50f);
         flyDirection = (Quaternion.Euler(0f, 0f, angle) * tangent).normalized;
 
         flyTimer = 0f;
