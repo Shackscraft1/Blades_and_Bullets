@@ -8,7 +8,7 @@ public class WaveSO : ScriptableObject
     public int enemyCount = 6;
 
     [Header("Entry")]
-    public float entryDuration = 6f;
+    public float speed = 6f;
     public float entryGap = 0.35f;
 
     [Header("Exit")]
