@@ -1,5 +1,13 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Blades_and_Bullets/Assets/Scenes/Collectible_TestScene.unity.meta
 guid: c9966b4d4e8c9af4db4e62834e85339a
+========
+<<<<<<<< HEAD:Blades_and_Bullets/Assets/Scenes/SampleScene.unity.meta
+guid: 8c9cfa26abfee488c85f1582747f6a02
+========
+guid: 50f99595d1909d10d959f1a72210128d
+>>>>>>>> Finally-Fix-PlayerBulletBug:Blades_and_Bullets/Assets/Prefabs/Player.prefab.orig.meta
+>>>>>>>> NewEnemyWaves:Blades_and_Bullets/Assets/Scenes/SampleScene.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
