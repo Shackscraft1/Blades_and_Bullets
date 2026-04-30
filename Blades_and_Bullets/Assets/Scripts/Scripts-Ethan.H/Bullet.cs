@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -114,6 +113,7 @@ public class Bullet : MonoBehaviour
             //    capsuleCollider.offset = bulletTypeSO.offset;
             //    break;
 
+        
 
 
 
