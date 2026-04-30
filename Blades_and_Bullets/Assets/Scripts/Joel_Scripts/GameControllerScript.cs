@@ -104,4 +104,8 @@ public class GameControllerScript : MonoBehaviour
         
     }
 
+    public float GetPlayerHP()
+    {
+        return _currentPlayerHp;
+    }
 }

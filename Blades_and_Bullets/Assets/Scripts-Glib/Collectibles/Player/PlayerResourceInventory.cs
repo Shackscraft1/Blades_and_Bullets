@@ -126,6 +126,24 @@ namespace Game.Collectibles.Player
             Debug.Log($"[{nameof(PlayerResourceInventory)}] {reason} | Score={score}, Power={power}, Bombs={bombs}, Lives={lives}", this);
         }
 
+        public void SubtractBomb()
+        {
+            if (bombs <= 0)
+                return;
+
+            bombs--;
+            LogState("subtracted 1 bomb");
+        }
+
+        public void SubtractLife()
+        {
+            if (lives <= 0)
+                return;
+
+            lives--;
+            LogState("subtracted 1 life");
+        }
+
 #if UNITY_EDITOR
         private void OnValidate()
         {

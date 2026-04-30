@@ -25,7 +25,7 @@ public class Bullet : MonoBehaviour
     public Transform Target => target;
 
     private int generation;
-    private int maxSplit = 1;
+    // private int maxSplit = 1;
 
     public void SetDirection(Vector2 newDirection)
     {
