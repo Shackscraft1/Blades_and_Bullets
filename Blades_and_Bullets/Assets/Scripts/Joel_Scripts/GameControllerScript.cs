@@ -129,7 +129,7 @@ public class GameControllerScript : MonoBehaviour
     {
         yield return new WaitForSeconds(5f);
         //go back to main menu scene
-        Debug.logger.Log("Game Over... going to scene");
+        Debug.unityLogger.Log("Game Over... going to scene");
     }
 
     private void UpdateBomb(int bombsRemaining)
