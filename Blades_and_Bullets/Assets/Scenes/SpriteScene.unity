@@ -1488,7 +1488,7 @@ GameObject:
   - component: {fileID: 1757373475}
   - component: {fileID: 1757373474}
   - component: {fileID: 1757373473}
-  - component: {fileID: 1757373472}
+  - component: {fileID: 1757373476}
   m_Layer: 7
   m_Name: Boulder
   m_TagString: Untagged
@@ -1496,19 +1496,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1757373472
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1757373471}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6c121f13f6fac941bfac84849215a2b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyAnim
-  animator: {fileID: 1757373473}
 --- !u!95 &1757373473
 Animator:
   serializedVersion: 7
@@ -1605,6 +1592,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 871716684}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1757373476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1757373471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12a3adc48e75aa94f99f09f50df46a9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyAnim
+  animator: {fileID: 1757373473}
 --- !u!1 &1807526947
 GameObject:
   m_ObjectHideFlags: 0

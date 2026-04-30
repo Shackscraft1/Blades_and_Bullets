@@ -156,7 +156,7 @@ public class WaveEnemy : MonoBehaviour
             return;
 
         t = Mathf.Clamp01(t);
-        transform.position = entryPath.GetPoint(t);
+        transform.position = entryPath.GetPoint(t) + slotOffset;
 
         if (t >= 1f)
         {
