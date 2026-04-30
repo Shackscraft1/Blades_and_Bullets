@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Blades_and_Bullets/Assets/Music-Glib/Script.meta
 guid: 3e91e625d69b2a544a77adaf0742db9f
+========
+guid: 929f7cf24adb693508f75fb9c683bb00
+>>>>>>>> Feature_Implementation:Blades_and_Bullets/Assets/SavedGameData.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

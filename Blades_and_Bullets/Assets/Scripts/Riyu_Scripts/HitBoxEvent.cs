@@ -1,13 +1,20 @@
 using System;
 using UnityEngine;
 
-public class HitBoxEvent : MonoBehaviour
+public class HitboxEvent : MonoBehaviour
 {
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        
+        Debug.Log("Contact");
+        if (other.CompareTag("EnemyBullet"))
+        {
+            if (Player.Instance != null)
+            {
+                Player.Instance.Death();
+            } 
+        }
+
     }
 
    

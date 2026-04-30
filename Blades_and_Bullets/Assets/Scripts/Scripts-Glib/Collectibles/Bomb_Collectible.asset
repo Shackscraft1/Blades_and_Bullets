@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Game.Collectibles::Game.Collectibles.Data.CollectibleTypeSO
   kind: 2
   displayName: Bomb
-  sprite: {fileID: -8020520747641186783, guid: a1041ebcb7322fc48acdf9b1728b43b0, type: 3}
+  sprite: {fileID: -1217850131770948810, guid: 4ae5f3912bbd19944af092c119c3826e, type: 3}
   debugColor: {r: 1, g: 1, b: 1, a: 1}
   value: 1
   lifetime: 12

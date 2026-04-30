@@ -1,6 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Blades_and_Bullets/Assets/Scripts-Glib/Collectibles/Spawning.meta
 guid: e6bdd7fcdf2344d429b18bac5780b0b9
 folderAsset: yes
+========
+guid: c9966b4d4e8c9af4db4e62834e85339a
+>>>>>>>> NewEnemyWaves:Blades_and_Bullets/Assets/Scenes/Collectible_TestScene.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

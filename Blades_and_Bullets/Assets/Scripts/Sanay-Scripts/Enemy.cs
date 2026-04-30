@@ -241,6 +241,11 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public void TakeDamage()
+    {
+
+    }
+
     public void TakeDamage(int damage)
     {
         currentHP -= damage;

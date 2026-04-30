@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Game.Collectibles::Game.Collectibles.Data.CollectibleTypeSO
   kind: 0
   displayName: Points
-  sprite: {fileID: -2058081675142473096, guid: a1041ebcb7322fc48acdf9b1728b43b0, type: 3}
+  sprite: {fileID: 6481598050568439684, guid: 4ae5f3912bbd19944af092c119c3826e, type: 3}
   debugColor: {r: 1, g: 1, b: 1, a: 1}
   value: 1
   lifetime: 12
