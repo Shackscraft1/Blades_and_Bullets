@@ -19,6 +19,8 @@ public class WaveController : MonoBehaviour
     private WaveEnemy.EndBehavior endBehavior;
     private bool spawnInFormation;
 
+   
+   
     public void Initialize(
         WaveSO data,
         BulletPool pool,
@@ -63,12 +65,13 @@ public class WaveController : MonoBehaviour
 
             if (formation != null)
             {
-                slotOffset = formation.GetVSlotOffset(
-                    i,
-                    waveSO.enemyCount,
-                    waveSO.slotSpacing,
-                    waveSO.vDepth
-                );
+                slotOffset = formation.GetSlotOffset(
+               i,
+               waveSO.enemyCount,
+               waveSO.formationType,
+               waveSO.slotSpacing,
+               waveSO.verticalDepth
+           );
             }
 
             if (spawnInFormation)

@@ -16,8 +16,9 @@ public class WaveSO : ScriptableObject
 
     [Header("Formation Shape")]
     public bool spawnInFormation;
+    public WaveFormationControler.FormationType formationType;
     public float slotSpacing = 0.3f;
-    public float vDepth = 0.18f;
+    public float verticalDepth = 0.18f;
 
     [Header("Formation Movement")]
 
