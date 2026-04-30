@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameControllerScript : MonoBehaviour
@@ -34,12 +35,14 @@ public class GameControllerScript : MonoBehaviour
     }
     private HighScoreAchieved _highSoreState = HighScoreAchieved.NoHighScore;
 
+
     private void Awake()
     {
         Player.OnSendPlayerData += OnSendPlayerData;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    
     void Start()
     {
         Instance = this;
@@ -79,6 +82,7 @@ public class GameControllerScript : MonoBehaviour
         Player.OnPlayerGetsHit -= PlayerGetsHit;
         SlashScript.OnSlashingSomething -= OnSlashingSomething;
         SavedDataJSON.OnHighScoreDataGathered -=OnHighScoreDataGathered;
+        Player.OnSendPlayerData -= OnSendPlayerData;
     }
 
     private void PlayerGetsHit(object sender, EventArgs e)
@@ -125,11 +129,24 @@ public class GameControllerScript : MonoBehaviour
         StartCoroutine(FinishGameScene());
     }
     
+    public void LoadMainMenu()
+    {
+        StartCoroutine(_LoadCredits());
+        
+
+        IEnumerator _LoadCredits()
+        {
+            yield return new WaitForSeconds(5f);
+            AsyncOperation loadOperation = SceneManager.LoadSceneAsync("MainMenu");
+            while(!loadOperation!.isDone) yield return null;
+        }
+    }
+    
     private IEnumerator FinishGameScene()
     {
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(3f);
         //go back to main menu scene
-        Debug.Log("Game Over... going to scene");
+        LoadMainMenu();
     }
 
     private void UpdateBomb(int bombsRemaining)
