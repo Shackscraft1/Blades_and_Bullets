@@ -17,6 +17,10 @@ MonoBehaviour:
   speed: 99
   scale: 1
   lifetime: 20
+  hurtBoxType: 0
+  radius: 0.05
+  offset: {x: 0, y: 0}
+  sizeCapsule: {x: 0, y: 0}
   bulletMovement: {fileID: 11400000, guid: 6ada5977668c0324f9176925e6c0df48, type: 2}
   canSplit: 0
   splitTime: 1

@@ -265,7 +265,7 @@ public class Player : MonoBehaviour
         ModifyAbilityCooldown?.Invoke(this, new ModifyAbilityCooldownArgs{changeAmount = 0f});
     }
 
-    private void Death()
+    public void Death()
     {
         lives--;
         Instantiate(bombPrefab, transform.position, Quaternion.Euler(90f, 0f, 0f));
