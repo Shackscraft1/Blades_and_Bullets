@@ -64,7 +64,17 @@ public class Player : MonoBehaviour
     }
     private bool _specialSlashActive;
     //Player gets hit logic
-    public static EventHandler PlayerGetsHit;
+    public static EventHandler<OnPlayerGetsHitArgs> OnPlayerGetsHit;
+    public class OnPlayerGetsHitArgs : EventArgs
+    {
+        public GameObject TargetHit;
+    }
+    public static EventHandler<OnSendPlayerDataArgs> OnSendPlayerData;
+    public class OnSendPlayerDataArgs : EventArgs
+    {
+        public int BombsRemaining;
+    }
+    
 
     //Firing bullets Logic;
     public static EventHandler PlayerFiresBullet;
@@ -83,6 +93,7 @@ public class Player : MonoBehaviour
         GameControllerScript.AbilityActiveStatus += AbilityActiveStatus;
         SlashScript.OnSlashingSomething += OnSlashingSomething;
         GameControllerScript.OnPlayerDeath += OnPlayerDeath;
+        OnSendPlayerData?.Invoke(this, new  OnSendPlayerDataArgs{BombsRemaining = bombs});
  
     }
 
@@ -167,9 +178,11 @@ public class Player : MonoBehaviour
         {   
             if (bombs > 0 && bombCooldown <= 0)
             {
-                Instantiate(bombPrefab, transform.position, Quaternion.Euler(90f, 0f, 0f));
+                Instantiate(bombPrefab, transform.position, Quaternion.Euler(180f, 0f, 0f), transform);
                 bombCooldown = 6f;
                 bombs--;
+                OnSendPlayerData?.Invoke(this, new  OnSendPlayerDataArgs{BombsRemaining = bombs});
+                
             } else
             {
                 Debug.Log("No Bombs");
@@ -283,11 +296,11 @@ public class Player : MonoBehaviour
 
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.GetComponentInParent<Bullet>() != null)
+        if (collision.gameObject.GetComponent<Bullet>() != null)
         {
-		PlayerGetsHit?.Invoke(this, EventArgs.Empty);
+		    OnPlayerGetsHit?.Invoke(this, new OnPlayerGetsHitArgs{TargetHit =  collision.gameObject});
         }
         
 
