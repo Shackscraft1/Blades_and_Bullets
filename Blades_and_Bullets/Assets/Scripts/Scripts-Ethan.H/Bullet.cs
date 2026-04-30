@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -16,7 +17,7 @@ public class Bullet : MonoBehaviour
     
    // CircleCollider2D circleCollider;
   
-    CapsuleCollider2D capsuleCollider;
+   // CapsuleCollider2D capsuleCollider;
    
     
 
@@ -91,7 +92,7 @@ public class Bullet : MonoBehaviour
 
     private void OnSlashingSomething(object sender, SlashScript.OnSlashingSomethingArgs e)
     {
-        if(e.TargetHit.Equals(gameObject)) DespawnBullet();
+        if(e.TargetHit.Equals(gameObject)) Destroy(gameObject);
     }
 
     //private void SetTriggers()
@@ -113,7 +114,6 @@ public class Bullet : MonoBehaviour
             //    capsuleCollider.offset = bulletTypeSO.offset;
             //    break;
 
-        
 
 
 

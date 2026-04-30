@@ -17,7 +17,10 @@ public class WaveController : MonoBehaviour
     private Vector3 formationBasePosition;
     private BezierPath entryPath;
     private WaveEnemy.EndBehavior endBehavior;
+    private bool spawnInFormation;
 
+   
+   
     public void Initialize(
         WaveSO data,
         BulletPool pool,
@@ -29,6 +32,7 @@ public class WaveController : MonoBehaviour
         formation = waveFormationControler;
         entryPath = entry;
         endBehavior = waveSO.endBehavior;
+        spawnInFormation = waveSO.spawnInFormation;
 
         if (formation != null && formation.center != null)
         {
@@ -61,22 +65,41 @@ public class WaveController : MonoBehaviour
 
             if (formation != null)
             {
-                slotOffset = formation.GetVSlotOffset(
-                    i,
-                    waveSO.enemyCount,
-                    waveSO.slotSpacing,
-                    waveSO.vDepth
-                );
+                slotOffset = formation.GetSlotOffset(
+               i,
+               waveSO.enemyCount,
+               waveSO.formationType,
+               waveSO.slotSpacing,
+               waveSO.verticalDepth
+           );
             }
 
-            enemy.Init(
-                entryPath,
-                waveSO.entryDuration,
-                -i * waveSO.entryGap,
-                formation != null ? formation.center : null,
-                slotOffset,
-                endBehavior
-            );
+            if (spawnInFormation)
+            {
+                enemy.Init(
+                    entryPath,
+                    waveSO.entryDuration,
+                    0f,
+                    formation != null ? formation.center : null,
+                    slotOffset,
+                    endBehavior
+                );
+
+
+            }
+            else
+            {
+
+                enemy.Init(
+                    entryPath,
+                    waveSO.entryDuration,
+                    -i * waveSO.entryGap,
+                    formation != null ? formation.center : null,
+                    slotOffset,
+                    endBehavior
+                );
+
+            }
 
             enemies.Add(enemy);
         }
