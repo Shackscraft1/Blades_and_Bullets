@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,6 +12,7 @@ public class GameControllerScript : MonoBehaviour
     [SerializeField] private TextMeshProUGUI currentScoreText;
     [SerializeField] private RectTransform bombIconArea;
     [SerializeField] private GameObject bombPrefab;
+    [SerializeField] private TextMeshProUGUI gameOverText;
     public static EventHandler AbilityActiveStatus; 
     
     public static EventHandler OnPlayerDeath; 
@@ -114,7 +116,20 @@ public class GameControllerScript : MonoBehaviour
     {
         if(_highSoreState.Equals(HighScoreAchieved.NewHighScore)) OnNewHighScoreChange?.Invoke(this, new OnHighScoreDataGatheredArgs{newHighScore = _HighScore});
         OnPlayerDeath?.Invoke(this, EventArgs.Empty);
-        
+        GameOverEvent();
+    }
+
+    private void GameOverEvent()
+    {
+        gameOverText.gameObject.SetActive(true);
+        StartCoroutine(FinishGameScene());
+    }
+    
+    private IEnumerator FinishGameScene()
+    {
+        yield return new WaitForSeconds(5f);
+        //go back to main menu scene
+        Debug.logger.Log("Game Over... going to scene");
     }
 
     private void UpdateBomb(int bombsRemaining)
