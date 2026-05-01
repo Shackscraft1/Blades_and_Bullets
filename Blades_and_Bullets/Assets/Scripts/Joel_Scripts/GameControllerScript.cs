@@ -1,6 +1,8 @@
 using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameControllerScript : MonoBehaviour
@@ -9,6 +11,9 @@ public class GameControllerScript : MonoBehaviour
     [SerializeField] private Image abilityBarImage;
     [SerializeField] private TextMeshProUGUI highScoreText;
     [SerializeField] private TextMeshProUGUI currentScoreText;
+    [SerializeField] private RectTransform bombIconArea;
+    [SerializeField] private GameObject bombPrefab;
+    [SerializeField] private TextMeshProUGUI gameOverText;
     public static EventHandler AbilityActiveStatus; 
     
     public static EventHandler OnPlayerDeath; 
@@ -29,9 +34,15 @@ public class GameControllerScript : MonoBehaviour
         NewHighScore
     }
     private HighScoreAchieved _highSoreState = HighScoreAchieved.NoHighScore;
-  
-    
+
+
+    private void Awake()
+    {
+        Player.OnSendPlayerData += OnSendPlayerData;
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    
     void Start()
     {
         Instance = this;
@@ -40,10 +51,17 @@ public class GameControllerScript : MonoBehaviour
         abilityBarImage.fillAmount = 0f;
         hpSlider.value = 1f;
         Player.ModifyAbilityCooldown +=ModifyAbilityCooldown;
-        Player.PlayerGetsHit += PlayerGetsHit;
+        Player.OnPlayerGetsHit += PlayerGetsHit;
         SlashScript.OnSlashingSomething += OnSlashingSomething;
         SavedDataJSON.OnHighScoreDataGathered +=OnHighScoreDataGathered;
+        
 
+    }
+
+    private void OnSendPlayerData(object sender, Player.OnSendPlayerDataArgs e)
+    {
+        //here you can add more data that you want to send to the UI without having to reference the player through variables
+        UpdateBomb(e.BombsRemaining);
     }
 
     private void OnHighScoreDataGathered(object sender, SavedDataJSON.OnHighScoreDataGatheredArgs e)
@@ -61,9 +79,10 @@ public class GameControllerScript : MonoBehaviour
     void OnDestroy()
     {
         Player.ModifyAbilityCooldown -=ModifyAbilityCooldown;
-        Player.PlayerGetsHit -= PlayerGetsHit;
+        Player.OnPlayerGetsHit -= PlayerGetsHit;
         SlashScript.OnSlashingSomething -= OnSlashingSomething;
         SavedDataJSON.OnHighScoreDataGathered -=OnHighScoreDataGathered;
+        Player.OnSendPlayerData -= OnSendPlayerData;
     }
 
     private void PlayerGetsHit(object sender, EventArgs e)
@@ -101,7 +120,51 @@ public class GameControllerScript : MonoBehaviour
     {
         if(_highSoreState.Equals(HighScoreAchieved.NewHighScore)) OnNewHighScoreChange?.Invoke(this, new OnHighScoreDataGatheredArgs{newHighScore = _HighScore});
         OnPlayerDeath?.Invoke(this, EventArgs.Empty);
+        GameOverEvent();
+    }
+
+    private void GameOverEvent()
+    {
+        gameOverText.gameObject.SetActive(true);
+        StartCoroutine(FinishGameScene());
+    }
+    
+    public void LoadMainMenu()
+    {
+        StartCoroutine(_LoadCredits());
         
+
+        IEnumerator _LoadCredits()
+        {
+            yield return new WaitForSeconds(5f);
+            AsyncOperation loadOperation = SceneManager.LoadSceneAsync("MainMenu");
+            while(!loadOperation!.isDone) yield return null;
+        }
+    }
+    
+    private IEnumerator FinishGameScene()
+    {
+        yield return new WaitForSeconds(3f);
+        //go back to main menu scene
+        LoadMainMenu();
+    }
+
+    private void UpdateBomb(int bombsRemaining)
+    {
+        int currentBombs = bombIconArea.childCount;
+        int maxCount = Mathf.Max(currentBombs, bombsRemaining);
+
+        for (int i = 0; i < maxCount; i++)
+        {
+            if (i >= bombsRemaining && i < currentBombs)
+            {
+                Destroy(bombIconArea.GetChild(i).gameObject);
+            }
+            else if (i >= currentBombs && i < bombsRemaining)
+            {
+                Instantiate(bombPrefab, bombIconArea);
+            }
+        }
     }
 
     public float GetPlayerHP()

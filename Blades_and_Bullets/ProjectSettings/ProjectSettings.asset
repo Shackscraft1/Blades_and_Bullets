@@ -929,10 +929,10 @@ PlayerSettings:
   activeInputHandler: 2
   windowsGamepadBackendHint: 0
   enableDirectStorage: 0
-  cloudProjectId: 6c695996-1694-4dc8-89d1-fca1a9666a68
+  cloudProjectId: 47ca2913-504a-40cd-aaba-40f4ddfc017b
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: SpriteSheet
+  projectName: Milestone3
   organizationId: jongo_unity
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0

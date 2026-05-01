@@ -84,7 +84,7 @@ SpriteRenderer:
   m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: 4578367805546361156, guid: be6745eaf1666e54480a59b7bf0d63c0, type: 3}
-  m_Color: {r: 0.4730095, g: 0.7735849, b: 0.25178, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -162,7 +162,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 297355851908983990}
   - {fileID: 1035385947786065394}
   - {fileID: 3791593466688404120}
   - {fileID: 7424208913648156991}
