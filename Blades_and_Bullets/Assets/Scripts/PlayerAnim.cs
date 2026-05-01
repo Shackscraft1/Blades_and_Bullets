@@ -35,7 +35,7 @@ public class PlayerAnim : MonoBehaviour
 
         
 
-        if (Keyboard.current.zKey.wasPressedThisFrame)
+        if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {
             animator.SetBool(IS_UNFOCUSED1, true);
         }
@@ -43,7 +43,7 @@ public class PlayerAnim : MonoBehaviour
         {
             animator.SetBool(IS_UNFOCUSED1, false);
         }
-        if (Keyboard.current.cKey.isPressed)
+        if (Keyboard.current.xKey.isPressed)
         {
             animator.SetBool(IS_FOCUSED, true);
         }
@@ -52,7 +52,7 @@ public class PlayerAnim : MonoBehaviour
             animator.SetBool(IS_FOCUSED, false);
         }
 
-        if (Keyboard.current.xKey.wasPressedThisFrame)
+        if (Keyboard.current.cKey.wasPressedThisFrame)
         {
             animator.SetBool(IS_SPECIAL, true);
         }
