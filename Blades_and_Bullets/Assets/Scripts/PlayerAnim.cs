@@ -51,7 +51,7 @@ public class PlayerAnim : MonoBehaviour
             animator.SetBool(IS_UNFOCUSED1, false);
         }
 
-        if (Keyboard.current.xKey.wasPressedThisFrame)
+        if (Keyboard.current.cKey.wasPressedThisFrame)
         {
             animator.SetBool(IS_SPECIAL, true);
         }

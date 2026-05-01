@@ -129,24 +129,11 @@ public class GameControllerScript : MonoBehaviour
         StartCoroutine(FinishGameScene());
     }
     
-    public void LoadMainMenu()
-    {
-        StartCoroutine(_LoadCredits());
-        
-
-        IEnumerator _LoadCredits()
-        {
-            yield return new WaitForSeconds(5f);
-            AsyncOperation loadOperation = SceneManager.LoadSceneAsync("MainMenu");
-            while(!loadOperation!.isDone) yield return null;
-        }
-    }
-    
     private IEnumerator FinishGameScene()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(5f);
         //go back to main menu scene
-        LoadMainMenu();
+        Debug.logger.Log("Game Over... going to scene");
     }
 
     private void UpdateBomb(int bombsRemaining)
