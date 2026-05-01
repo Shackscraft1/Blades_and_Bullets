@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ec24ac3975f55f40bb92ffc9f555160, type: 3}
   m_Name: Wave 3
   m_EditorClassIdentifier: Assembly-CSharp::WaveSO
-  enemyPrefab: {fileID: 0}
-  enemyCount: 6
+  enemyPrefab: {fileID: 3959193303880153687, guid: 544ee3a97a3de574a843248b966f8881, type: 3}
+  enemyCount: 3
   speed: 6
-  entryGap: 0.35
+  entryGap: 0.5
   endBehavior: 0
-  spawnInFormation: 0
-  formationType: 0
-  slotSpacing: 0.3
-  verticalDepth: 0.18
+  spawnInFormation: 1
+  formationType: 2
+  slotSpacing: 0.5
+  verticalDepth: 0.2
   middleOffset: {x: 0, y: 0, z: 0}
   leftOffset: {x: -2, y: 0, z: 0}
   rightOffset: {x: 2, y: 0, z: 0}
