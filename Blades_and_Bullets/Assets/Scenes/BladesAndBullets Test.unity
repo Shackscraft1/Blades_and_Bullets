@@ -1794,6 +1794,14 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 7929682069977287586, guid: 28e92fb28f56d3046896fa18cb41c03c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 7929682069977287586, guid: 28e92fb28f56d3046896fa18cb41c03c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 7929682069977287586, guid: 28e92fb28f56d3046896fa18cb41c03c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.02
       objectReference: {fileID: 0}
@@ -2036,6 +2044,9 @@ MonoBehaviour:
   abilityBarImage: {fileID: 1777348337}
   highScoreText: {fileID: 756862874}
   currentScoreText: {fileID: 1869675992}
+  bombIconArea: {fileID: 0}
+  bombPrefab: {fileID: 0}
+  gameOverText: {fileID: 0}
   hpSlider: {fileID: 1591974323}
 --- !u!114 &1823738265
 MonoBehaviour:

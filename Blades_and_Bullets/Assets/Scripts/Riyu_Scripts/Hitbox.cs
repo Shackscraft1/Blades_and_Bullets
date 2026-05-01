@@ -32,7 +32,6 @@ public class Hitbox : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Contact");
         if ( other.GetComponentInParent<Bullet>() != null)
         {
             if (Player.Instance != null)

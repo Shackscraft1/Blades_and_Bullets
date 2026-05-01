@@ -25,7 +25,10 @@ public class SlashScript : MonoBehaviour
     }
     private void Start()
     {
-        Destroy(gameObject, .5f);
+        if (bulletType == BulletType.Normal)
+        {
+            Destroy(gameObject, .5f);
+        } 
     }
  
     private void OnTriggerEnter2D(Collider2D other)
@@ -36,7 +39,7 @@ public class SlashScript : MonoBehaviour
         switch (bulletType)
         {
             case BulletType.Normal:
-                target = bullet;
+                target = enemy;
                 break;
 
             case BulletType.Special:
@@ -45,6 +48,7 @@ public class SlashScript : MonoBehaviour
         }
         if (target != null)
         {
+            Destroy(target.gameObject);
             OnSlashingSomething?.Invoke(this, new OnSlashingSomethingArgs
             {
                 TargetHit = target.gameObject

@@ -125,11 +125,12 @@ public class Player : MonoBehaviour
     }
     public void Death()
     {
-        Instantiate(bombPrefab, transform.position, Quaternion.Euler(0f, 0f, 0f));
-        bombCooldown = 8f;
         deathTimer = 2f;
         moveState = MoveState.Death;
+        Instantiate(bombPrefab, transform.position, Quaternion.Euler(0f, 0f, 0f));
+        bombCooldown = 8f;
         transform.position = new Vector3(-3f, -4f, transform.position.z);
+        inventory.SubtractLife();
         PlayerGetsHit?.Invoke(this, EventArgs.Empty);
     }
     private void OnSlashingSomething(object sender, SlashScript.OnSlashingSomethingArgs e)

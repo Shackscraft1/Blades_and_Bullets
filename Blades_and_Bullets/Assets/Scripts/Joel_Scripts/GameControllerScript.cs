@@ -36,10 +36,10 @@ public class GameControllerScript : MonoBehaviour
     private HighScoreAchieved _highSoreState = HighScoreAchieved.NoHighScore;
 
 
-    private void Awake()
-    {
-        Player.OnSendPlayerData += OnSendPlayerData;
-    }
+    // private void Awake()
+    // {
+    //     Player.OnSendPlayerData += OnSendPlayerData;
+    // }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     
@@ -51,18 +51,18 @@ public class GameControllerScript : MonoBehaviour
         abilityBarImage.fillAmount = 0f;
         hpSlider.value = 1f;
         Player.ModifyAbilityCooldown +=ModifyAbilityCooldown;
-        Player.OnPlayerGetsHit += PlayerGetsHit;
+        // Player.OnPlayerGetsHit += PlayerGetsHit;
         SlashScript.OnSlashingSomething += OnSlashingSomething;
         SavedDataJSON.OnHighScoreDataGathered +=OnHighScoreDataGathered;
         
 
     }
 
-    private void OnSendPlayerData(object sender, Player.OnSendPlayerDataArgs e)
-    {
-        //here you can add more data that you want to send to the UI without having to reference the player through variables
-        UpdateBomb(e.BombsRemaining);
-    }
+    // private void OnSendPlayerData(object sender, Player.OnSendPlayerDataArgs e)
+    // {
+    //     //here you can add more data that you want to send to the UI without having to reference the player through variables
+    //     UpdateBomb(e.BombsRemaining);
+    // }
 
     private void OnHighScoreDataGathered(object sender, SavedDataJSON.OnHighScoreDataGatheredArgs e)
     {
@@ -79,10 +79,10 @@ public class GameControllerScript : MonoBehaviour
     void OnDestroy()
     {
         Player.ModifyAbilityCooldown -=ModifyAbilityCooldown;
-        Player.OnPlayerGetsHit -= PlayerGetsHit;
+        // Player.OnPlayerGetsHit -= PlayerGetsHit;
         SlashScript.OnSlashingSomething -= OnSlashingSomething;
         SavedDataJSON.OnHighScoreDataGathered -=OnHighScoreDataGathered;
-        Player.OnSendPlayerData -= OnSendPlayerData;
+        // Player.OnSendPlayerData -= OnSendPlayerData;
     }
 
     private void PlayerGetsHit(object sender, EventArgs e)
