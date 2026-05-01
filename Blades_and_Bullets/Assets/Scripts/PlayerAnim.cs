@@ -5,30 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class PlayerAnim : MonoBehaviour
 {
-    //private const string IS_WALKING_LEFT = "isMovingLeft";
-    //private const string IS_WALKING_RIGHT = "isMovingRight";
-    //private const string IS_UNFOCUSED = "isAttackUnfocused"; // trigger version
-    //private const string IS_UNFOCUSED1 = "isAttackUnfocus";
-   // private const string IS_FOCUSED = "isAttackFocused";
-    //private const string IS_SPECIAL = "isSpecial";
+    private const string IS_WALKING_LEFT = "isMovingLeft";
+    private const string IS_WALKING_RIGHT = "isMovingRight";
+    private const string IS_UNFOCUSED = "isAttackUnfocused"; // trigger version
+    private const string IS_UNFOCUSED1 = "isAttackUnfocus";
+    private const string IS_FOCUSED = "isAttackFocused";
+    private const string IS_SPECIAL = "isSpecial";
     public Animator animator;
-    int m_BounceStateHash;
-    int IS_WALKING_RIGHT;
-    int IS_WALKING_LEFT;
-    int IS_UNFOCUSED1;
-    int IS_FOCUSED;
-    int IS_SPECIAL;
-
-    void Start()
-    {
-        animator = GetComponent<Animator>();
-        //m_BounceStateHash = Animator.StringToHash("Base Layer.Bounce");
-        IS_WALKING_RIGHT = Animator.StringToHash("isMovingRight");
-        IS_WALKING_LEFT = Animator.StringToHash("isMovingLeft");
-        IS_UNFOCUSED1 = Animator.StringToHash("isAttackUnfocus");
-        IS_FOCUSED = Animator.StringToHash("isAttackFocused");
-        IS_SPECIAL = Animator.StringToHash("isSpecial");
-    }
 
     void Update()
     {
@@ -52,7 +35,7 @@ public class PlayerAnim : MonoBehaviour
 
         
 
-        if (Keyboard.current.zKey.wasPressedThisFrame)
+        if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {
             animator.SetBool(IS_UNFOCUSED1, true);
         }
@@ -60,7 +43,7 @@ public class PlayerAnim : MonoBehaviour
         {
             animator.SetBool(IS_UNFOCUSED1, false);
         }
-        if (Keyboard.current.cKey.isPressed)
+        if (Keyboard.current.xKey.isPressed)
         {
             animator.SetBool(IS_FOCUSED, true);
         }
@@ -69,7 +52,7 @@ public class PlayerAnim : MonoBehaviour
             animator.SetBool(IS_FOCUSED, false);
         }
 
-        if (Keyboard.current.xKey.wasPressedThisFrame)
+        if (Keyboard.current.cKey.wasPressedThisFrame)
         {
             animator.SetBool(IS_SPECIAL, true);
         }
