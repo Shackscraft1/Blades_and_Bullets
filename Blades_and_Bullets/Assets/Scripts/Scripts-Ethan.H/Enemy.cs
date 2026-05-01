@@ -77,10 +77,13 @@ public class WaveEnemy : MonoBehaviour
   
         currentPhase = Phase.Entry;
 
-        if (entryPath != null && speed > 0f)
+        if (entryPath != null)
         {
-            float t = (phaseTimer + entryStartOffset) / speed;
-            t = Mathf.Clamp01(t);
+            float t = Mathf.Clamp01(entryStartOffset / speed);
+
+            if (t < 0f)
+                t = 0f;
+
             transform.position = entryPath.GetPoint(t) + slotOffset + new Vector3(-10,0,0);
         }
     }
@@ -203,7 +206,7 @@ public class WaveEnemy : MonoBehaviour
         Vector2 p2 = entryPath.GetPoint(1f);
         Vector2 tangent = (p2 - p1).normalized;
 
-        float angle = Random.Range(-100f, 100f);
+        float angle = Random.Range(-50f, 50f);
         flyDirection = (Quaternion.Euler(0f, 0f, angle) * tangent).normalized;
 
         flyTimer = 0f;
