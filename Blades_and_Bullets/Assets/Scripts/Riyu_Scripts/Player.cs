@@ -2,59 +2,23 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System;
 using Unity.VisualScripting;
+using Game.Collectibles.Player;
 
 public class Player : MonoBehaviour
 {
-    // Event for Top Collection
-    // Event for Power Ups
-    // Lives, Bombs, Special with cooldown
     public static Player Instance{get; private set;}
-    private enum MoveState
+    public enum MoveState
     {
         Normal,
-        Focused
+        Focused,
+        Death
     }
-
-    private MoveState moveState;
-
-    // private enum AttackState
-    // {
-    //     Low,
-    //     Medium,
-    //     High
-    // }
-
-    // private AttackState attackState;
-    
+    public MoveState moveState;
     [SerializeField] private float speed;
-    [SerializeField] private GameObject hitbox;
-    [SerializeField] private GameObject slash;
-    [SerializeField] private GameObject focusSlash;
-    [SerializeField] private GameObject specialSlash;
     [SerializeField] private GameObject bombPrefab;
-
-
-    // [SerializeField] private GameObject bulletPrefab;
-    private float swingTime = 0f;
-    private float swingTimeMax = 1f;
     private float bombCooldown;
-    private float currentSwingTime = 0f;
     private float deathTimer;
-    
-    // private GameInput gameInput
-    public int lives = 3;
-    public int bombs = 3;
-    public int points = 0;
-    private bool inputEnabled = true;
-
-    //Bullet pool to return
-    [SerializeField]
-    BulletPool bulletPool;
-    //To see if its a bullet
-    [SerializeField]
-    Bullet bulletComp;
-
-    
+    private PlayerResourceInventory inventory;    
     
     //Special slash variables
     public static EventHandler<ModifyAbilityCooldownArgs> ModifyAbilityCooldown;
@@ -64,18 +28,7 @@ public class Player : MonoBehaviour
     }
     private bool _specialSlashActive;
     //Player gets hit logic
-    public static EventHandler<OnPlayerGetsHitArgs> OnPlayerGetsHit;
-    public class OnPlayerGetsHitArgs : EventArgs
-    {
-        public GameObject TargetHit;
-    }
-    public static EventHandler<OnSendPlayerDataArgs> OnSendPlayerData;
-    public class OnSendPlayerDataArgs : EventArgs
-    {
-        public int BombsRemaining;
-    }
-    
-
+    public static EventHandler PlayerGetsHit;
     //Firing bullets Logic;
     public static EventHandler PlayerFiresBullet;
     
@@ -84,123 +37,48 @@ public class Player : MonoBehaviour
     {
         Instance = this;
         moveState = MoveState.Normal;
-        slash.SetActive(false);
-        focusSlash.SetActive(false);
+        inventory = GetComponent<PlayerResourceInventory>();
     }
-
     private void Start()
     {
         GameControllerScript.AbilityActiveStatus += AbilityActiveStatus;
-        SlashScript.OnSlashingSomething += OnSlashingSomething;
-        GameControllerScript.OnPlayerDeath += OnPlayerDeath;
-        OnSendPlayerData?.Invoke(this, new  OnSendPlayerDataArgs{BombsRemaining = bombs});
- 
+        SlashScript.OnSlashingSomething +=OnSlashingSomething;
     }
-
-    private void OnPlayerDeath(object sender, EventArgs e)
-    {
-        GameControllerScript.OnPlayerDeath -= OnPlayerDeath;
-        Destroy(gameObject);
-    }
-
-    private void OnDestroy()
-    {
-        GameControllerScript.AbilityActiveStatus -= AbilityActiveStatus;
-        SlashScript.OnSlashingSomething -= OnSlashingSomething;
-        GameControllerScript.OnPlayerDeath -= OnPlayerDeath;
-    }
-
-    private void OnSlashingSomething(object sender, SlashScript.OnSlashingSomethingArgs e)
-    {
-        ModifyAbilityCooldown?.Invoke(this, new ModifyAbilityCooldownArgs{changeAmount = .03f});
-        
-    }
-
-    private void AbilityActiveStatus(object sender, EventArgs e)
-    {
-        _specialSlashActive = true;
-    }
-
     private void Update()
     {
         bombCooldown -= Time.deltaTime;
-        swingTime -= Time.deltaTime;
+        deathTimer -= Time.deltaTime;
 
-        if (inputEnabled)
+        if (deathTimer < 0f)
+        {
+            moveState = MoveState.Normal;
+        }
+
+        if (moveState != MoveState.Death) // not dead
         {
             HandleMovement();
-            HandleInteraction();  
-        } else if (lives > 0)
-        {
-            if (deathTimer < 0)
-            {
-                inputEnabled = true;
-            } else
-            {
-                deathTimer -= Time.deltaTime;
-            }
-        } else
+            HandleInteraction();
+
+        } else if (GameControllerScript.Instance.GetPlayerHP() < 0f) // dead check lives
         {
             Debug.Log("You Lost");
-           Time.timeScale = 0f; //When you lose pause game
+            Time.timeScale = 0f;
         }
-        
-        if (swingTime <= 0 && currentSwingTime <= 0 && inputEnabled)
-        {
-           HandleSwing();            
-        }
-        if(currentSwingTime > 0)
-        {
-            currentSwingTime -= Time.deltaTime;
-        } else
-        {
-            slash.SetActive(false);
-            focusSlash.SetActive(false);
-            specialSlash.SetActive(false);
-        }
-        // Debug.Log(bombCooldown);
-       // Debug.Log("Lives: " + lives + " , Bombs: " + bombs);
+
     }
 
     private void HandleInteraction()
     {
-        if(Keyboard.current.zKey.isPressed || Keyboard.current.periodKey.wasPressedThisFrame)
-        {
-            //Handle firing player bullets here
-            FireBullets();
-        }
-        if(Keyboard.current.cKey.isPressed || Keyboard.current.cKey.wasPressedThisFrame)
-        {
-            SpecialSlash();
-        }
         
         if(Keyboard.current.bKey.wasPressedThisFrame || Keyboard.current.slashKey.wasPressedThisFrame)
         {   
-            if (bombs > 0 && bombCooldown <= 0)
+            if (inventory.Bombs > 0 && bombCooldown <= 0)
             {
-                Instantiate(bombPrefab, transform.position, Quaternion.Euler(180f, 0f, 0f), transform);
+                Instantiate(bombPrefab, transform.position, Quaternion.Euler(0f, 0f, 0f));
                 bombCooldown = 6f;
-                bombs--;
-                OnSendPlayerData?.Invoke(this, new  OnSendPlayerDataArgs{BombsRemaining = bombs});
-                
-            } else
-            {
-                Debug.Log("No Bombs");
-            }
+                inventory.SubtractBomb();
+            } 
         }
-        // Test Keybinds
-
-        if (Keyboard.current.hKey.wasPressedThisFrame)
-        {
-            lives--;
-        }
-
-        if (Keyboard.current.vKey.wasPressedThisFrame)
-        {
-            Death();
-        }
-
-
     }
 
     private void FireBullets()
@@ -234,12 +112,9 @@ public class Player : MonoBehaviour
             endMoveVector.x *= .4f;
             endMoveVector.y *= .4f;
             moveState = MoveState.Focused;
-            
         } else
         {
             moveState = MoveState.Normal;
-            
-
         }
         transform.position += endMoveVector * speed * Time.deltaTime;
 
@@ -248,65 +123,29 @@ public class Player : MonoBehaviour
             // Shoot event for Quick Collect
         }
     }
-
-    private void HandleSwing()
-    {
-        if (Keyboard.current.spaceKey.isPressed)
-        {
-            switch (moveState)
-            {
-                default:
-            case MoveState.Normal:
-                slash.SetActive(true);
-                currentSwingTime = .5f;
-                break;
-            case MoveState.Focused:
-                focusSlash.SetActive(true);
-                currentSwingTime = .5f;
-                break;     
-            }
-            swingTime = swingTimeMax;
-        }
-    }
-
-    private void SpecialSlash()
-    {
-        if (!_specialSlashActive) return;
-        specialSlash.SetActive(true);
-        currentSwingTime = 1f;
-        _specialSlashActive = false;
-        ModifyAbilityCooldown?.Invoke(this, new ModifyAbilityCooldownArgs{changeAmount = 0f});
-    }
-
     public void Death()
     {
-        lives--;
-        Instantiate(bombPrefab, transform.position, Quaternion.Euler(90f, 0f, 0f));
+        deathTimer = 2f;
+        moveState = MoveState.Death;
+        Instantiate(bombPrefab, transform.position, Quaternion.Euler(0f, 0f, 0f));
         bombCooldown = 8f;
-        inputEnabled = false; //Changing from input false to hitbox disabled
-        deathTimer = 4f;
-        // Shoot Event
-        // Death Animation
+        transform.position = new Vector3(-3f, -4f, transform.position.z);
+        inventory.SubtractLife();
+        PlayerGetsHit?.Invoke(this, EventArgs.Empty);
     }
-    
-    
-
-
-
-
-
-
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnSlashingSomething(object sender, SlashScript.OnSlashingSomethingArgs e)
     {
-        if (collision.gameObject.GetComponent<Bullet>() != null)
-        {
-		    OnPlayerGetsHit?.Invoke(this, new OnPlayerGetsHitArgs{TargetHit =  collision.gameObject});
-        }
-        
-
-
+        ModifyAbilityCooldown?.Invoke(this, new ModifyAbilityCooldownArgs{changeAmount = .02f});
     }
 
+    private void AbilityActiveStatus(object sender, EventArgs e)
+    {
+        _specialSlashActive = true;
+    }
 
-
+    private void OnDestroy()
+    {
+        SlashScript.OnSlashingSomething -=OnSlashingSomething;
+        GameControllerScript.AbilityActiveStatus -= AbilityActiveStatus;
+    }
 }

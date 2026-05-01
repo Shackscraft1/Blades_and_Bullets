@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class PlayerShooter : MonoBehaviour
+public class Shooter : MonoBehaviour
 {
     [SerializeField]
     private float fireRate;
