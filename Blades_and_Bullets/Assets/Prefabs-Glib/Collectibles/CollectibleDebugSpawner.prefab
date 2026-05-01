@@ -1,0 +1,54 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7039239190519592555
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8658481923555784154}
+  - component: {fileID: 3551621083250905634}
+  m_Layer: 0
+  m_Name: CollectibleDebugSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8658481923555784154
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7039239190519592555}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3551621083250905634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7039239190519592555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2066276aadf8bf54ab1f7a2d22eef775, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game.Collectibles::Game.Collectibles.Tests.CollectibleDebugSpawner
+  collectibleSpawner: {fileID: 0}
+  pointsCollectible: {fileID: 11400000, guid: 074c3c1177d0e234ea30a38a62426542, type: 2}
+  powerCollectible: {fileID: 11400000, guid: c1ff022d1379e834da29def5debebece, type: 2}
+  bombCollectible: {fileID: 11400000, guid: c5c14474b5c7ed342a4e147d5d9ea716, type: 2}
+  lifeCollectible: {fileID: 11400000, guid: 825e555c71f90bc48a7c73f97dd05ccb, type: 2}
+  spawnOffset: {x: 0, y: 4}
+  randomHorizontalOffset: 1.5
+  logSpawns: 1

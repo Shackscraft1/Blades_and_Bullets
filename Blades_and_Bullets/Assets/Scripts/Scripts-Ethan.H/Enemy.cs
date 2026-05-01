@@ -1,5 +1,6 @@
 using System.IO;
 using UnityEngine;
+using Game.Collectibles.Spawning;
 
 public class WaveEnemy : MonoBehaviour
 {
@@ -34,14 +35,19 @@ public class WaveEnemy : MonoBehaviour
     [SerializeField]
     private int maxHP;
     private int currentHP;
-    [SerializeField]
-    private int pointDropCount;
-    [SerializeField]
-    private int powerDropCount;
-    [SerializeField]
-    private GameObject pointDropPrefab;
-    [SerializeField]
-    private GameObject powerDropPrefab;
+    //[SerializeField]
+    //private int pointDropCount;
+    //[SerializeField]
+    //private int powerDropCount;
+    //[SerializeField]
+    //private GameObject pointDropPrefab;
+    //[SerializeField]
+    //private GameObject powerDropPrefab;
+
+    // changed to:
+    [Header("Collectible Drops")]
+    [SerializeField] private EnemyCollectibleDropper collectibleDropper; // handles pooled point and power drops with rarity/count balancing
+
     private float phaseTimer;
 
     private Vector2 flyDirection;
@@ -94,29 +100,33 @@ public class WaveEnemy : MonoBehaviour
 
    private void Die()
     {
-        SpawnDrops();
-  
+        //SpawnDrops();
+        if (collectibleDropper != null)
+        {
+            collectibleDropper.Drop(); // spawns pooled point/power drops using the configured rarity settings
+        }
+
         Destroy(gameObject);
     }
 
-    private void SpawnDrops()
-    {
-        for (int i = 0; i < pointDropCount; i++)
-        {
-            if (pointDropPrefab != null)
-            {
-                Instantiate(pointDropPrefab, transform.position, Quaternion.identity);
-            }
-        }
+    //private void SpawnDrops()
+    //{
+    //    for (int i = 0; i < pointDropCount; i++)
+    //    {
+    //        if (pointDropPrefab != null)
+    //        {
+    //            Instantiate(pointDropPrefab, transform.position, Quaternion.identity);
+    //        }
+    //    }
 
-        for (int i = 0; i < powerDropCount; i++)
-        {
-            if (powerDropPrefab != null)
-            {
-                Instantiate(powerDropPrefab, transform.position, Quaternion.identity);
-            }
-        }
-    }
+    //    for (int i = 0; i < powerDropCount; i++)
+    //    {
+    //        if (powerDropPrefab != null)
+    //        {
+    //            Instantiate(powerDropPrefab, transform.position, Quaternion.identity);
+    //        }
+    //    }
+    //}
 
    private void Start()
     {
@@ -224,7 +234,10 @@ public class WaveEnemy : MonoBehaviour
     private void OnSlashingSomething(object sender, SlashScript.OnSlashingSomethingArgs e)
     {
 
-        if (e.TargetHit.Equals(gameObject)) Destroy(gameObject);
+        if (e.TargetHit.Equals(gameObject))
+        {
+            Die(); // uses the normal death path so drops happen when enemy killed
+        }
     }
 
     private void OnDestroy()
