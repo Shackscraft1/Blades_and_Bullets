@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7807473044805916783
 Transform:
   m_ObjectHideFlags: 0
@@ -74,7 +74,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c7053327775be11b8da8782b7ff668e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SlashScript
-  bulletType: 0
 --- !u!61 &1859684158074848211
 BoxCollider2D:
   m_ObjectHideFlags: 0

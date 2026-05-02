@@ -115,25 +115,6 @@ namespace Game.Collectibles.Player
             lives += amount;
             LogState($"added {amount} life/lives");
         }
-        public void SubtractBomb()
-        {
-            if (bombs <= 0)
-            {
-                return;
-            }
-            bombs--;
-            LogState("subtracted 1 bomb");
-        }
-
-        public void SubtractLife()
-        {
-            if (lives <= 0)
-            {
-                return;
-            }
-            lives--;
-            LogState("subtracted 1 life");
-        }
 
         private void LogState(string reason)
         {

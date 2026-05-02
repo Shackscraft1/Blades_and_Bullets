@@ -78,7 +78,7 @@ public class WaveController : MonoBehaviour
             {
                 enemy.Init(
                     entryPath,
-                    waveSO.speed,
+                    waveSO.entryDuration,
                     0f,
                     formation != null ? formation.center : null,
                     slotOffset,
@@ -92,7 +92,7 @@ public class WaveController : MonoBehaviour
 
                 enemy.Init(
                     entryPath,
-                    waveSO.speed,
+                    waveSO.entryDuration,
                     -i * waveSO.entryGap,
                     formation != null ? formation.center : null,
                     slotOffset,
@@ -163,7 +163,7 @@ public class WaveController : MonoBehaviour
         if (endBehavior == WaveEnemy.EndBehavior.Formation && formation != null)
         {
             yield return WaitForFormation(
-                waveSO.speed + waveSO.enemyCount * waveSO.entryGap + 1f
+                waveSO.entryDuration + waveSO.enemyCount * waveSO.entryGap + 1f
             );
 
             yield return MoveFormationTo(formationBasePosition + waveSO.leftOffset);
