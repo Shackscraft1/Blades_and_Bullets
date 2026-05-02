@@ -84,15 +84,15 @@ public class Bullet : MonoBehaviour
     {
         SlashScript.OnSlashingSomething +=OnSlashingSomething;
         WallScript.OnWallHit += OnWallHit;
-        Player.OnPlayerGetsHit += OnPlayerGetsHit;
+        // Player.PlayerGetsHit += OnPlayerGetsHit;
 
     }
     
 
-    private void OnPlayerGetsHit(object sender, Player.OnPlayerGetsHitArgs e)
-    {
-        if(e.TargetHit.Equals(gameObject)) Destroy(gameObject);
-    }
+    // private void OnPlayerGetsHit(object sender, Player.PlayerGetsHitArgs e)
+    // {
+    //     if(e.TargetHit.Equals(gameObject)) Destroy(gameObject);
+    // }
 
    
 
@@ -106,7 +106,7 @@ public class Bullet : MonoBehaviour
     {
         SlashScript.OnSlashingSomething -=OnSlashingSomething;
         WallScript.OnWallHit -= OnWallHit;
-        Player.OnPlayerGetsHit -= OnPlayerGetsHit;
+        // Player.PlayerGetsHit -= OnPlayerGetsHit;
     }
 
     private void OnSlashingSomething(object sender, SlashScript.OnSlashingSomethingArgs e)
