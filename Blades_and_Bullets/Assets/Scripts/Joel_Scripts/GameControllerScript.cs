@@ -35,14 +35,12 @@ public class GameControllerScript : MonoBehaviour
     }
     private HighScoreAchieved _highSoreState = HighScoreAchieved.NoHighScore;
 
-
     private void Awake()
     {
         Player.OnSendPlayerData += OnSendPlayerData;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    
     void Start()
     {
         Instance = this;
@@ -148,7 +146,8 @@ public class GameControllerScript : MonoBehaviour
         //go back to main menu scene
         LoadMainMenu();
     }
-
+    
+    
     private void UpdateBomb(int bombsRemaining)
     {
         int currentBombs = bombIconArea.childCount;
@@ -165,6 +164,11 @@ public class GameControllerScript : MonoBehaviour
                 Instantiate(bombPrefab, bombIconArea);
             }
         }
+    }
+
+    public float GetPlayerHP()
+    {
+        return _currentPlayerHp;
     }
 
 }
