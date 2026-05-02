@@ -15,7 +15,7 @@ ScriptedImporter:
     enableMipMap: 0
     fadeOut: 0
     borderMipMap: 0
-    mipMapsPreserveCoverage: 0
+    mipMapsPreserveCoverage: 1
     alphaTestReferenceValue: 0.5
     mipMapFadeDistanceStart: 1
     mipMapFadeDistanceEnd: 3
@@ -792,27 +792,6 @@ ScriptedImporter:
       width: 37
       height: 39
     spriteID: a35ec73b12620ea4e86e72a33b6be151
-    spriteBone: []
-    spriteOutline: []
-    vertices: []
-    spritePhysicsOutline: []
-    indices: 
-    edges: []
-    tessellationDetail: 0
-    uvTransform: {x: 0, y: 0}
-  - name: SpriteSheetEnemies1_115
-    originalName: 
-    pivot: {x: 0.5, y: 0.5}
-    alignment: 0
-    border: {x: 0, y: 0, z: 0, w: 0}
-    customData: 
-    rect:
-      serializedVersion: 2
-      x: 635
-      y: 287
-      width: 11
-      height: 8
-    spriteID: 248488bb65ba08644843c5e33e491e78
     spriteBone: []
     spriteOutline: []
     vertices: []
