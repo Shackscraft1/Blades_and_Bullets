@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameControllerScript : MonoBehaviour
@@ -34,12 +35,14 @@ public class GameControllerScript : MonoBehaviour
     }
     private HighScoreAchieved _highSoreState = HighScoreAchieved.NoHighScore;
 
+
     private void Awake()
     {
         Player.OnSendPlayerData += OnSendPlayerData;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    
     void Start()
     {
         Instance = this;
@@ -48,7 +51,7 @@ public class GameControllerScript : MonoBehaviour
         abilityBarImage.fillAmount = 0f;
         hpSlider.value = 1f;
         Player.ModifyAbilityCooldown +=ModifyAbilityCooldown;
-        Player.OnPlayerGetsHit += PlayerGetsHit;
+        // Player.OnPlayerGetsHit += PlayerGetsHit;
         SlashScript.OnSlashingSomething += OnSlashingSomething;
         SavedDataJSON.OnHighScoreDataGathered +=OnHighScoreDataGathered;
         
@@ -76,9 +79,10 @@ public class GameControllerScript : MonoBehaviour
     void OnDestroy()
     {
         Player.ModifyAbilityCooldown -=ModifyAbilityCooldown;
-        Player.OnPlayerGetsHit -= PlayerGetsHit;
+        // Player.OnPlayerGetsHit -= PlayerGetsHit;
         SlashScript.OnSlashingSomething -= OnSlashingSomething;
         SavedDataJSON.OnHighScoreDataGathered -=OnHighScoreDataGathered;
+        Player.OnSendPlayerData -= OnSendPlayerData;
     }
 
     private void PlayerGetsHit(object sender, EventArgs e)
@@ -148,6 +152,11 @@ public class GameControllerScript : MonoBehaviour
                 Instantiate(bombPrefab, bombIconArea);
             }
         }
+    }
+
+    public float GetPlayerHP()
+    {
+        return _currentPlayerHp;
     }
 
 }
