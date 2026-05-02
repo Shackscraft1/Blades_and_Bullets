@@ -117,7 +117,7 @@ public class Bullet : MonoBehaviour
      //  capsuleCollider.enabled = false;
       //  circleCollider.enabled = false;
 
-    }
+    
 
     public void SetPool(BulletPool bulletPool)
     {

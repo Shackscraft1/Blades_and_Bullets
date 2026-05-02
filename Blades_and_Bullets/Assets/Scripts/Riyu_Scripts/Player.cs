@@ -32,7 +32,6 @@ public class Player : MonoBehaviour
     private float currentSwingTime = 0f;
     private float deathTimer;
     private PlayerResourceInventory inventory;    
-    public static EventHandler<OnSendPlayerDataArgs> OnSendPlayerData;
     //Special slash variables
     public static EventHandler<ModifyAbilityCooldownArgs> ModifyAbilityCooldown;
     public class ModifyAbilityCooldownArgs : EventArgs
@@ -53,7 +52,7 @@ public class Player : MonoBehaviour
     }
     
 
-    //Firing bullets Logic;
+    //Firing bullets Logic;x    
     public static EventHandler PlayerFiresBullet;
     
 
@@ -69,7 +68,7 @@ public class Player : MonoBehaviour
         GameControllerScript.AbilityActiveStatus += AbilityActiveStatus;
         SlashScript.OnSlashingSomething += OnSlashingSomething;
         GameControllerScript.OnPlayerDeath += OnPlayerDeath;
-        OnSendPlayerData?.Invoke(this, new  OnSendPlayerDataArgs{BombsRemaining = bombs});
+        //OnSendPlayerData?.Invoke(this, new  OnSendPlayerDataArgs{BombsRemaining = bombs});
  
     }
 
@@ -79,12 +78,7 @@ public class Player : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void OnDestroy()
-    {
-        GameControllerScript.AbilityActiveStatus -= AbilityActiveStatus;
-        SlashScript.OnSlashingSomething -= OnSlashingSomething;
-        GameControllerScript.OnPlayerDeath -= OnPlayerDeath;
-    }
+  
 
     private void OnSlashingSomething(object sender, SlashScript.OnSlashingSomethingArgs e)
     {
@@ -124,7 +118,7 @@ public class Player : MonoBehaviour
     {
         if(Keyboard.current.zKey.wasPressedThisFrame || Keyboard.current.periodKey.wasPressedThisFrame)
         {
-            SpecialSlash();
+            //SpecialSlash();
         }
         
         if(Keyboard.current.bKey.wasPressedThisFrame || Keyboard.current.slashKey.wasPressedThisFrame)
@@ -132,7 +126,7 @@ public class Player : MonoBehaviour
             if (inventory.Bombs > 0 && bombCooldown <= 0)
             {
                 OnSendPlayerData?.Invoke(this, new OnSendPlayerDataArgs{
-                        BombsRemaining = inventory.Bombs
+                       // BombsRemaining = inventory.Bombs
                 }); 
                 Instantiate(bombPrefab, transform.position, Quaternion.Euler(0f, 0f, 0f));
                 bombCooldown = 6f;
@@ -172,11 +166,11 @@ public class Player : MonoBehaviour
             endMoveVector.x *= .4f;
             endMoveVector.y *= .4f;
             moveState = MoveState.Focused;
-            hitboxMesh.enabled = true;
+            //hitboxMesh.enabled = true;
         } else
         {
             moveState = MoveState.Normal;
-            hitboxMesh.enabled = false;
+            //hitboxMesh.enabled = false;
 
         }
         transform.position += endMoveVector * speed * Time.deltaTime;
@@ -194,27 +188,16 @@ public class Player : MonoBehaviour
         transform.position = new Vector3(-3f, -4f, transform.position.z);
         bombCooldown = 8f;
         inventory.SubtractLife();
-        PlayerGetsHit?.Invoke(this, EventArgs.Empty);
+        //PlayerGetsHit?.Invoke(this, EventArgs.Empty);
     }
-    private void OnSlashingSomething(object sender, SlashScript.OnSlashingSomethingArgs e)
-    {
-        ModifyAbilityCooldown?.Invoke(this, new ModifyAbilityCooldownArgs{changeAmount = .02f});
-    }
-
-    private void AbilityActiveStatus(object sender, EventArgs e)
-    {
-        _specialSlashActive = true;
-    }
-    
+ 
     
 
     private void OnDestroy()
     {
-        SlashScript.OnSlashingSomething -=OnSlashingSomething;
         GameControllerScript.AbilityActiveStatus -= AbilityActiveStatus;
+        SlashScript.OnSlashingSomething -= OnSlashingSomething;
+        GameControllerScript.OnPlayerDeath -= OnPlayerDeath;
     }
-    public class OnSendPlayerDataArgs : EventArgs
-    {
-        public int BombsRemaining;
-    }
+
 }

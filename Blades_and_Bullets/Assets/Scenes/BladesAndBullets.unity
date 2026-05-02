@@ -623,7 +623,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30.25
+  m_fontSize: 32.75
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1338,7 +1338,6 @@ RectTransform:
   m_Children:
   - {fileID: 313262758}
   - {fileID: 1777348336}
-  - {fileID: 313262758}
   m_Father: {fileID: 1823738263}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
@@ -1775,7 +1774,7 @@ PrefabInstance:
     - target: {fileID: 8748155870681407775, guid: 28e92fb28f56d3046896fa18cb41c03c, type: 3}
       propertyPath: slash
       value: 
-      objectReference: {fileID: 832875582}
+      objectReference: {fileID: 0}
     - target: {fileID: 8748155870681407775, guid: 28e92fb28f56d3046896fa18cb41c03c, type: 3}
       propertyPath: hitbox
       value: 
@@ -1791,11 +1790,11 @@ PrefabInstance:
     - target: {fileID: 8748155870681407775, guid: 28e92fb28f56d3046896fa18cb41c03c, type: 3}
       propertyPath: focusSlash
       value: 
-      objectReference: {fileID: 832875581}
+      objectReference: {fileID: 0}
     - target: {fileID: 8748155870681407775, guid: 28e92fb28f56d3046896fa18cb41c03c, type: 3}
       propertyPath: specialSlash
       value: 
-      objectReference: {fileID: 832875580}
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6383524398608957223, guid: 28e92fb28f56d3046896fa18cb41c03c, type: 3}
     - {fileID: 1073274854235147240, guid: 28e92fb28f56d3046896fa18cb41c03c, type: 3}
@@ -1812,21 +1811,6 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1653302541}
   m_SourcePrefab: {fileID: 100100000, guid: 28e92fb28f56d3046896fa18cb41c03c, type: 3}
---- !u!1 &832875580 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8451410317253282681, guid: 28e92fb28f56d3046896fa18cb41c03c, type: 3}
-  m_PrefabInstance: {fileID: 832875579}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &832875581 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3006204680969650694, guid: 28e92fb28f56d3046896fa18cb41c03c, type: 3}
-  m_PrefabInstance: {fileID: 832875579}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &832875582 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5678234792540335655, guid: 28e92fb28f56d3046896fa18cb41c03c, type: 3}
-  m_PrefabInstance: {fileID: 832875579}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &906773460
 GameObject:
   m_ObjectHideFlags: 0
