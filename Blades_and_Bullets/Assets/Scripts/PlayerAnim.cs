@@ -35,6 +35,14 @@ public class PlayerAnim : MonoBehaviour
 
         if (Keyboard.current.spaceKey.isPressed && Keyboard.current.shiftKey.isPressed)
         {
+            animator.SetBool(IS_UNFOCUSED1, true);
+        }
+        else
+        {
+            animator.SetBool(IS_UNFOCUSED1, false);
+        }
+        if (Keyboard.current.xKey.isPressed)
+        {
             animator.SetBool(IS_FOCUSED, true);
         }
         else

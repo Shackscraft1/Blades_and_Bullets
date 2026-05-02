@@ -103,7 +103,6 @@ public class GameControllerScript : MonoBehaviour
             _highSoreState =  HighScoreAchieved.NewHighScore;
         }
     }
-    
 
     private void ModifyAbilityCooldown(object sender, Player.ModifyAbilityCooldownArgs e)
     {

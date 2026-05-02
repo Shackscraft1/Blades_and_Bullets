@@ -6,6 +6,9 @@ using Game.Collectibles.Player;
 
 public class Player : MonoBehaviour
 {
+    // Event for Top Collection
+    // Event for Power Ups
+    // Lives, Bombs, Special with cooldown
     public static Player Instance{get; private set;}
     public enum MoveState
     {
@@ -15,8 +18,18 @@ public class Player : MonoBehaviour
     }
     public MoveState moveState;
     [SerializeField] private float speed;
+    [SerializeField] private GameObject hitbox;
+    [SerializeField] private GameObject slash;
+    [SerializeField] private GameObject focusSlash;
+    [SerializeField] private GameObject specialSlash;
     [SerializeField] private GameObject bombPrefab;
+
+
+    // [SerializeField] private GameObject bulletPrefab;
+    private float swingTime = 0f;
+    private float swingTimeMax = 1f;
     private float bombCooldown;
+    private float currentSwingTime = 0f;
     private float deathTimer;
     private PlayerResourceInventory inventory;    
     public static EventHandler<OnSendPlayerDataArgs> OnSendPlayerData;
@@ -28,7 +41,18 @@ public class Player : MonoBehaviour
     }
     private bool _specialSlashActive;
     //Player gets hit logic
-    public static EventHandler PlayerGetsHit;
+    public static EventHandler<OnPlayerGetsHitArgs> OnPlayerGetsHit;
+    public class OnPlayerGetsHitArgs : EventArgs
+    {
+        public GameObject TargetHit;
+    }
+    public static EventHandler<OnSendPlayerDataArgs> OnSendPlayerData;
+    public class OnSendPlayerDataArgs : EventArgs
+    {
+        public int BombsRemaining;
+    }
+    
+
     //Firing bullets Logic;
     public static EventHandler PlayerFiresBullet;
     
@@ -39,11 +63,40 @@ public class Player : MonoBehaviour
         moveState = MoveState.Normal;
         inventory = GetComponent<PlayerResourceInventory>();
     }
+
     private void Start()
     {
         GameControllerScript.AbilityActiveStatus += AbilityActiveStatus;
-        SlashScript.OnSlashingSomething +=OnSlashingSomething;
+        SlashScript.OnSlashingSomething += OnSlashingSomething;
+        GameControllerScript.OnPlayerDeath += OnPlayerDeath;
+        OnSendPlayerData?.Invoke(this, new  OnSendPlayerDataArgs{BombsRemaining = bombs});
+ 
     }
+
+    private void OnPlayerDeath(object sender, EventArgs e)
+    {
+        GameControllerScript.OnPlayerDeath -= OnPlayerDeath;
+        Destroy(gameObject);
+    }
+
+    private void OnDestroy()
+    {
+        GameControllerScript.AbilityActiveStatus -= AbilityActiveStatus;
+        SlashScript.OnSlashingSomething -= OnSlashingSomething;
+        GameControllerScript.OnPlayerDeath -= OnPlayerDeath;
+    }
+
+    private void OnSlashingSomething(object sender, SlashScript.OnSlashingSomethingArgs e)
+    {
+        ModifyAbilityCooldown?.Invoke(this, new ModifyAbilityCooldownArgs{changeAmount = .03f});
+        
+    }
+
+    private void AbilityActiveStatus(object sender, EventArgs e)
+    {
+        _specialSlashActive = true;
+    }
+
     private void Update()
     {
         bombCooldown -= Time.deltaTime;
@@ -69,6 +122,10 @@ public class Player : MonoBehaviour
 
     private void HandleInteraction()
     {
+        if(Keyboard.current.zKey.wasPressedThisFrame || Keyboard.current.periodKey.wasPressedThisFrame)
+        {
+            SpecialSlash();
+        }
         
         if(Keyboard.current.bKey.wasPressedThisFrame || Keyboard.current.slashKey.wasPressedThisFrame)
         {   
@@ -115,9 +172,12 @@ public class Player : MonoBehaviour
             endMoveVector.x *= .4f;
             endMoveVector.y *= .4f;
             moveState = MoveState.Focused;
+            hitboxMesh.enabled = true;
         } else
         {
             moveState = MoveState.Normal;
+            hitboxMesh.enabled = false;
+
         }
         transform.position += endMoveVector * speed * Time.deltaTime;
         transform.position = new Vector3(Mathf.Clamp(transform.position.x, -8.75f, 2.75f), Mathf.Clamp(transform.position.y, -4.8f, 4.8f), .8f);
@@ -145,6 +205,8 @@ public class Player : MonoBehaviour
     {
         _specialSlashActive = true;
     }
+    
+    
 
     private void OnDestroy()
     {
