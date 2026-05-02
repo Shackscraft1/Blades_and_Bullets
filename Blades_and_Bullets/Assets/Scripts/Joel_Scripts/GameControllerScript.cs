@@ -35,12 +35,14 @@ public class GameControllerScript : MonoBehaviour
     }
     private HighScoreAchieved _highSoreState = HighScoreAchieved.NoHighScore;
 
+
     private void Awake()
     {
         Player.OnSendPlayerData += OnSendPlayerData;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    
     void Start()
     {
         Instance = this;
@@ -49,7 +51,7 @@ public class GameControllerScript : MonoBehaviour
         abilityBarImage.fillAmount = 0f;
         hpSlider.value = 1f;
         Player.ModifyAbilityCooldown +=ModifyAbilityCooldown;
-        Player.OnPlayerGetsHit += PlayerGetsHit;
+        // Player.OnPlayerGetsHit += PlayerGetsHit;
         SlashScript.OnSlashingSomething += OnSlashingSomething;
         SavedDataJSON.OnHighScoreDataGathered +=OnHighScoreDataGathered;
         
@@ -77,7 +79,7 @@ public class GameControllerScript : MonoBehaviour
     void OnDestroy()
     {
         Player.ModifyAbilityCooldown -=ModifyAbilityCooldown;
-        Player.OnPlayerGetsHit -= PlayerGetsHit;
+        // Player.OnPlayerGetsHit -= PlayerGetsHit;
         SlashScript.OnSlashingSomething -= OnSlashingSomething;
         SavedDataJSON.OnHighScoreDataGathered -=OnHighScoreDataGathered;
         Player.OnSendPlayerData -= OnSendPlayerData;
