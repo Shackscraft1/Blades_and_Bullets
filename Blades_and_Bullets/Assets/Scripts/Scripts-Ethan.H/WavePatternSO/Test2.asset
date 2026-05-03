@@ -24,7 +24,7 @@ MonoBehaviour:
   middleOffset: {x: 0, y: 0, z: 0}
   leftOffset: {x: -2, y: 0, z: 0}
   rightOffset: {x: 2, y: 0, z: 0}
-  formationTravelSpeed: 1
+  formationTravelSpeed: 0
   waitAtLeft: 0.5
   waitAtRight: 0.5
   waitAtMiddle: 0.5
