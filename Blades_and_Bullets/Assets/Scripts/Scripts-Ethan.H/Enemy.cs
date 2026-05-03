@@ -84,7 +84,8 @@ public class WaveEnemy : MonoBehaviour
             if (t < 0f)
                 t = 0f;
 
-            transform.position = entryPath.GetPoint(t) + slotOffset + new Vector3(-10,0,0);
+            transform.position = entryPath.GetPointByDistance(t) + new Vector3(-70,0,0);
+
         }
     }
 
@@ -166,7 +167,7 @@ public class WaveEnemy : MonoBehaviour
             return;
 
         t = Mathf.Clamp01(t);
-        transform.position = entryPath.GetPoint(t) + slotOffset;
+        transform.position = entryPath.GetPointByDistance(t) + slotOffset;
 
         if (t >= 1f)
         {
