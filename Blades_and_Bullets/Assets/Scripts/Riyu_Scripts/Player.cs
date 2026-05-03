@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
     {
         public GameObject TargetHit;
     }
-    public static EventHandler<OnSendPlayerDataArgs> OnSendPlayerData;
+    // public static EventHandler<OnSendPlayerDataArgs> OnSendPlayerData;
     public class OnSendPlayerDataArgs : EventArgs
     {
         public int BombsRemaining;
