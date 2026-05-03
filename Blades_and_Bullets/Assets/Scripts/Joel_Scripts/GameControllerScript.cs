@@ -103,7 +103,6 @@ public class GameControllerScript : MonoBehaviour
             _highSoreState =  HighScoreAchieved.NewHighScore;
         }
     }
-    
 
     private void ModifyAbilityCooldown(object sender, Player.ModifyAbilityCooldownArgs e)
     {
@@ -148,7 +147,8 @@ public class GameControllerScript : MonoBehaviour
         //go back to main menu scene
         LoadMainMenu();
     }
-
+    
+    
     private void UpdateBomb(int bombsRemaining)
     {
         int currentBombs = bombIconArea.childCount;

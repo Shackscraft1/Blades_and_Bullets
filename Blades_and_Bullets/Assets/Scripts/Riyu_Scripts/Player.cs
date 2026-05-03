@@ -28,8 +28,19 @@ public class Player : MonoBehaviour
     }
     private bool _specialSlashActive;
     //Player gets hit logic
-    public static EventHandler PlayerGetsHit;
-    //Firing bullets Logic;
+    public static EventHandler<OnPlayerGetsHitArgs> OnPlayerGetsHit;
+    public class OnPlayerGetsHitArgs : EventArgs
+    {
+        public GameObject TargetHit;
+    }
+    public static EventHandler<OnSendPlayerDataArgs> OnSendPlayerData;
+    public class OnSendPlayerDataArgs : EventArgs
+    {
+        public int BombsRemaining;
+    }
+    
+
+    //Firing bullets Logic;x    
     public static EventHandler PlayerFiresBullet;
     
 
@@ -42,8 +53,31 @@ public class Player : MonoBehaviour
     private void Start()
     {
         GameControllerScript.AbilityActiveStatus += AbilityActiveStatus;
-        SlashScript.OnSlashingSomething +=OnSlashingSomething;
+        SlashScript.OnSlashingSomething += OnSlashingSomething;
+        GameControllerScript.OnPlayerDeath += OnPlayerDeath;
+        //OnSendPlayerData?.Invoke(this, new  OnSendPlayerDataArgs{BombsRemaining = bombs});
+ 
     }
+
+    private void OnPlayerDeath(object sender, EventArgs e)
+    {
+        GameControllerScript.OnPlayerDeath -= OnPlayerDeath;
+        Destroy(gameObject);
+    }
+
+  
+
+    private void OnSlashingSomething(object sender, SlashScript.OnSlashingSomethingArgs e)
+    {
+        ModifyAbilityCooldown?.Invoke(this, new ModifyAbilityCooldownArgs{changeAmount = .03f});
+        
+    }
+
+    private void AbilityActiveStatus(object sender, EventArgs e)
+    {
+        _specialSlashActive = true;
+    }
+
     private void Update()
     {
         bombCooldown -= Time.deltaTime;
@@ -69,13 +103,17 @@ public class Player : MonoBehaviour
 
     private void HandleInteraction()
     {
+        if(Keyboard.current.zKey.wasPressedThisFrame || Keyboard.current.periodKey.wasPressedThisFrame)
+        {
+            //SpecialSlash();
+        }
         
         if(Keyboard.current.bKey.wasPressedThisFrame || Keyboard.current.slashKey.wasPressedThisFrame)
         {   
             if (inventory.Bombs > 0 && bombCooldown <= 0)
             {
                 OnSendPlayerData?.Invoke(this, new OnSendPlayerDataArgs{
-                        BombsRemaining = inventory.Bombs
+                       // BombsRemaining = inventory.Bombs
                 }); 
                 Instantiate(bombPrefab, transform.position, Quaternion.Euler(0f, 0f, 0f));
                 bombCooldown = 6f;
@@ -115,9 +153,12 @@ public class Player : MonoBehaviour
             endMoveVector.x *= .4f;
             endMoveVector.y *= .4f;
             moveState = MoveState.Focused;
+            //hitboxMesh.enabled = true;
         } else
         {
             moveState = MoveState.Normal;
+            //hitboxMesh.enabled = false;
+
         }
         transform.position += endMoveVector * speed * Time.deltaTime;
         transform.position = new Vector3(Mathf.Clamp(transform.position.x, -8.75f, 2.75f), Mathf.Clamp(transform.position.y, -4.8f, 4.8f), .8f);
@@ -134,25 +175,16 @@ public class Player : MonoBehaviour
         transform.position = new Vector3(-3f, -4f, transform.position.z);
         bombCooldown = 8f;
         inventory.SubtractLife();
-        PlayerGetsHit?.Invoke(this, EventArgs.Empty);
+        //PlayerGetsHit?.Invoke(this, EventArgs.Empty);
     }
-    private void OnSlashingSomething(object sender, SlashScript.OnSlashingSomethingArgs e)
-    {
-        ModifyAbilityCooldown?.Invoke(this, new ModifyAbilityCooldownArgs{changeAmount = .02f});
-    }
-
-    private void AbilityActiveStatus(object sender, EventArgs e)
-    {
-        _specialSlashActive = true;
-    }
+ 
+    
 
     private void OnDestroy()
     {
-        SlashScript.OnSlashingSomething -=OnSlashingSomething;
         GameControllerScript.AbilityActiveStatus -= AbilityActiveStatus;
+        SlashScript.OnSlashingSomething -= OnSlashingSomething;
+        GameControllerScript.OnPlayerDeath -= OnPlayerDeath;
     }
-    public class OnSendPlayerDataArgs : EventArgs
-    {
-        public int BombsRemaining;
-    }
+
 }
