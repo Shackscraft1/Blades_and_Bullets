@@ -30,20 +30,14 @@ public class Player : MonoBehaviour
     public static EventHandler PlayerFiresBullet;
 
     //Player gets hit logic
-    // public static EventHandler<OnPlayerGetsHitArgs> OnPlayerGetsHit;
-    // public class OnPlayerGetsHitArgs : EventArgs
-    // {
-    //     public GameObject TargetHit;
-    // }
+     public static EventHandler<OnPlayerGetsHitArgs> OnPlayerGetsHit;
+     public class OnPlayerGetsHitArgs : EventArgs
+     {
+         public GameObject TargetHit;
+     }
 
     // UI events
-    public static EventHandler<OnSendPlayerDataArgs> OnSendPlayerData;
-    public class OnSendPlayerDataArgs : EventArgs
-    {
-        public int BombsRemaining;
-        public int LivesRemaining;
-
-    }
+  
     //Special slash variables
     public static EventHandler<ModifyAbilityCooldownArgs> ModifyAbilityCooldown;
     public class ModifyAbilityCooldownArgs : EventArgs
@@ -62,7 +56,6 @@ public class Player : MonoBehaviour
         GameControllerScript.AbilityActiveStatus += AbilityActiveStatus;
         SlashScript.OnSlashingSomething += OnSlashingSomething;
         GameControllerScript.OnPlayerDeath += OnPlayerDeath;
-        OnSendPlayerData?.Invoke(this, new  OnSendPlayerDataArgs{BombsRemaining = inventory.Bombs, LivesRemaining = inventory.Lives});
  
     }
 
@@ -118,10 +111,6 @@ public class Player : MonoBehaviour
                 Instantiate(bombPrefab, transform.position, Quaternion.Euler(0f, 0f, 0f));
                 bombCooldown = 6f;
                 inventory.SubtractBomb();
-                OnSendPlayerData?.Invoke(this, new OnSendPlayerDataArgs{
-                    BombsRemaining = inventory.Bombs,
-                    LivesRemaining = inventory.Lives
-                }); 
             } 
         }
     }
@@ -176,11 +165,7 @@ public class Player : MonoBehaviour
         transform.position = new Vector3(-3f, -4f, transform.position.z);
         bombCooldown = 8f;
         inventory.SubtractLife();
-        OnSendPlayerData?.Invoke(this, new OnSendPlayerDataArgs{
-            BombsRemaining = inventory.Bombs,
-            LivesRemaining = inventory.Lives
-        }); 
-        //PlayerGetsHit?.Invoke(this, EventArgs.Empty);
+        OnPlayerGetsHit?.Invoke(this, new OnPlayerGetsHitArgs());
     }
  
     

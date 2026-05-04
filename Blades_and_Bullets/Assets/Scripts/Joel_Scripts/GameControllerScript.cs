@@ -45,6 +45,7 @@ public class GameControllerScript : MonoBehaviour
     private void OnSendPlayerData(object sender, PlayerResourceInventory.OnSendPlayerDataArgs e)
     {
         UpdateBomb(e.BombsRemaining);
+        
     }
 
 
@@ -57,19 +58,13 @@ public class GameControllerScript : MonoBehaviour
         abilityBarImage.fillMethod = Image.FillMethod.Vertical;
         abilityBarImage.fillAmount = 0f;
         Player.ModifyAbilityCooldown +=ModifyAbilityCooldown;
-        // Player.OnPlayerGetsHit += PlayerGetsHit;
+        Player.OnPlayerGetsHit += PlayerGetsHit;
         SlashScript.OnSlashingSomething += OnSlashingSomething;
         SavedDataJSON.OnHighScoreDataGathered +=OnHighScoreDataGathered;
         
 
     }
-
-    private void OnSendPlayerData(object sender, Player.OnSendPlayerDataArgs e)
-    {
-        //here you can add more data that you want to send to the UI without having to reference the player through variables
-        UpdateBomb(e.BombsRemaining);
-        UpdateLives(e.LivesRemaining);
-    }
+    
 
     private void OnHighScoreDataGathered(object sender, SavedDataJSON.OnHighScoreDataGatheredArgs e)
     {
@@ -86,19 +81,18 @@ public class GameControllerScript : MonoBehaviour
     void OnDestroy()
     {
         Player.ModifyAbilityCooldown -=ModifyAbilityCooldown;
-        // Player.OnPlayerGetsHit -= PlayerGetsHit;
+        Player.OnPlayerGetsHit -= PlayerGetsHit;
         SlashScript.OnSlashingSomething -= OnSlashingSomething;
         SavedDataJSON.OnHighScoreDataGathered -=OnHighScoreDataGathered;
         PlayerResourceInventory.OnSendPlayerData -=OnSendPlayerData;
     }
 
-    // private void PlayerGetsHit(object sender, EventArgs e)
-    // {
-    //     _currentPlayerHp -= .05f;
-    //     hpSlider.value = _currentPlayerHp;
-    //     if (_currentPlayerHp <= 0f) HpDropsToZero();
-        
-    // }
+    private void PlayerGetsHit(object sender, EventArgs e)
+    {
+        _currentPlayerHp -= .15f;
+        hpSlider.value = _currentPlayerHp;
+    if (_currentPlayerHp <= 0f) HpDropsToZero();
+    }
 
     private void ScoreChange(int scoreChange)
     {
