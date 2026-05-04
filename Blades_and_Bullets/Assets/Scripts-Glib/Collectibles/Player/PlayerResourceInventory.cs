@@ -159,8 +159,7 @@ namespace Game.Collectibles.Player
             {
                 return;
             }
-
-            Debug.Log($"[{nameof(PlayerResourceInventory)}] {reason} | Score={score}, Power={power}, Bombs={bombs}, Lives={lives}", this);
+            
             OnSendPlayerData?.Invoke(this, new  OnSendPlayerDataArgs{BombsRemaining = bombs, LivesRemaining = lives});
         }
 
