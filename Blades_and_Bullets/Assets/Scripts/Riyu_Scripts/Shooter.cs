@@ -7,6 +7,7 @@ public class Shooting : MonoBehaviour
     [SerializeField] private GameObject slash;
     [SerializeField] private GameObject focusSlash;
     [SerializeField] private GameObject specialSlash;
+    [SerializeField] private float power = 1;
     private float shootTime = .3f;
     private float shootTimeMax = .1f;
     private bool specialSlashAnimation = false;
@@ -15,10 +16,12 @@ public class Shooting : MonoBehaviour
     private float specialSlashCD;
     private GameObject slashInstance;
     private PlayerResourceInventory inventory;  
-    [SerializeField] private float power = 1;
+    
+    private float damage = 2;
+
     void Start()
     {
-
+        inventory = Player.Instance.GetComponent<PlayerResourceInventory>();
     }
     
     void Update()
@@ -45,8 +48,9 @@ public class Shooting : MonoBehaviour
                 HandleShoot();
             }
         }
-        // power = Mathf.Clamp(inventory.power, 2f, 100f);
-        
+        power = Mathf.Clamp(inventory.Power, 2f, 100f);
+        damage = Mathf.Lerp(2f, 20f, Mathf.InverseLerp(2f, 100f, inventory.Power));
+
 
     }
     private void SpecialSlash()
@@ -66,9 +70,11 @@ public class Shooting : MonoBehaviour
                 default:
             case Player.MoveState.Normal:
                 slashInstance = Instantiate(slash, transform.position, transform.rotation);
+                slashInstance.GetComponent<SlashScript>().SetDamage(damage * 1f);
                 break;
             case Player.MoveState.Focused:
                 slashInstance = Instantiate(focusSlash, transform.position, transform.rotation);
+                slashInstance.GetComponent<SlashScript>().SetDamage(damage * 1.3f);
                 break;     
             }
             slashInstance.transform.localScale *= Mathf.Lerp(0.35f, 1f, Mathf.InverseLerp(2f, 100f, power));

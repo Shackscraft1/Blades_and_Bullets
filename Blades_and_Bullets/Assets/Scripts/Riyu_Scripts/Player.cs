@@ -56,7 +56,6 @@ public class Player : MonoBehaviour
         GameControllerScript.AbilityActiveStatus += AbilityActiveStatus;
         SlashScript.OnSlashingSomething += OnSlashingSomething;
         GameControllerScript.OnPlayerDeath += OnPlayerDeath;
- 
     }
 
     private void OnPlayerDeath(object sender, EventArgs e)

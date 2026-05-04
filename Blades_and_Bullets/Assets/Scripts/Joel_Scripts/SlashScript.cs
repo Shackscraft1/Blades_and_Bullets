@@ -5,10 +5,13 @@ public class SlashScript : MonoBehaviour
 {
     public static EventHandler<OnSlashingSomethingArgs> OnSlashingSomething;
 
+    private float damage;
+
     private enum BulletType
     {
         Normal,
-        Special
+        Special,
+        Bomb
     }
     [SerializeField] private BulletType bulletType;
     public class OnSlashingSomethingArgs : EventArgs
@@ -33,26 +36,58 @@ public class SlashScript : MonoBehaviour
  
     private void OnTriggerEnter2D(Collider2D other)
     {
+        
         Bullet bullet = other.GetComponentInParent<Bullet>();
-        Enemy enemy = other.GetComponent<Enemy>();
-        Component target = null;
+        WaveEnemy enemy = other.GetComponent<WaveEnemy>();
         switch (bulletType)
         {
             case BulletType.Normal:
-                target = enemy;
+                if (enemy != null)
+                {   
+                    enemy.TakeDamage((int)damage);
+                    OnSlashingSomething?.Invoke(this, new OnSlashingSomethingArgs
+                    {
+                        TargetHit = enemy.gameObject
+                    });
+                    Destroy(this.gameObject);
+                }
+                
                 break;
 
             case BulletType.Special:
-                target = bullet != null ? bullet : enemy;
+                if (enemy != null)
+                {
+                    enemy.TakeDamage((int)damage * 4);
+                    OnSlashingSomething?.Invoke(this, new OnSlashingSomethingArgs
+                    {
+                        TargetHit = enemy.gameObject
+                    });
+
+                } else if (bullet != null)
+                {
+                    bullet.DespawnBullet();
+                    OnSlashingSomething?.Invoke(this, new OnSlashingSomethingArgs
+                    {
+                        TargetHit = bullet.gameObject
+                    });
+
+                }
+                break;
+            case BulletType.Bomb:
+                if (enemy != null)
+                {
+                    enemy.TakeDamage(1000);
+                }else if (bullet != null)
+                {
+                    bullet.DespawnBullet();
+                }
                 break;
         }
-        if (target != null)
-        {
-            OnSlashingSomething?.Invoke(this, new OnSlashingSomethingArgs
-            {
-                TargetHit = target.gameObject
-            });
-        }
-  
+
+    }
+
+    public void SetDamage(float num)
+    {
+        damage = num;
     }
 }

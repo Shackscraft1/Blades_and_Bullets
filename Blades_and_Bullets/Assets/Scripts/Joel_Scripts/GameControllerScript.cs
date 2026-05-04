@@ -64,7 +64,7 @@ public class GameControllerScript : MonoBehaviour
         
 
     }
-    
+
 
     private void OnHighScoreDataGathered(object sender, SavedDataJSON.OnHighScoreDataGatheredArgs e)
     {
