@@ -125,7 +125,6 @@ public class WaveEnemy : MonoBehaviour
    private void Start()
     {
         SlashScript.OnSlashingSomething += OnSlashingSomething;
-        Debug.Log(currentHP);
        
     }
 
