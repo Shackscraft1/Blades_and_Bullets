@@ -30,13 +30,12 @@ public class SavedDataJSON : MonoBehaviour
 
     private void OnNewHighScoreChange(object sender, GameControllerScript.OnHighScoreDataGatheredArgs e)
     {
-        Debug.Log(e.newHighScore);
         data.currentHighScore = e.newHighScore;
         
         SaveHighScore(data);
     }
 
-    private void onDestroy()
+    private void OnDestroy()
     {   
         GameControllerScript.OnNewHighScoreChange -= OnNewHighScoreChange;
     }
