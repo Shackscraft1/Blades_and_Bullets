@@ -6,9 +6,6 @@ using Game.Collectibles.Player;
 
 public class Player : MonoBehaviour
 {
-    // Event for Top Collection
-    // Event for Power Ups
-    // Lives, Bombs, Special with cooldown
     public static Player Instance{get; private set;}
     public enum MoveState
     {
@@ -18,20 +15,11 @@ public class Player : MonoBehaviour
     }
     public MoveState moveState;
     [SerializeField] private float speed;
-    [SerializeField] private GameObject hitbox;
-    [SerializeField] private GameObject slash;
-    [SerializeField] private GameObject focusSlash;
-    [SerializeField] private GameObject specialSlash;
     [SerializeField] private GameObject bombPrefab;
-
-
-    // [SerializeField] private GameObject bulletPrefab;
-    private float swingTime = 0f;
-    private float swingTimeMax = 1f;
     private float bombCooldown;
-    private float currentSwingTime = 0f;
     private float deathTimer;
     private PlayerResourceInventory inventory;    
+    public static EventHandler<OnSendPlayerDataArgs> OnSendPlayerData;
     //Special slash variables
     public static EventHandler<ModifyAbilityCooldownArgs> ModifyAbilityCooldown;
     public class ModifyAbilityCooldownArgs : EventArgs
@@ -45,7 +33,7 @@ public class Player : MonoBehaviour
     {
         public GameObject TargetHit;
     }
-    public static EventHandler<OnSendPlayerDataArgs> OnSendPlayerData;
+    // public static EventHandler<OnSendPlayerDataArgs> OnSendPlayerData;
     public class OnSendPlayerDataArgs : EventArgs
     {
         public int BombsRemaining;
@@ -62,7 +50,6 @@ public class Player : MonoBehaviour
         moveState = MoveState.Normal;
         inventory = GetComponent<PlayerResourceInventory>();
     }
-
     private void Start()
     {
         GameControllerScript.AbilityActiveStatus += AbilityActiveStatus;
