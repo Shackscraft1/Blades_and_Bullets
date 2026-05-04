@@ -30,11 +30,11 @@ public class Player : MonoBehaviour
     public static EventHandler PlayerFiresBullet;
 
     //Player gets hit logic
-     public static EventHandler<OnPlayerGetsHitArgs> OnPlayerGetsHit;
-     public class OnPlayerGetsHitArgs : EventArgs
-     {
-         public GameObject TargetHit;
-     }
+    //  public static EventHandler<OnPlayerGetsHitArgs> OnPlayerGetsHit;
+    //  public class OnPlayerGetsHitArgs : EventArgs
+    //  {
+    //      public GameObject TargetHit;
+    //  }
 
     // UI events
   
@@ -164,7 +164,7 @@ public class Player : MonoBehaviour
         transform.position = new Vector3(-3f, -4f, transform.position.z);
         bombCooldown = 8f;
         inventory.SubtractLife();
-        OnPlayerGetsHit?.Invoke(this, new OnPlayerGetsHitArgs());
+        // OnPlayerGetsHit?.Invoke(this, new OnPlayerGetsHitArgs());
     }
  
     
