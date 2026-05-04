@@ -46,7 +46,7 @@ public class GameControllerScript : MonoBehaviour
     private void OnSendPlayerData(object sender, PlayerResourceInventory.OnSendPlayerDataArgs e)
     {
         UpdateBomb(e.BombsRemaining);
-        
+        UpdateLives(e.LivesRemaining);
     }
 
 
@@ -59,7 +59,7 @@ public class GameControllerScript : MonoBehaviour
         abilityBarImage.fillMethod = Image.FillMethod.Vertical;
         abilityBarImage.fillAmount = 0f;
         Player.ModifyAbilityCooldown +=ModifyAbilityCooldown;
-        Player.OnPlayerGetsHit += PlayerGetsHit;
+        // Player.OnPlayerGetsHit += PlayerGetsHit;
         SlashScript.OnSlashingSomething += OnSlashingSomething;
         SavedDataJSON.OnHighScoreDataGathered +=OnHighScoreDataGathered;
         
@@ -82,18 +82,18 @@ public class GameControllerScript : MonoBehaviour
     void OnDestroy()
     {
         Player.ModifyAbilityCooldown -=ModifyAbilityCooldown;
-        Player.OnPlayerGetsHit -= PlayerGetsHit;
+        // Player.OnPlayerGetsHit -= PlayerGetsHit;
         SlashScript.OnSlashingSomething -= OnSlashingSomething;
         SavedDataJSON.OnHighScoreDataGathered -=OnHighScoreDataGathered;
         PlayerResourceInventory.OnSendPlayerData -=OnSendPlayerData;
     }
 
-    private void PlayerGetsHit(object sender, EventArgs e)
-    {
-        _currentPlayerHp -= .15f;
-        hpSlider.value = _currentPlayerHp;
-    if (_currentPlayerHp < .25f) HpDropsToZero();
-    }
+    // private void PlayerGetsHit(object sender, EventArgs e)
+    // {
+    //     _currentPlayerHp -= .15f;
+    //     hpSlider.value = _currentPlayerHp;
+    // if (_currentPlayerHp <= .10f) HpDropsToZero();
+    // }
 
     private void ScoreChange(int scoreChange)
     {
@@ -174,8 +174,11 @@ public class GameControllerScript : MonoBehaviour
     {
         float normalized = (float)livesRemaining / 6.0f;
         _currentPlayerHp = 0.1f + normalized * (1f - 0.1f);
-
         hpSlider.value = _currentPlayerHp;
+        if (_currentPlayerHp <= .1)
+        {
+            HpDropsToZero();
+        }
     }
 
     public float GetPlayerHP()
