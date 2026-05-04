@@ -91,7 +91,7 @@ public class GameControllerScript : MonoBehaviour
     {
         _currentPlayerHp -= .15f;
         hpSlider.value = _currentPlayerHp;
-    if (_currentPlayerHp <= 0f) HpDropsToZero();
+    if (_currentPlayerHp <= .10f) HpDropsToZero();
     }
 
     private void ScoreChange(int scoreChange)
