@@ -51,7 +51,7 @@ public class GameControllerScript : MonoBehaviour
         abilityBarImage.fillAmount = 0f;
         hpSlider.value = 1f;
         Player.ModifyAbilityCooldown +=ModifyAbilityCooldown;
-        Player.OnPlayerGetsHit += PlayerGetsHit;
+        // Player.OnPlayerGetsHit += PlayerGetsHit;
         SlashScript.OnSlashingSomething += OnSlashingSomething;
         SavedDataJSON.OnHighScoreDataGathered +=OnHighScoreDataGathered;
         
@@ -79,7 +79,7 @@ public class GameControllerScript : MonoBehaviour
     void OnDestroy()
     {
         Player.ModifyAbilityCooldown -=ModifyAbilityCooldown;
-        Player.OnPlayerGetsHit -= PlayerGetsHit;
+        // Player.OnPlayerGetsHit -= PlayerGetsHit;
         SlashScript.OnSlashingSomething -= OnSlashingSomething;
         SavedDataJSON.OnHighScoreDataGathered -=OnHighScoreDataGathered;
         Player.OnSendPlayerData -= OnSendPlayerData;
@@ -103,7 +103,6 @@ public class GameControllerScript : MonoBehaviour
             _highSoreState =  HighScoreAchieved.NewHighScore;
         }
     }
-    
 
     private void ModifyAbilityCooldown(object sender, Player.ModifyAbilityCooldownArgs e)
     {
@@ -148,7 +147,8 @@ public class GameControllerScript : MonoBehaviour
         //go back to main menu scene
         LoadMainMenu();
     }
-
+    
+    
     private void UpdateBomb(int bombsRemaining)
     {
         int currentBombs = bombIconArea.childCount;
@@ -165,6 +165,11 @@ public class GameControllerScript : MonoBehaviour
                 Instantiate(bombPrefab, bombIconArea);
             }
         }
+    }
+
+    public float GetPlayerHP()
+    {
+        return _currentPlayerHp;
     }
 
 }

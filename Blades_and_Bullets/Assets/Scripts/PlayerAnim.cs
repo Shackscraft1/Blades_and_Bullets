@@ -11,6 +11,7 @@ public class PlayerAnim : MonoBehaviour
     private const string IS_UNFOCUSED1 = "isAttackUnfocus";
     private const string IS_FOCUSED = "isAttackFocused";
     private const string IS_SPECIAL = "isSpecial";
+    private const string IS_SPECIALABILITY = "isSpecialAbility";
     public Animator animator;
 
     void Update()
@@ -33,23 +34,22 @@ public class PlayerAnim : MonoBehaviour
             animator.SetBool(IS_WALKING_LEFT, false);
         }
 
-        
-
-        if (Keyboard.current.spaceKey.wasPressedThisFrame)
-        {
-            animator.SetBool(IS_UNFOCUSED1, true);
-        }
-        else
-        {
-            animator.SetBool(IS_UNFOCUSED1, false);
-        }
-        if (Keyboard.current.xKey.isPressed)
+        if (Keyboard.current.spaceKey.isPressed && Keyboard.current.shiftKey.isPressed)
         {
             animator.SetBool(IS_FOCUSED, true);
         }
         else
         {
             animator.SetBool(IS_FOCUSED, false);
+        }
+
+        if (Keyboard.current.spaceKey.isPressed && !Keyboard.current.shiftKey.isPressed)
+        {
+            animator.SetBool(IS_UNFOCUSED1, true);
+        }
+        else
+        {
+            animator.SetBool(IS_UNFOCUSED1, false);
         }
 
         if (Keyboard.current.cKey.wasPressedThisFrame)
@@ -59,6 +59,22 @@ public class PlayerAnim : MonoBehaviour
         else
         {
             animator.SetBool(IS_SPECIAL, false);
+        }
+
+        if (Keyboard.current.zKey.wasPressedThisFrame)
+        {
+            animator.SetBool(IS_SPECIALABILITY, true);
+        }
+        else
+        {
+            animator.SetBool(IS_SPECIALABILITY, false);
+        }
+        if (Player.Instance.moveState == Player.MoveState.Death)
+        {
+            GetComponent<SpriteRenderer>().enabled = false;
+        } else
+        {
+            GetComponent<SpriteRenderer>().enabled = true;
         }
     }
 
