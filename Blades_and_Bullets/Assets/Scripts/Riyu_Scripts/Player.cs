@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
     private float bombCooldown;
     private float deathTimer;
     private PlayerResourceInventory inventory;    
-    public static EventHandler<OnSendPlayerDataArgs> OnSendPlayerData;
+    
     //Special slash variables
     public static EventHandler<ModifyAbilityCooldownArgs> ModifyAbilityCooldown;
     public class ModifyAbilityCooldownArgs : EventArgs
@@ -33,11 +33,7 @@ public class Player : MonoBehaviour
     {
         public GameObject TargetHit;
     }
-    // public static EventHandler<OnSendPlayerDataArgs> OnSendPlayerData;
-    public class OnSendPlayerDataArgs : EventArgs
-    {
-        public int BombsRemaining;
-    }
+   
     
 
     //Firing bullets Logic;x    
@@ -112,9 +108,7 @@ public class Player : MonoBehaviour
         {   
             if (inventory.Bombs > 0 && bombCooldown <= 0)
             {
-                OnSendPlayerData?.Invoke(this, new OnSendPlayerDataArgs{
-                       // BombsRemaining = inventory.Bombs
-                }); 
+      
                 Instantiate(bombPrefab, transform.position, Quaternion.Euler(0f, 0f, 0f));
                 bombCooldown = 6f;
                 inventory.SubtractBomb();
