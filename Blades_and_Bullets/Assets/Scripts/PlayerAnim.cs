@@ -11,6 +11,7 @@ public class PlayerAnim : MonoBehaviour
     private const string IS_UNFOCUSED1 = "isAttackUnfocus";
     private const string IS_FOCUSED = "isAttackFocused";
     private const string IS_SPECIAL = "isSpecial";
+    private const string IS_SPECIALABILITY = "isSpecialAbility";
     public Animator animator;
 
     void Update()
@@ -58,6 +59,15 @@ public class PlayerAnim : MonoBehaviour
         else
         {
             animator.SetBool(IS_SPECIAL, false);
+        }
+
+        if (Keyboard.current.zKey.wasPressedThisFrame)
+        {
+            animator.SetBool(IS_SPECIALABILITY, true);
+        }
+        else
+        {
+            animator.SetBool(IS_SPECIALABILITY, false);
         }
         if (Player.Instance.moveState == Player.MoveState.Death)
         {
