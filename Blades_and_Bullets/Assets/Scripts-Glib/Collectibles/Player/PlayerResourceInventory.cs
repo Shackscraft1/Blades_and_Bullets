@@ -11,6 +11,10 @@ namespace Game.Collectibles.Player
         [Min(0)][SerializeField] private int startingBombs = 0;
         [Min(0)][SerializeField] private int startingLives = 3;
 
+        [Header("limits")]
+        [SerializeField] private int maxBombs = 3;
+        [SerializeField] private int maxLives = 6;
+
         [Header("debug")]
         [SerializeField] private bool logChanges = true; // controls whether resource changes are printed to the console for testing
 
@@ -96,23 +100,17 @@ namespace Game.Collectibles.Player
 
         public void AddBombs(int amount)
         {
-            if (amount <= 0)
-            {
-                return;
-            }
+            if (amount <= 0) return;
 
-            bombs += amount;
+            bombs = Mathf.Min(bombs + amount, maxBombs);
             LogState($"added {amount} bomb(s)");
         }
 
         public void AddLives(int amount)
         {
-            if (amount <= 0)
-            {
-                return;
-            }
+            if (amount <= 0) return;
 
-            lives += amount;
+            lives = Mathf.Min(lives + amount, maxLives);
             LogState($"added {amount} life/lives");
         }
         public void SubtractBomb()

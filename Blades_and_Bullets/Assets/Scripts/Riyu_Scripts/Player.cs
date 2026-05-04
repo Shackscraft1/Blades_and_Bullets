@@ -14,35 +14,43 @@ public class Player : MonoBehaviour
         Death
     }
     public MoveState moveState;
+
+
     [SerializeField] private float speed;
     [SerializeField] private GameObject bombPrefab;
     private float bombCooldown;
     private float deathTimer;
+    private bool _specialSlashActive;  
     private PlayerResourceInventory inventory;    
+
+
+    //Events
+
+    //Firing bullets Logic;    
+    public static EventHandler PlayerFiresBullet;
+
+    //Player gets hit logic
+    // public static EventHandler<OnPlayerGetsHitArgs> OnPlayerGetsHit;
+    // public class OnPlayerGetsHitArgs : EventArgs
+    // {
+    //     public GameObject TargetHit;
+    // }
+
+    // UI events
     public static EventHandler<OnSendPlayerDataArgs> OnSendPlayerData;
+    public class OnSendPlayerDataArgs : EventArgs
+    {
+        public int BombsRemaining;
+        public int LivesRemaining;
+
+    }
     //Special slash variables
     public static EventHandler<ModifyAbilityCooldownArgs> ModifyAbilityCooldown;
     public class ModifyAbilityCooldownArgs : EventArgs
     {
         public float changeAmount;
     }
-    private bool _specialSlashActive;
-    //Player gets hit logic
-    public static EventHandler<OnPlayerGetsHitArgs> OnPlayerGetsHit;
-    public class OnPlayerGetsHitArgs : EventArgs
-    {
-        public GameObject TargetHit;
-    }
-    // public static EventHandler<OnSendPlayerDataArgs> OnSendPlayerData;
-    public class OnSendPlayerDataArgs : EventArgs
-    {
-        public int BombsRemaining;
-    }
-    
 
-    //Firing bullets Logic;x    
-    public static EventHandler PlayerFiresBullet;
-    
 
     private void Awake()
     {
@@ -55,7 +63,7 @@ public class Player : MonoBehaviour
         GameControllerScript.AbilityActiveStatus += AbilityActiveStatus;
         SlashScript.OnSlashingSomething += OnSlashingSomething;
         GameControllerScript.OnPlayerDeath += OnPlayerDeath;
-        //OnSendPlayerData?.Invoke(this, new  OnSendPlayerDataArgs{BombsRemaining = bombs});
+        OnSendPlayerData?.Invoke(this, new  OnSendPlayerDataArgs{BombsRemaining = inventory.Bombs, LivesRemaining = inventory.Lives});
  
     }
 
@@ -93,7 +101,7 @@ public class Player : MonoBehaviour
             HandleMovement();
             HandleInteraction();
 
-        } else if (GameControllerScript.Instance.GetPlayerHP() < 0f) // dead check lives
+        } else if (inventory.Lives < 0f) // dead check lives
         {
             Debug.Log("You Lost");
             Time.timeScale = 0f;
@@ -102,22 +110,19 @@ public class Player : MonoBehaviour
     }
 
     private void HandleInteraction()
-    {
-        if(Keyboard.current.zKey.wasPressedThisFrame || Keyboard.current.periodKey.wasPressedThisFrame)
-        {
-            //SpecialSlash();
-        }
-        
+    {        
         if(Keyboard.current.bKey.wasPressedThisFrame || Keyboard.current.slashKey.wasPressedThisFrame)
         {   
             if (inventory.Bombs > 0 && bombCooldown <= 0)
             {
-                OnSendPlayerData?.Invoke(this, new OnSendPlayerDataArgs{
-                       // BombsRemaining = inventory.Bombs
-                }); 
+                
                 Instantiate(bombPrefab, transform.position, Quaternion.Euler(0f, 0f, 0f));
                 bombCooldown = 6f;
                 inventory.SubtractBomb();
+                OnSendPlayerData?.Invoke(this, new OnSendPlayerDataArgs{
+                    BombsRemaining = inventory.Bombs,
+                    LivesRemaining = inventory.Lives
+                }); 
             } 
         }
     }
@@ -153,12 +158,9 @@ public class Player : MonoBehaviour
             endMoveVector.x *= .4f;
             endMoveVector.y *= .4f;
             moveState = MoveState.Focused;
-            //hitboxMesh.enabled = true;
         } else
         {
             moveState = MoveState.Normal;
-            //hitboxMesh.enabled = false;
-
         }
         transform.position += endMoveVector * speed * Time.deltaTime;
         transform.position = new Vector3(Mathf.Clamp(transform.position.x, -8.75f, 2.75f), Mathf.Clamp(transform.position.y, -4.8f, 4.8f), .8f);
@@ -175,6 +177,10 @@ public class Player : MonoBehaviour
         transform.position = new Vector3(-3f, -4f, transform.position.z);
         bombCooldown = 8f;
         inventory.SubtractLife();
+        OnSendPlayerData?.Invoke(this, new OnSendPlayerDataArgs{
+            BombsRemaining = inventory.Bombs,
+            LivesRemaining = inventory.Lives
+        }); 
         //PlayerGetsHit?.Invoke(this, EventArgs.Empty);
     }
  
