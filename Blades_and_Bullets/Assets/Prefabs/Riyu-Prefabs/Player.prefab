@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 4252783178035133113}
   - component: {fileID: 2566406679920829632}
   - component: {fileID: 1266353404377158111}
-  - component: {fileID: 6131094320309303289}
+  - component: {fileID: 8469096820342505787}
   m_Layer: 0
   m_Name: Hitbox
   m_TagString: Untagged
@@ -285,7 +285,7 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.04
---- !u!114 &6131094320309303289
+--- !u!114 &8469096820342505787
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -294,7 +294,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1386333269478089223}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 693e1916b93eaf41b92ace32d008c721, type: 3}
+  m_Script: {fileID: 11500000, guid: 3f0d35b54afa9f6c195dfc74da8fccc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Hitbox
 --- !u!1 &1937136267326504230
@@ -482,7 +482,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3911724372186615542}
-  - component: {fileID: 5710509656417109216}
+  - component: {fileID: 6973595921959198987}
   m_Layer: 0
   m_Name: ShootingOffset
   m_TagString: Untagged
@@ -505,7 +505,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 7929682069977287586}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5710509656417109216
+--- !u!114 &6973595921959198987
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -514,7 +514,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3907783316633412573}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 179e93e02e526b744b111a85073b05ad, type: 3}
+  m_Script: {fileID: 11500000, guid: f857dd94f97725249954c0b75c3dee09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Shooting
   slash: {fileID: 4987818048595853479, guid: d7e87856376ebb34b821882125810bf7, type: 3}
