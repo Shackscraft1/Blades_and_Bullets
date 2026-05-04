@@ -28,6 +28,7 @@ public class GameControllerScript : MonoBehaviour
     public class OnHighScoreDataGatheredArgs : EventArgs
     {
         public int newHighScore;
+        public string nickName;
     }
     private enum HighScoreAchieved
     {
@@ -91,7 +92,7 @@ public class GameControllerScript : MonoBehaviour
     {
         _currentPlayerHp -= .15f;
         hpSlider.value = _currentPlayerHp;
-    if (_currentPlayerHp <= .10f) HpDropsToZero();
+    if (_currentPlayerHp < .25f) HpDropsToZero();
     }
 
     private void ScoreChange(int scoreChange)
@@ -117,8 +118,9 @@ public class GameControllerScript : MonoBehaviour
     }
 
     private void HpDropsToZero()
-    {
-        if(_highSoreState.Equals(HighScoreAchieved.NewHighScore)) OnNewHighScoreChange?.Invoke(this, new OnHighScoreDataGatheredArgs{newHighScore = _HighScore});
+    { 
+        //When there's a new highscore a window will popup to ask for your nickname so you can replace the nickname field for that new string
+        if(_highSoreState.Equals(HighScoreAchieved.NewHighScore)) OnNewHighScoreChange?.Invoke(this, new OnHighScoreDataGatheredArgs{nickName = "Player", newHighScore = _HighScore});
         OnPlayerDeath?.Invoke(this, EventArgs.Empty);
         GameOverEvent();
     }
