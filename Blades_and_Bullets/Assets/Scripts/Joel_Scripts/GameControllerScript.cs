@@ -56,7 +56,6 @@ public class GameControllerScript : MonoBehaviour
         abilityBarImage.type = Image.Type.Filled;
         abilityBarImage.fillMethod = Image.FillMethod.Vertical;
         abilityBarImage.fillAmount = 0f;
-        hpSlider.value = 1f;
         Player.ModifyAbilityCooldown +=ModifyAbilityCooldown;
         // Player.OnPlayerGetsHit += PlayerGetsHit;
         SlashScript.OnSlashingSomething += OnSlashingSomething;
@@ -65,7 +64,12 @@ public class GameControllerScript : MonoBehaviour
 
     }
 
-  
+    private void OnSendPlayerData(object sender, Player.OnSendPlayerDataArgs e)
+    {
+        //here you can add more data that you want to send to the UI without having to reference the player through variables
+        UpdateBomb(e.BombsRemaining);
+        UpdateLives(e.LivesRemaining);
+    }
 
     private void OnHighScoreDataGathered(object sender, SavedDataJSON.OnHighScoreDataGatheredArgs e)
     {
@@ -88,13 +92,13 @@ public class GameControllerScript : MonoBehaviour
         PlayerResourceInventory.OnSendPlayerData -=OnSendPlayerData;
     }
 
-    private void PlayerGetsHit(object sender, EventArgs e)
-    {
-        _currentPlayerHp -= .05f;
-        hpSlider.value = _currentPlayerHp;
-        if (_currentPlayerHp <= 0f) HpDropsToZero();
+    // private void PlayerGetsHit(object sender, EventArgs e)
+    // {
+    //     _currentPlayerHp -= .05f;
+    //     hpSlider.value = _currentPlayerHp;
+    //     if (_currentPlayerHp <= 0f) HpDropsToZero();
         
-    }
+    // }
 
     private void ScoreChange(int scoreChange)
     {
@@ -168,6 +172,14 @@ public class GameControllerScript : MonoBehaviour
                 Instantiate(bombPrefab, bombIconArea);
             }
         }
+    }
+
+    private void UpdateLives(int livesRemaining)
+    {
+        float normalized = (float)livesRemaining / 6.0f;
+        _currentPlayerHp = 0.1f + normalized * (1f - 0.1f);
+
+        hpSlider.value = _currentPlayerHp;
     }
 
     public float GetPlayerHP()

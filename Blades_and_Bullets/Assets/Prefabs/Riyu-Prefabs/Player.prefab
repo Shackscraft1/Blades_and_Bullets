@@ -309,6 +309,7 @@ GameObject:
   - component: {fileID: 3676197288477339373}
   - component: {fileID: 8748155870681407775}
   - component: {fileID: -4900743506263423311}
+  - component: {fileID: 2500974141188796974}
   - component: {fileID: 83631453407380104}
   - component: {fileID: 5400948278897896176}
   m_Layer: 0
@@ -328,8 +329,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1035385947786065394}
   - {fileID: 3791593466688404120}
@@ -399,7 +400,27 @@ MonoBehaviour:
   startingPower: 1
   startingBombs: 3
   startingLives: 3
+  maxBombs: 3
+  maxLives: 6
   logChanges: 1
+--- !u!114 &2500974141188796974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1937136267326504230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0582f03f8216b8428dcd4e9aa1bd814, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game.Collectibles::Game.Collectibles.Player.PlayerCollectibleCollector
+  magnetRadius: 2.5
+  collectibleLayerMask:
+    serializedVersion: 2
+    m_Bits: 243
+  maxDetectedCollectibles: 64
+  drawGizmo: 1
 --- !u!61 &83631453407380104
 BoxCollider2D:
   m_ObjectHideFlags: 0
