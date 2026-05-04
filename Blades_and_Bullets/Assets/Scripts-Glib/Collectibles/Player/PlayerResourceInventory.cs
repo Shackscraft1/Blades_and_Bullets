@@ -29,11 +29,13 @@ namespace Game.Collectibles.Player
         public int Bombs => bombs;
         public int Lives => lives;
         
-        public static EventHandler<OnSendPlayerDataArgs> OnSendPlayerData;
-        public class OnSendPlayerDataArgs : EventArgs
-        {
-            public int BombsRemaining;
-        }
+    public static EventHandler<OnSendPlayerDataArgs> OnSendPlayerData;
+    public class OnSendPlayerDataArgs : EventArgs
+    {
+        public int BombsRemaining;
+        public int LivesRemaining;
+
+    }
 
         private void Awake()
         {
@@ -42,7 +44,7 @@ namespace Game.Collectibles.Player
 
         void Start()
         {
-            OnSendPlayerData?.Invoke(this, new  OnSendPlayerDataArgs{BombsRemaining = bombs});
+            OnSendPlayerData?.Invoke(this, new  OnSendPlayerDataArgs{BombsRemaining = bombs, LivesRemaining = lives});
         }
         private void OnDestroy()
         {
@@ -136,8 +138,7 @@ namespace Game.Collectibles.Player
                 return;
             }
             bombs--;
-            OnSendPlayerData?.Invoke(this, new  OnSendPlayerDataArgs{BombsRemaining = bombs});
-            
+           
             LogState("subtracted 1 bomb");
         }
 
@@ -160,6 +161,7 @@ namespace Game.Collectibles.Player
             }
 
             Debug.Log($"[{nameof(PlayerResourceInventory)}] {reason} | Score={score}, Power={power}, Bombs={bombs}, Lives={lives}", this);
+            OnSendPlayerData?.Invoke(this, new  OnSendPlayerDataArgs{BombsRemaining = bombs, LivesRemaining = lives});
         }
 
 #if UNITY_EDITOR

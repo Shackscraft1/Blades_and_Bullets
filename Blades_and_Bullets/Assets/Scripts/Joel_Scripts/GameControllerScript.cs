@@ -42,12 +42,6 @@ public class GameControllerScript : MonoBehaviour
         PlayerResourceInventory.OnSendPlayerData +=OnSendPlayerData;
     }
 
-    private void OnSendPlayerData(object sender, PlayerResourceInventory.OnSendPlayerDataArgs e)
-    {
-        UpdateBomb(e.BombsRemaining);
-    }
-
-
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     
     void Start()
@@ -60,15 +54,16 @@ public class GameControllerScript : MonoBehaviour
         // Player.OnPlayerGetsHit += PlayerGetsHit;
         SlashScript.OnSlashingSomething += OnSlashingSomething;
         SavedDataJSON.OnHighScoreDataGathered +=OnHighScoreDataGathered;
-        
+   
 
     }
 
-    private void OnSendPlayerData(object sender, Player.OnSendPlayerDataArgs e)
+    private void OnSendPlayerData(object sender, PlayerResourceInventory.OnSendPlayerDataArgs e)
     {
         //here you can add more data that you want to send to the UI without having to reference the player through variables
         UpdateBomb(e.BombsRemaining);
         UpdateLives(e.LivesRemaining);
+        Debug.Log("call");
     }
 
     private void OnHighScoreDataGathered(object sender, SavedDataJSON.OnHighScoreDataGatheredArgs e)
@@ -175,11 +170,16 @@ public class GameControllerScript : MonoBehaviour
     }
 
     private void UpdateLives(int livesRemaining)
-    {
+    {   
+        Debug.Log("call");
         float normalized = (float)livesRemaining / 6.0f;
         _currentPlayerHp = 0.1f + normalized * (1f - 0.1f);
-
+        Debug.Log(_currentPlayerHp);
         hpSlider.value = _currentPlayerHp;
+        if (_currentPlayerHp <= 0.1f)
+        {
+            HpDropsToZero();
+        }
     }
 
     public float GetPlayerHP()
