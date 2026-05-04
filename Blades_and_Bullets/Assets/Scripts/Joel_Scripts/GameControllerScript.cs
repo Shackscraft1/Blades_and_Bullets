@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Game.Collectibles.Player;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -38,8 +39,14 @@ public class GameControllerScript : MonoBehaviour
 
     private void Awake()
     {
-        Player.OnSendPlayerData += OnSendPlayerData;
+        PlayerResourceInventory.OnSendPlayerData +=OnSendPlayerData;
     }
+
+    private void OnSendPlayerData(object sender, PlayerResourceInventory.OnSendPlayerDataArgs e)
+    {
+        UpdateBomb(e.BombsRemaining);
+    }
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     
@@ -82,7 +89,7 @@ public class GameControllerScript : MonoBehaviour
         // Player.OnPlayerGetsHit -= PlayerGetsHit;
         SlashScript.OnSlashingSomething -= OnSlashingSomething;
         SavedDataJSON.OnHighScoreDataGathered -=OnHighScoreDataGathered;
-        Player.OnSendPlayerData -= OnSendPlayerData;
+        PlayerResourceInventory.OnSendPlayerData -=OnSendPlayerData;
     }
 
     // private void PlayerGetsHit(object sender, EventArgs e)

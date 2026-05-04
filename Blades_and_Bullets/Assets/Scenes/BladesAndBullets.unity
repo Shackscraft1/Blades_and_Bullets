@@ -226,6 +226,7 @@ MonoBehaviour:
   - {fileID: 1616318076}
   - {fileID: 1101383828}
   - {fileID: 2037327415}
+  sampleCount: 100
 --- !u!4 &158403083
 Transform:
   m_ObjectHideFlags: 0
@@ -422,6 +423,7 @@ MonoBehaviour:
   - {fileID: 529523806}
   - {fileID: 377800470}
   - {fileID: 542621254}
+  sampleCount: 100
 --- !u!4 &209661565
 Transform:
   m_ObjectHideFlags: 0

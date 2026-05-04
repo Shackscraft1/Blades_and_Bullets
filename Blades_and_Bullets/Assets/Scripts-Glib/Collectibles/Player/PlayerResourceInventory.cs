@@ -1,3 +1,4 @@
+using System;
 using Game.Collectibles.Data;
 using UnityEngine;
 
@@ -27,10 +28,25 @@ namespace Game.Collectibles.Player
         public int Power => power;
         public int Bombs => bombs;
         public int Lives => lives;
+        
+        public static EventHandler<OnSendPlayerDataArgs> OnSendPlayerData;
+        public class OnSendPlayerDataArgs : EventArgs
+        {
+            public int BombsRemaining;
+        }
 
         private void Awake()
         {
             ResetToStartingValues();
+        }
+
+        void Start()
+        {
+            OnSendPlayerData?.Invoke(this, new  OnSendPlayerDataArgs{BombsRemaining = bombs});
+        }
+        private void OnDestroy()
+        {
+            
         }
 
         public void ResetToStartingValues() // resets all runtime values back to the configured inspector defaults
@@ -120,6 +136,8 @@ namespace Game.Collectibles.Player
                 return;
             }
             bombs--;
+            OnSendPlayerData?.Invoke(this, new  OnSendPlayerDataArgs{BombsRemaining = bombs});
+            
             LogState("subtracted 1 bomb");
         }
 
@@ -127,6 +145,7 @@ namespace Game.Collectibles.Player
         {
             if (lives <= 0)
             {
+                
                 return;
             }
             lives--;

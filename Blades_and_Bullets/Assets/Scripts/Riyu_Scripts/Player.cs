@@ -50,7 +50,7 @@ public class Player : MonoBehaviour
     {
         public float changeAmount;
     }
-
+    private bool _specialSlashActive;
 
     private void Awake()
     {
