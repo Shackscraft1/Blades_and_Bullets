@@ -2,6 +2,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
+using System;
 
 public class PlayerAnim : MonoBehaviour
 {
@@ -13,9 +14,22 @@ public class PlayerAnim : MonoBehaviour
     private const string IS_SPECIAL = "isSpecial";
     private const string IS_SPECIALABILITY = "isSpecialAbility";
     public Animator animator;
+    private bool specialSlashActive;
+
+    void Start()
+    {
+        GameControllerScript.AbilityActiveStatus += AbilityActiveStatus;
+
+    }
+
+    private void AbilityActiveStatus(object sender, EventArgs e)
+    {
+        specialSlashActive = true;
+    }
 
     void Update()
     {
+        
         if (Keyboard.current.rightArrowKey.isPressed)
         {
             animator.SetBool(IS_WALKING_RIGHT, true);
@@ -61,9 +75,10 @@ public class PlayerAnim : MonoBehaviour
             animator.SetBool(IS_SPECIAL, false);
         }
 
-        if (Keyboard.current.zKey.wasPressedThisFrame)
+        if (Keyboard.current.zKey.wasPressedThisFrame && specialSlashActive)
         {
             animator.SetBool(IS_SPECIALABILITY, true);
+            specialSlashActive = false;
         }
         else
         {
