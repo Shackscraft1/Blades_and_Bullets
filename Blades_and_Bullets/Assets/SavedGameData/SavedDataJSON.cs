@@ -70,6 +70,14 @@ public class SavedDataJSON : MonoBehaviour
             new OnHighScoreDataGatheredArgs { highScore = data.currentHighScore[0].score }
         );
     }
+    
+    public void ClearHighScoreJSON()
+    {
+        data.currentHighScore = GetDefaultHighScores();
+    
+        SaveHighScore(data);
+        
+    }
 
     private void OnDestroy()
     {
