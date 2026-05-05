@@ -14,15 +14,11 @@ public class Player : MonoBehaviour
         Death
     }
     public MoveState moveState;
-
-
     [SerializeField] private float speed;
     [SerializeField] private GameObject bombPrefab;
     private float bombCooldown;
     private float deathTimer;
-    private bool _specialSlashActive;  
     private PlayerResourceInventory inventory;    
-
 
     //Events
 
@@ -30,11 +26,11 @@ public class Player : MonoBehaviour
     public static EventHandler PlayerFiresBullet;
 
     //Player gets hit logic
-     public static EventHandler<OnPlayerGetsHitArgs> OnPlayerGetsHit;
-     public class OnPlayerGetsHitArgs : EventArgs
-     {
-         public GameObject TargetHit;
-     }
+    //  public static EventHandler<OnPlayerGetsHitArgs> OnPlayerGetsHit;
+    //  public class OnPlayerGetsHitArgs : EventArgs
+    //  {
+    //      public GameObject TargetHit;
+    //  }
 
     // UI events
   
@@ -53,7 +49,6 @@ public class Player : MonoBehaviour
     }
     private void Start()
     {
-        GameControllerScript.AbilityActiveStatus += AbilityActiveStatus;
         SlashScript.OnSlashingSomething += OnSlashingSomething;
         GameControllerScript.OnPlayerDeath += OnPlayerDeath;
     }
@@ -64,17 +59,25 @@ public class Player : MonoBehaviour
         Destroy(gameObject);
     }
 
-  
 
     private void OnSlashingSomething(object sender, SlashScript.OnSlashingSomethingArgs e)
     {
-        ModifyAbilityCooldown?.Invoke(this, new ModifyAbilityCooldownArgs{changeAmount = .03f});
+        if (sender is SlashScript slashScript)
+        {
+            if (slashScript.GetBulletType() == SlashScript.BulletType.Normal || slashScript.GetBulletType() == SlashScript.BulletType.Bomb)
+            {
+                ModifyAbilityCooldown?.Invoke(this, new ModifyAbilityCooldownArgs
+                {
+                    changeAmount = 0.03f
+                });
+            } else if (slashScript.GetBulletType() == SlashScript.BulletType.Special){
         
-    }
-
-    private void AbilityActiveStatus(object sender, EventArgs e)
-    {
-        _specialSlashActive = true;
+                ModifyAbilityCooldown?.Invoke(this, new ModifyAbilityCooldownArgs
+                {
+                    changeAmount = 0f
+                });
+            }
+        }
     }
 
     private void Update()
@@ -164,14 +167,13 @@ public class Player : MonoBehaviour
         transform.position = new Vector3(-3f, -4f, transform.position.z);
         bombCooldown = 8f;
         inventory.SubtractLife();
-        OnPlayerGetsHit?.Invoke(this, new OnPlayerGetsHitArgs());
+        // OnPlayerGetsHit?.Invoke(this, new OnPlayerGetsHitArgs());
     }
  
     
 
     private void OnDestroy()
     {
-        GameControllerScript.AbilityActiveStatus -= AbilityActiveStatus;
         SlashScript.OnSlashingSomething -= OnSlashingSomething;
         GameControllerScript.OnPlayerDeath -= OnPlayerDeath;
     }

@@ -7,18 +7,18 @@ public class SlashScript : MonoBehaviour
 
     private float damage;
 
-    private enum BulletType
+    public enum BulletType
     {
         Normal,
         Special,
         Bomb
     }
-    [SerializeField] private BulletType bulletType;
+    [SerializeField] public BulletType bulletType;
     public class OnSlashingSomethingArgs : EventArgs
     {
         public GameObject TargetHit;
     }
-        private float speed = 50f;
+    private float speed = 50f;
     private void Update()
     {
         if (bulletType == BulletType.Normal)
@@ -28,11 +28,13 @@ public class SlashScript : MonoBehaviour
     }
     private void Start()
     {
+
         if (bulletType == BulletType.Normal)
         {
             Destroy(gameObject, .5f);
         } 
     }
+
  
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -44,7 +46,7 @@ public class SlashScript : MonoBehaviour
             case BulletType.Normal:
                 if (enemy != null)
                 {   
-                    enemy.TakeDamage((int)damage);
+                    enemy.TakeDamage(damage);
                     OnSlashingSomething?.Invoke(this, new OnSlashingSomethingArgs
                     {
                         TargetHit = enemy.gameObject
@@ -57,20 +59,21 @@ public class SlashScript : MonoBehaviour
             case BulletType.Special:
                 if (enemy != null)
                 {
-                    enemy.TakeDamage((int)damage * 4);
+                    enemy.TakeDamage(damage * 4f);
                     OnSlashingSomething?.Invoke(this, new OnSlashingSomethingArgs
                     {
                         TargetHit = enemy.gameObject
                     });
 
-                } else if (bullet != null)
+                }
+                if (bullet != null)
                 {
-                    bullet.DespawnBullet();
                     OnSlashingSomething?.Invoke(this, new OnSlashingSomethingArgs
                     {
                         TargetHit = bullet.gameObject
                     });
-
+                    bullet.DespawnBullet();
+                    
                 }
                 break;
             case BulletType.Bomb:
@@ -79,11 +82,20 @@ public class SlashScript : MonoBehaviour
                     enemy.TakeDamage(1000);
                 }else if (bullet != null)
                 {
+                    OnSlashingSomething?.Invoke(this, new OnSlashingSomethingArgs
+                    {
+                        TargetHit = bullet.gameObject
+                    });
                     bullet.DespawnBullet();
+                    
                 }
                 break;
         }
 
+    }
+    public BulletType GetBulletType()
+    {
+        return bulletType;
     }
 
     public void SetDamage(float num)
