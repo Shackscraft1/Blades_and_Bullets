@@ -180,7 +180,7 @@ public class GameControllerScript : MonoBehaviour
         float normalized = (float)livesRemaining / 6.0f;
         _currentPlayerHp = 0.1f + normalized * (1f - 0.1f);
         hpSlider.value = _currentPlayerHp;
-        if (_currentPlayerHp <= .1)
+        if (_currentPlayerHp < .20)
         {
             HpDropsToZero();
         }
