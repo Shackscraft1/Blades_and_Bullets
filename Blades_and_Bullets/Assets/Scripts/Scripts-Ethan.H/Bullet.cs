@@ -15,9 +15,9 @@ public class Bullet : MonoBehaviour
     private Vector2 direction;
     private Transform target;
     
-   // CircleCollider2D circleCollider;
+    CircleCollider2D circleCollider;
   
-   // CapsuleCollider2D capsuleCollider;
+    CapsuleCollider2D capsuleCollider;
    
     
 
@@ -52,16 +52,16 @@ public class Bullet : MonoBehaviour
 
         SpriteRenderer spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
-      //  circleCollider = GetComponentInChildren<CircleCollider2D>();
-       // capsuleCollider = GetComponentInChildren<CapsuleCollider2D>();
+        circleCollider = GetComponentInChildren<CircleCollider2D>();
+        capsuleCollider = GetComponentInChildren<CapsuleCollider2D>();
 
-       // if(circleCollider == null || capsuleCollider == null)
-       // {
-          //  Debug.Log("Colliders null");
-       // }
+        if(circleCollider == null || capsuleCollider == null)
+        {
+            Debug.Log("Colliders null");
+        }
 
 
-       // SetTriggers();
+       SetTriggers();
 
 
   
@@ -114,34 +114,34 @@ public class Bullet : MonoBehaviour
         if(e.TargetHit.Equals(gameObject)) Destroy(gameObject);
     }
 
-    //private void SetTriggers()
-   // {
-     //  capsuleCollider.enabled = false;
-      //  circleCollider.enabled = false;
+    private void SetTriggers()
+    {
+       capsuleCollider.enabled = false;
+        circleCollider.enabled = false;
 
-       // switch (bulletTypeSO.hurtBoxType)
-      //  {
-         //   case BulletTypeSO.HurtBoxType.Circle:
-          //      circleCollider.enabled = true;
-           //     circleCollider.radius = bulletTypeSO.radius;
-           //     circleCollider.offset = bulletTypeSO.offset;
-           //     break;
+        switch (bulletTypeSO.hurtBoxType)
+        {
+            case BulletTypeSO.HurtBoxType.Circle:
+                circleCollider.enabled = true;
+                circleCollider.radius = bulletTypeSO.radius;
+                circleCollider.offset = bulletTypeSO.offset;
+                break;
 
-          //  case BulletTypeSO.HurtBoxType.Capsule:
-           //    capsuleCollider.enabled = true;
-             //   capsuleCollider.size = bulletTypeSO.sizeCapsule;
-            //    capsuleCollider.offset = bulletTypeSO.offset;
-            //    break;
+            case BulletTypeSO.HurtBoxType.Capsule:
+               capsuleCollider.enabled = true;
+                capsuleCollider.size = bulletTypeSO.sizeCapsule;
+                capsuleCollider.offset = bulletTypeSO.offset;
+                break;
 
         
 
 
 
-      //  }
+       }
 
 
 
- //   }
+    }
 
     public void SetPool(BulletPool bulletPool)
     {
