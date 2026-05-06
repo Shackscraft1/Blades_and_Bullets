@@ -37,6 +37,7 @@ public class Hitbox : MonoBehaviour
             other.GetComponentInParent<Bullet>().DespawnBullet();
             if (Player.Instance != null)
             {
+                Time.timeScale = 0f;
                 Player.Instance.moveState = Player.MoveState.Death;
                 Player.Instance.Death();
                 

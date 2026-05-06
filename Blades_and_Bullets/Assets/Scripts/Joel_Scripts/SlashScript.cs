@@ -79,7 +79,7 @@ public class SlashScript : MonoBehaviour
             case BulletType.Bomb:
                 if (enemy != null)
                 {
-                    enemy.TakeDamage(1000);
+                    enemy.TakeDamage(10);
                 }else if (bullet != null)
                 {
                     OnSlashingSomething?.Invoke(this, new OnSlashingSomethingArgs

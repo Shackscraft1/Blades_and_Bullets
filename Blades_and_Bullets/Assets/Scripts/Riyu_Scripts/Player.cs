@@ -55,7 +55,6 @@ public class Player : MonoBehaviour
 
     private void OnPlayerDeath(object sender, EventArgs e)
     {
-        GameControllerScript.OnPlayerDeath -= OnPlayerDeath;
         Destroy(gameObject);
     }
 
