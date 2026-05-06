@@ -25,6 +25,15 @@ namespace Game.Collectibles.Spawning
         [Range(0f, 180f)][SerializeField] private float scatterAngle = 45f; // angle cone used to spread drops so they do not stack
         [SerializeField] private bool logDrops = false; // useful while balancing drop rates and counts
 
+
+        [System.Obsolete]
+        private void Awake()
+        {
+            if (collectibleSpawner == null)
+            {
+                collectibleSpawner = FindFirstObjectByType<CollectibleSpawner>(); // finds the spawner in the scene automatically if not assigned
+            }
+        }
         public void Drop()
         {
             TryDropGroup(pointsCollectible, pointDropChance, minPointDrops, maxPointDrops, "points");
