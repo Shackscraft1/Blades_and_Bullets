@@ -123,7 +123,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 629105644629215058}
-  - component: {fileID: 1374706214812242739}
   - component: {fileID: 6666774985133033823}
   - component: {fileID: 8324258520741104912}
   - component: {fileID: -1621928132215897586}
@@ -154,40 +153,6 @@ Transform:
   - {fileID: 7873895316870267690}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1374706214812242739
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3959193303880153687}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0b64702405a9cba4b802fda6e13bbd21, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  entryPath: {fileID: 0}
-  entryDuration: 6
-  entryStartOffset: 0
-  entryToFormationT: 0.75
-  formationCenter: {fileID: 0}
-  slotOffset: {x: 0, y: 0, z: 0}
-  formationMoveSpeed: 4
-  formationArriveDistance: 0.05
-  exitPath: {fileID: 0}
-  exitDuration: 4
-  exitStartOffset: 0
-  exitMoveSpeed: 4
-  exitArriveDistance: 0.05
-  maxHP: 1
-  pointDropPrefab: {fileID: 0}
-  powerDropPrefab: {fileID: 0}
-  pointDropCount: 1
-  powerDropCount: 1
-  spawnShieldInFormation: 0
-  shieldPrefab: {fileID: 0}
-  shieldLocalOffset: {x: 0, y: -0.35, z: 0}
-  currentPhase: 0
 --- !u!61 &6666774985133033823
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -273,7 +238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ad20a0f178cb6f44acd1e9fc2c257ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaveEnemy
-  maxHP: 40
+  maxHP: 35
   pointDropCount: 0
   powerDropCount: 0
   pointDropPrefab: {fileID: 0}
