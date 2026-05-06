@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -82,19 +81,18 @@ public class Bullet : MonoBehaviour
 
     private void Start()
     {
-        SlashScript.OnSlashingSomething +=OnSlashingSomething;
+
         WallScript.OnWallHit += OnWallHit;
-        Player.OnPlayerGetsHit += OnPlayerGetsHit;
+        // Player.PlayerGetsHit += OnPlayerGetsHit;
 
     }
     
 
-    private void OnPlayerGetsHit(object sender, Player.OnPlayerGetsHitArgs e)
-    {
-        if(e.TargetHit.Equals(gameObject)) Destroy(gameObject);
-    }
+    // private void OnPlayerGetsHit(object sender, Player.PlayerGetsHitArgs e)
+    // {
+    //     if(e.TargetHit.Equals(gameObject)) Destroy(gameObject);
+    // }
 
-   
 
     private void OnWallHit(object sender, WallScript.OnWallHitArgs e)
     {
@@ -104,14 +102,8 @@ public class Bullet : MonoBehaviour
 
     private void OnDestroy()
     {
-        SlashScript.OnSlashingSomething -=OnSlashingSomething;
         WallScript.OnWallHit -= OnWallHit;
-        Player.OnPlayerGetsHit -= OnPlayerGetsHit;
-    }
-
-    private void OnSlashingSomething(object sender, SlashScript.OnSlashingSomethingArgs e)
-    {
-        if(e.TargetHit.Equals(gameObject)) Destroy(gameObject);
+        // Player.PlayerGetsHit -= OnPlayerGetsHit;
     }
 
     private void SetTriggers()

@@ -1,3 +1,4 @@
+using System;
 using Game.Collectibles.Data;
 using UnityEngine;
 
@@ -11,6 +12,10 @@ namespace Game.Collectibles.Player
         [Min(0)][SerializeField] private int startingBombs = 0;
         [Min(0)][SerializeField] private int startingLives = 3;
 
+        [Header("limits")]
+        [SerializeField] private int maxBombs = 3;
+        [SerializeField] private int maxLives = 6;
+
         [Header("debug")]
         [SerializeField] private bool logChanges = true; // controls whether resource changes are printed to the console for testing
 
@@ -23,10 +28,27 @@ namespace Game.Collectibles.Player
         public int Power => power;
         public int Bombs => bombs;
         public int Lives => lives;
+        
+    public static EventHandler<OnSendPlayerDataArgs> OnSendPlayerData;
+    public class OnSendPlayerDataArgs : EventArgs
+    {
+        public int BombsRemaining;
+        public int LivesRemaining;
+
+    }
 
         private void Awake()
         {
             ResetToStartingValues();
+        }
+
+        void Start()
+        {
+            OnSendPlayerData?.Invoke(this, new  OnSendPlayerDataArgs{BombsRemaining = bombs, LivesRemaining = lives});
+        }
+        private void OnDestroy()
+        {
+            
         }
 
         public void ResetToStartingValues() // resets all runtime values back to the configured inspector defaults
@@ -96,24 +118,39 @@ namespace Game.Collectibles.Player
 
         public void AddBombs(int amount)
         {
-            if (amount <= 0)
-            {
-                return;
-            }
+            if (amount <= 0) return;
 
-            bombs += amount;
+            bombs = Mathf.Min(bombs + amount, maxBombs);
             LogState($"added {amount} bomb(s)");
         }
 
         public void AddLives(int amount)
         {
-            if (amount <= 0)
+            if (amount <= 0) return;
+
+            lives = Mathf.Min(lives + amount, maxLives);
+            LogState($"added {amount} life/lives");
+        }
+        public void SubtractBomb()
+        {
+            if (bombs <= 0)
             {
                 return;
             }
+            bombs--;
+           
+            LogState("subtracted 1 bomb");
+        }
 
-            lives += amount;
-            LogState($"added {amount} life/lives");
+        public void SubtractLife()
+        {
+            if (lives <= 0)
+            {
+                
+                return;
+            }
+            lives--;
+            LogState("subtracted 1 life");
         }
 
         private void LogState(string reason)
@@ -122,8 +159,8 @@ namespace Game.Collectibles.Player
             {
                 return;
             }
-
-            Debug.Log($"[{nameof(PlayerResourceInventory)}] {reason} | Score={score}, Power={power}, Bombs={bombs}, Lives={lives}", this);
+            
+            OnSendPlayerData?.Invoke(this, new  OnSendPlayerDataArgs{BombsRemaining = bombs, LivesRemaining = lives});
         }
 
 #if UNITY_EDITOR

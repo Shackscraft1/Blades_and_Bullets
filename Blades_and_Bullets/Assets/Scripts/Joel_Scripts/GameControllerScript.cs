@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Game.Collectibles.Player;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -27,6 +28,7 @@ public class GameControllerScript : MonoBehaviour
     public class OnHighScoreDataGatheredArgs : EventArgs
     {
         public int newHighScore;
+        public string nickName;
     }
     private enum HighScoreAchieved
     {
@@ -38,8 +40,15 @@ public class GameControllerScript : MonoBehaviour
 
     private void Awake()
     {
-        Player.OnSendPlayerData += OnSendPlayerData;
+        PlayerResourceInventory.OnSendPlayerData +=OnSendPlayerData;
     }
+
+    private void OnSendPlayerData(object sender, PlayerResourceInventory.OnSendPlayerDataArgs e)
+    {
+        UpdateBomb(e.BombsRemaining);
+        UpdateLives(e.LivesRemaining);
+    }
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     
@@ -49,20 +58,19 @@ public class GameControllerScript : MonoBehaviour
         abilityBarImage.type = Image.Type.Filled;
         abilityBarImage.fillMethod = Image.FillMethod.Vertical;
         abilityBarImage.fillAmount = 0f;
-        hpSlider.value = 1f;
         Player.ModifyAbilityCooldown +=ModifyAbilityCooldown;
-        Player.OnPlayerGetsHit += PlayerGetsHit;
+        // Player.OnPlayerGetsHit += PlayerGetsHit;
         SlashScript.OnSlashingSomething += OnSlashingSomething;
         SavedDataJSON.OnHighScoreDataGathered +=OnHighScoreDataGathered;
         
 
     }
-
-    private void OnSendPlayerData(object sender, Player.OnSendPlayerDataArgs e)
+    
+    private void Update()
     {
-        //here you can add more data that you want to send to the UI without having to reference the player through variables
-        UpdateBomb(e.BombsRemaining);
+        
     }
+
 
     private void OnHighScoreDataGathered(object sender, SavedDataJSON.OnHighScoreDataGatheredArgs e)
     {
@@ -79,19 +87,18 @@ public class GameControllerScript : MonoBehaviour
     void OnDestroy()
     {
         Player.ModifyAbilityCooldown -=ModifyAbilityCooldown;
-        Player.OnPlayerGetsHit -= PlayerGetsHit;
+        // Player.OnPlayerGetsHit -= PlayerGetsHit;
         SlashScript.OnSlashingSomething -= OnSlashingSomething;
         SavedDataJSON.OnHighScoreDataGathered -=OnHighScoreDataGathered;
-        Player.OnSendPlayerData -= OnSendPlayerData;
+        PlayerResourceInventory.OnSendPlayerData -=OnSendPlayerData;
     }
 
-    private void PlayerGetsHit(object sender, EventArgs e)
-    {
-        _currentPlayerHp -= .05f;
-        hpSlider.value = _currentPlayerHp;
-        if (_currentPlayerHp <= 0f) HpDropsToZero();
-        
-    }
+    // private void PlayerGetsHit(object sender, EventArgs e)
+    // {
+    //     _currentPlayerHp -= .15f;
+    //     hpSlider.value = _currentPlayerHp;
+    // if (_currentPlayerHp < .25f) HpDropsToZero();
+    // }
 
     private void ScoreChange(int scoreChange)
     {
@@ -103,7 +110,6 @@ public class GameControllerScript : MonoBehaviour
             _highSoreState =  HighScoreAchieved.NewHighScore;
         }
     }
-    
 
     private void ModifyAbilityCooldown(object sender, Player.ModifyAbilityCooldownArgs e)
     {
@@ -117,8 +123,9 @@ public class GameControllerScript : MonoBehaviour
     }
 
     private void HpDropsToZero()
-    {
-        if(_highSoreState.Equals(HighScoreAchieved.NewHighScore)) OnNewHighScoreChange?.Invoke(this, new OnHighScoreDataGatheredArgs{newHighScore = _HighScore});
+    { 
+        //When there's a new highscore a window will popup to ask for your nickname so you can replace the nickname field for that new string
+        if(_highSoreState.Equals(HighScoreAchieved.NewHighScore)) OnNewHighScoreChange?.Invoke(this, new OnHighScoreDataGatheredArgs{nickName = "Player", newHighScore = _HighScore});
         OnPlayerDeath?.Invoke(this, EventArgs.Empty);
         GameOverEvent();
     }
@@ -148,7 +155,8 @@ public class GameControllerScript : MonoBehaviour
         //go back to main menu scene
         LoadMainMenu();
     }
-
+    
+    
     private void UpdateBomb(int bombsRemaining)
     {
         int currentBombs = bombIconArea.childCount;
@@ -165,6 +173,22 @@ public class GameControllerScript : MonoBehaviour
                 Instantiate(bombPrefab, bombIconArea);
             }
         }
+    }
+
+    private void UpdateLives(int livesRemaining)
+    {
+        float normalized = (float)livesRemaining / 6.0f;
+        _currentPlayerHp = 0.1f + normalized * (1f - 0.1f);
+        hpSlider.value = _currentPlayerHp;
+        if (_currentPlayerHp < .20)
+        {
+            HpDropsToZero();
+        }
+    }
+
+    public float GetPlayerHP()
+    {
+        return _currentPlayerHp;
     }
 
 }
