@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ae1824cee0f006f47a8ee5cb2f36be2b, type: 3}
-  m_Name: Bomb_Collectible
+  m_Name: Life_Collectible
   m_EditorClassIdentifier: Game.Collectibles::Game.Collectibles.Data.CollectibleTypeSO
-  kind: 2
-  displayName: Bomb
-  sprite: {fileID: -8020520747641186783, guid: a1041ebcb7322fc48acdf9b1728b43b0, type: 3}
+  kind: 3
+  displayName: Life
+  sprite: {fileID: 1291868014259240221, guid: 4ae5f3912bbd19944af092c119c3826e, type: 3}
   debugColor: {r: 1, g: 1, b: 1, a: 1}
   value: 1
   lifetime: 12
