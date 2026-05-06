@@ -17,7 +17,7 @@ public class MainMenuManager : MonoBehaviour
     [SerializeField] private Sprite defaultBackground;
     [SerializeField] private Sprite playHoverBackground;
     [SerializeField] private Sprite quitHoverBackground;
-    [SerializeField] private string gameSceneName = "BladesAndBullets";
+    [SerializeField] private string gameSceneName = "BladesAndBullets_Ethan_withWaves";
     [SerializeField] private float musicFadeDuration = 1.5f;
 
     [SerializeField] private bool useIntroVideo = false;
@@ -80,7 +80,7 @@ public class MainMenuManager : MonoBehaviour
 
     public void PlayGame()
     {
-        SceneManager.LoadScene("BladesAndBullets");
+        SceneManager.LoadScene(gameSceneName);
     }
 
     public void ShowMainMenu()

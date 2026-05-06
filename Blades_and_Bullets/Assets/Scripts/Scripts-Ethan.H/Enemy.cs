@@ -34,7 +34,7 @@ public class WaveEnemy : MonoBehaviour
 
     [SerializeField]
     private int maxHP;
-    private int currentHP;
+    private float currentHP;
     //[SerializeField]
     //private int pointDropCount;
     //[SerializeField]
