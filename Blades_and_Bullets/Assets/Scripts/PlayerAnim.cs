@@ -13,6 +13,7 @@ public class PlayerAnim : MonoBehaviour
     private const string IS_FOCUSED = "isAttackFocused";
     private const string IS_SPECIAL = "isSpecial";
     private const string IS_SPECIALABILITY = "isSpecialAbility";
+    private const string IS_KILLED = "isKilled";
     public Animator animator;
     private bool specialSlashActive;
 
@@ -86,11 +87,19 @@ public class PlayerAnim : MonoBehaviour
         }
         if (Player.Instance.moveState == Player.MoveState.Death)
         {
-            GetComponent<SpriteRenderer>().enabled = false;
+            animator.SetBool(IS_KILLED, true);
+            //transform.position = new Vector3(-3f, -4f, transform.position.z);
         } else
         {
-            GetComponent<SpriteRenderer>().enabled = true;
+            animator.SetBool(IS_KILLED, false);
         }
+    }
+
+    IEnumerator RespawnPoint()
+    {
+        Debug.Log("Waiting starts now");
+        yield return new WaitForSeconds(3f);  // Pause for 2 seconds
+        Debug.Log("2 seconds have passed");
     }
 
 }

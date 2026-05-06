@@ -3,9 +3,11 @@ using UnityEngine.InputSystem;
 using System;
 using Unity.VisualScripting;
 using Game.Collectibles.Player;
+using System.Collections;
 
 public class Player : MonoBehaviour
 {
+    
     public static Player Instance{get; private set;}
     public enum MoveState
     {
@@ -18,7 +20,9 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject bombPrefab;
     private float bombCooldown;
     private float deathTimer;
-    private PlayerResourceInventory inventory;    
+    private PlayerResourceInventory inventory;
+    private const string IS_KILLED = "isKilled";
+    public Animator animator;
 
     //Events
 
@@ -26,11 +30,11 @@ public class Player : MonoBehaviour
     public static EventHandler PlayerFiresBullet;
 
     //Player gets hit logic
-    //  public static EventHandler<OnPlayerGetsHitArgs> OnPlayerGetsHit;
-    //  public class OnPlayerGetsHitArgs : EventArgs
-    //  {
-    //      public GameObject TargetHit;
-    //  }
+      public static EventHandler<OnPlayerGetsHitArgs> OnPlayerGetsHit;
+      public class OnPlayerGetsHitArgs : EventArgs
+     {
+         public GameObject TargetHit;
+     }
 
     // UI events
   
@@ -51,6 +55,8 @@ public class Player : MonoBehaviour
     {
         SlashScript.OnSlashingSomething += OnSlashingSomething;
         GameControllerScript.OnPlayerDeath += OnPlayerDeath;
+        animator = gameObject.GetComponent<Animator>();
+
     }
 
     private void OnPlayerDeath(object sender, EventArgs e)
@@ -162,14 +168,21 @@ public class Player : MonoBehaviour
     public void Death()
     {
         Instantiate(bombPrefab, transform.position, Quaternion.Euler(0f, 0f, 0f));
-        deathTimer = 2f;     
-        transform.position = new Vector3(-3f, -4f, transform.position.z);
+        deathTimer = 2f;
+        //transform.position = new Vector3(-3f, -4f, transform.position.z);
+        StartCoroutine(RespawnPoint());
         bombCooldown = 8f;
         inventory.SubtractLife();
-        // OnPlayerGetsHit?.Invoke(this, new OnPlayerGetsHitArgs());
+        OnPlayerGetsHit?.Invoke(this, new OnPlayerGetsHitArgs());
     }
- 
-    
+
+    IEnumerator RespawnPoint()
+    {
+        Debug.Log("Respawning starts now");
+        yield return new WaitForSeconds(2f);  // Pause for 2 seconds
+        transform.position = new Vector3(-3f, -4f, transform.position.z);
+        Debug.Log("Respawn has succeeded passed");
+    }
 
     private void OnDestroy()
     {

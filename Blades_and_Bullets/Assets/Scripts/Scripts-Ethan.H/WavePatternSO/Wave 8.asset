@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ec24ac3975f55f40bb92ffc9f555160, type: 3}
   m_Name: Wave 8
   m_EditorClassIdentifier: Assembly-CSharp::WaveSO
-  enemyPrefab: {fileID: 3959193303880153687, guid: 544ee3a97a3de574a843248b966f8881, type: 3}
+  enemyPrefab: {fileID: 3959193303880153687, guid: 4ad26c7531e54d94aaee4edee5c70edb, type: 3}
   enemyCount: 7
   speed: 4.6
   entryGap: 0.35
