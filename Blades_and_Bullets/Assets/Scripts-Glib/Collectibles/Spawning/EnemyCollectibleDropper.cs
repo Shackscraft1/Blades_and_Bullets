@@ -26,18 +26,27 @@ namespace Game.Collectibles.Spawning
         [SerializeField] private int minPowerDrops = 0;
         [SerializeField] private int maxPowerDrops = 1;
 
-        
+
         private void Awake()
         {
-            
+            bool hasInvalidSpawnerReference =
+                collectibleSpawner != null &&
+                !collectibleSpawner.gameObject.scene.IsValid(); // prefab asset references do not belong to a valid runtime scene
+
+            if (collectibleSpawner == null || hasInvalidSpawnerReference)
+            {
+                collectibleSpawner = FindAnyObjectByType<CollectibleSpawner>(); // finds the real scene spawner instead of using a prefab asset reference
+            }
+
             if (collectibleSpawner == null)
             {
-                collectibleSpawner = FindAnyObjectByType<CollectibleSpawner>();
+                Debug.LogWarning($"{name} could not find a scene CollectibleSpawner.", this); // tells us if the scene is missing the collectible system
             }
         }
 
         public void Drop()
         {
+            Debug.Log($"{name} using spawner '{collectibleSpawner?.name}' from scene '{collectibleSpawner?.gameObject.scene.name}'", this); // confirms whether the dropper is using a real scene spawner or a prefab asset reference
             Debug.Log($"{name} EnemyCollectibleDropper.Drop() called at {transform.position}", this); // confirms the dropper itself started running
             // prevents null-reference failures if the spawner was never found or assigned
             if (collectibleSpawner == null)

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1066006826336097742}
   - component: {fileID: 7558500241396057663}
   - component: {fileID: 8611695807239618258}
-  m_Layer: 6
+  m_Layer: 7
   m_Name: Collectible_Prefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,7 +96,7 @@ SpriteRenderer:
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 100
   m_MaskInteraction: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

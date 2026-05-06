@@ -42,7 +42,7 @@ namespace Game.Collectibles.Spawning
                 return null;
             }
 
-            collectible.transform.position = position; // places the collectible at the spawn location
+            collectible.transform.position = new Vector3(position.x, position.y, 0f); // forces collectibles onto the 2d gameplay plane instead of inheriting enemy z depth
             collectible.transform.rotation = Quaternion.identity; // resets rotation so pooled objects don’t carry old rotation
 
             collectible.Init(

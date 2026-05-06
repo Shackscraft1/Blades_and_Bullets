@@ -8,10 +8,10 @@ namespace Game.Collectibles.Runtime
         [Header("pool setup")]
         [SerializeField] private Collectible collectiblePrefab; // the prefab that will be instantiated whenever the pool needs to create a new collectible object
         [Min(1)][SerializeField] private int startingPoolSize = 16; // how many collectible instances should be pre-created during Awake so the first spawns are allocation-free
-        [SerializeField] private Transform pooledObjectsParent; // optional parent transform used to keep spawned pooled objects organized in the hierarchy
+        //[SerializeField] private Transform pooledObjectsParent; // optional parent transform used to keep spawned pooled objects organized in the hierarchy
 
         private readonly Queue<Collectible> availableCollectibles = new Queue<Collectible>(); // stores currently inactive collectibles that are ready to be reused
-
+        private Transform runtimePoolParent; // scene-only parent created/found at runtime so pooled objects never parent to a prefab asset
         public int AvailableCount => availableCollectibles.Count; // exposes the current number of inactive pooled collectibles for debugging and tests
 
         private void Awake()
@@ -22,11 +22,12 @@ namespace Game.Collectibles.Runtime
                 return;
             }
 
-            Transform parentToUse = pooledObjectsParent != null ? pooledObjectsParent : transform; // chooses the configured parent if one exists, otherwise falls back to the pool object's own transform
+            //Transform parentToUse = pooledObjectsParent != null ? pooledObjectsParent : transform; // chooses the configured parent if one exists, otherwise falls back to the pool object's own transform
+            runtimePoolParent = GetOrCreateRuntimePoolParent(); // guarantees we use a real scene transform, not a prefab asset reference
 
             for (int i = 0; i < startingPoolSize; i++) // creates the configured number of pooled collectibles up front so the first gameplay spawns do not instantiate at runtime
             {
-                CreateAndStoreNewCollectible(parentToUse); // creates one new collectible instance, initializes it for pooling, and enqueues it as available
+                CreateAndStoreNewCollectible();
             }
         }
 
@@ -38,10 +39,16 @@ namespace Game.Collectibles.Runtime
                 return null;
             }
 
+            if (runtimePoolParent == null)
+            {
+                runtimePoolParent = GetOrCreateRuntimePoolParent(); // rebuilds the runtime parent if something cleared it unexpectedly
+            }
+
             if (availableCollectibles.Count == 0)
             {
-                Transform parentToUse = pooledObjectsParent != null ? pooledObjectsParent : transform; // reuses the same parent selection logic when expanding the pool at runtime
-                CreateAndStoreNewCollectible(parentToUse); // creates one extra collectible on demand so the request can still be satisfied
+                //Transform parentToUse = pooledObjectsParent != null ? pooledObjectsParent : transform; // reuses the same parent selection logic when expanding the pool at runtime
+                //CreateAndStoreNewCollectible(parentToUse); // creates one extra collectible on demand so the request can still be satisfied
+                CreateAndStoreNewCollectible(); // expands the pool only when all prewarmed collectibles are currently in use
             }
 
             Collectible collectible = availableCollectibles.Dequeue(); // removes the next available collectible from the queue so it can be used by gameplay code
@@ -57,22 +64,49 @@ namespace Game.Collectibles.Runtime
                 return;
             }
 
-            collectible.transform.SetParent(pooledObjectsParent != null ? pooledObjectsParent : transform); // reparents the object under the pool container so the hierarchy stays organized after gameplay moves it around
+            if (runtimePoolParent == null)
+            {
+                runtimePoolParent = GetOrCreateRuntimePoolParent(); // ensures return logic always has a valid scene parent
+            }
+
+            //collectible.transform.SetParent(pooledObjectsParent != null ? pooledObjectsParent : transform); // reparents the object under the pool container so the hierarchy stays organized after gameplay moves it around
+            collectible.transform.SetParent(runtimePoolParent, false); // reparents under the scene runtime container; false keeps local transform simple for pooled storage
             collectible.gameObject.SetActive(false);
             availableCollectibles.Enqueue(collectible); // pushes the returned collectible back into the queue so it can be reused later
         }
 
-        private void CreateAndStoreNewCollectible(Transform parentToUse)
+        //private void CreateAndStoreNewCollectible(Transform parentToUse)
+        //{
+        //    if (parentToUse.gameObject.scene.name == null || parentToUse.gameObject.scene.name == parentToUse.gameObject.name)
+        //    {
+        //        Debug.Log("wtf");
+        //    }
+        //        Collectible newCollectible = Instantiate(collectiblePrefab, parentToUse); // clones the configured collectible prefab under the chosen pool parent
+        //    newCollectible.name = $"{collectiblePrefab.name}_Pooled_{availableCollectibles.Count}"; // assigns a readable runtime name to make hierarchy debugging easier
+        //    newCollectible.SetPool(this); // injects this pool reference into the collectible so the collectible knows where to return itself later
+        //    newCollectible.gameObject.SetActive(false);
+        //    availableCollectibles.Enqueue(newCollectible); // stores the new inactive instance in the queue so it is available for reuse
+        //}
+        private void CreateAndStoreNewCollectible()
         {
-            if (parentToUse.gameObject.scene.name == null || parentToUse.gameObject.scene.name == parentToUse.gameObject.name)
-            {
-                Debug.Log("wtf");
-            }
-                Collectible newCollectible = Instantiate(collectiblePrefab, parentToUse); // clones the configured collectible prefab under the chosen pool parent
-            newCollectible.name = $"{collectiblePrefab.name}_Pooled_{availableCollectibles.Count}"; // assigns a readable runtime name to make hierarchy debugging easier
-            newCollectible.SetPool(this); // injects this pool reference into the collectible so the collectible knows where to return itself later
+            Collectible newCollectible = Instantiate(collectiblePrefab, runtimePoolParent); // clones prefab into the active scene under the runtime parent
+            newCollectible.name = $"{collectiblePrefab.name}_Pooled_{availableCollectibles.Count}";
+            newCollectible.SetPool(this);
             newCollectible.gameObject.SetActive(false);
-            availableCollectibles.Enqueue(newCollectible); // stores the new inactive instance in the queue so it is available for reuse
+            availableCollectibles.Enqueue(newCollectible);
+        }
+        private Transform GetOrCreateRuntimePoolParent()
+        {
+            Transform existingChild = transform.Find("PooledObjects"); // uses a child in the current scene if one already exists
+
+            if (existingChild != null)
+            {
+                return existingChild;
+            }
+
+            GameObject parentObject = new GameObject("PooledObjects"); // creates a real scene object, not a prefab asset child
+            parentObject.transform.SetParent(transform, false);
+            return parentObject.transform;
         }
     }
 }
