@@ -97,3 +97,7 @@ InitTestScene*.unity*
 
 # Auto-generated scenes by play mode tests
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
+
+Blades_and_Bullets/Assets/Video-Glib/
+
+Blades_and_Bullets/Assets/_Recovery/
