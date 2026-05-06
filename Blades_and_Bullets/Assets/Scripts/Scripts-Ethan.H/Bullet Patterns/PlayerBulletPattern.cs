@@ -7,8 +7,8 @@ public class PlayerBulletPattern : BaseBulletPattern
 
     public override void FirePattern()
     {
-        Vector2 dir = Vector2.down;
-        playerBulletSpawner.Fire(bulletTypeSO, dir);
+        Vector2 dir = -Vector2.up;
+        bulletSpawner.Fire(bulletTypeSO, dir);
     }
 
 
