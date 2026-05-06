@@ -64,7 +64,11 @@ namespace Game.Collectibles.Runtime
 
         private void CreateAndStoreNewCollectible(Transform parentToUse)
         {
-            Collectible newCollectible = Instantiate(collectiblePrefab, parentToUse); // clones the configured collectible prefab under the chosen pool parent
+            if (parentToUse.gameObject.scene.name == null || parentToUse.gameObject.scene.name == parentToUse.gameObject.name)
+            {
+                Debug.Log("wtf");
+            }
+                Collectible newCollectible = Instantiate(collectiblePrefab, parentToUse); // clones the configured collectible prefab under the chosen pool parent
             newCollectible.name = $"{collectiblePrefab.name}_Pooled_{availableCollectibles.Count}"; // assigns a readable runtime name to make hierarchy debugging easier
             newCollectible.SetPool(this); // injects this pool reference into the collectible so the collectible knows where to return itself later
             newCollectible.gameObject.SetActive(false);

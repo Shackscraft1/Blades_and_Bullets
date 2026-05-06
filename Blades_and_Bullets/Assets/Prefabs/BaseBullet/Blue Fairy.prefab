@@ -126,6 +126,7 @@ GameObject:
   - component: {fileID: 6666774985133033823}
   - component: {fileID: 8324258520741104912}
   - component: {fileID: 4714304423183899682}
+  - component: {fileID: 5753004198888759568}
   m_Layer: 0
   m_Name: Blue Fairy
   m_TagString: Untagged
@@ -239,10 +240,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaveEnemy
   maxHP: 10
-  pointDropCount: 0
-  powerDropCount: 0
-  pointDropPrefab: {fileID: 0}
-  powerDropPrefab: {fileID: 0}
+  collectibleDropper: {fileID: 0}
+--- !u!114 &5753004198888759568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3959193303880153687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2b2789d2e7ee5645b291066b14a2993, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Game.Collectibles::Game.Collectibles.Spawning.EnemyCollectibleDropper
+  collectibleSpawner: {fileID: 9094532615931685681, guid: e45848a1be966aa44a7c4d8f9f9b9f66, type: 3}
+  pointsCollectible: {fileID: 11400000, guid: 074c3c1177d0e234ea30a38a62426542, type: 2}
+  powerCollectible: {fileID: 11400000, guid: c1ff022d1379e834da29def5debebece, type: 2}
+  pointDropChance: 1
+  minPointDrops: 1
+  maxPointDrops: 3
+  powerDropChance: 0.25
+  minPowerDrops: 0
+  maxPowerDrops: 1
 --- !u!1 &4152218771085707651
 GameObject:
   m_ObjectHideFlags: 0

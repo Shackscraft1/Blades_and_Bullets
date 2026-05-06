@@ -1,6 +1,8 @@
 using System.IO;
 using UnityEngine;
+using Game.Collectibles.Spawning;
 
+[RequireComponent(typeof(EnemyCollectibleDropper))]
 public class WaveEnemy : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -34,14 +36,16 @@ public class WaveEnemy : MonoBehaviour
     [SerializeField]
     private float maxHP;
     private float currentHP;
-    [SerializeField]
-    private int pointDropCount;
-    [SerializeField]
-    private int powerDropCount;
-    [SerializeField]
-    private GameObject pointDropPrefab;
-    [SerializeField]
-    private GameObject powerDropPrefab;
+    //[SerializeField]
+    //private int pointDropCount;
+    //[SerializeField]
+    //private int powerDropCount;
+    //[SerializeField]
+    //private GameObject pointDropPrefab;
+    //[SerializeField]
+    //private GameObject powerDropPrefab;
+    [Header("Collectible Drops")]
+    [SerializeField] private EnemyCollectibleDropper collectibleDropper; // component that handles pooled point/power drops
     private float phaseTimer;
 
     private Vector2 flyDirection;
@@ -54,7 +58,11 @@ public class WaveEnemy : MonoBehaviour
     private void Awake()
     {
         currentHP = maxHP;
-   
+
+        if (collectibleDropper == null)
+        {
+            collectibleDropper = GetComponent<EnemyCollectibleDropper>();
+        }
     }
 
     public void Init(
@@ -96,31 +104,47 @@ public class WaveEnemy : MonoBehaviour
         return currentPhase == Phase.Formation;
     }
 
-   private void Die()
+    //private void Die()
+    // {
+    //     SpawnDrops();
+
+    //     Destroy(gameObject);
+    // }
+    private void Die()
     {
-        SpawnDrops();
-  
+        Debug.Log($"{name} Die() called at {transform.position}", this); // confirms the enemy actually reaches the death path
+
+        if (collectibleDropper != null)
+        {
+            Debug.Log($"{name} calling collectibleDropper.Drop()", this); // confirms the dropper reference is assigned
+            collectibleDropper.Drop(); // spawns pooled point/power drops using rarity settings
+        }
+        else
+        {
+            Debug.LogWarning($"{name} has no EnemyCollectibleDropper assigned.", this); // tells you exactly why no collectibles spawned
+        }
+
         Destroy(gameObject);
     }
 
-    private void SpawnDrops()
-    {
-        for (int i = 0; i < pointDropCount; i++)
-        {
-            if (pointDropPrefab != null)
-            {
-                Instantiate(pointDropPrefab, transform.position, Quaternion.identity);
-            }
-        }
+    //private void SpawnDrops()
+    //{
+    //    for (int i = 0; i < pointDropCount; i++)
+    //    {
+    //        if (pointDropPrefab != null)
+    //        {
+    //            Instantiate(pointDropPrefab, transform.position, Quaternion.identity);
+    //        }
+    //    }
 
-        for (int i = 0; i < powerDropCount; i++)
-        {
-            if (powerDropPrefab != null)
-            {
-                Instantiate(powerDropPrefab, transform.position, Quaternion.identity);
-            }
-        }
-    }
+    //    for (int i = 0; i < powerDropCount; i++)
+    //    {
+    //        if (powerDropPrefab != null)
+    //        {
+    //            Instantiate(powerDropPrefab, transform.position, Quaternion.identity);
+    //        }
+    //    }
+    //}
 
    private void Start()
     {
@@ -226,10 +250,18 @@ public class WaveEnemy : MonoBehaviour
         }
     }
 
+    //private void OnSlashingSomething(object sender, SlashScript.OnSlashingSomethingArgs e)
+    //{
+
+    //    // if (e.TargetHit.Equals(gameObject)) Destroy(gameObject);
+    //}
     private void OnSlashingSomething(object sender, SlashScript.OnSlashingSomethingArgs e)
     {
-
-        // if (e.TargetHit.Equals(gameObject)) Destroy(gameObject);
+        if (e.TargetHit.Equals(gameObject))
+        {
+            Debug.Log($"{name} was hit by slash.", this); // confirms slash events are reaching this enemy
+            TakeDamage(maxHP); // routes slash damage through the normal damage/death flow
+        }
     }
 
     private void OnDestroy()
