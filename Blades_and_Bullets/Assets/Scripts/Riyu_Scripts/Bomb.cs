@@ -7,7 +7,7 @@ public class Bomb : MonoBehaviour
     {
         if (transform.localScale.x < 20f)
         {
-            transform.localScale += new Vector3(.4f, .4f, 0f);
+            transform.localScale += new Vector3(.3f, .3f, 0f);
         } else
         {
             Destroy(gameObject);
