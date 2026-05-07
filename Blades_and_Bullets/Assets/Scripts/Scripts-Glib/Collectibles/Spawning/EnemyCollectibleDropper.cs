@@ -26,16 +26,25 @@ namespace Game.Collectibles.Spawning
         [SerializeField] private bool logDrops = false; // useful while balancing drop rates and counts
 
 
-        [System.Obsolete]
         private void Awake()
         {
+            bool hasInvalidSpawnerReference =
+                collectibleSpawner != null &&
+                !collectibleSpawner.gameObject.scene.IsValid(); // prefab asset references do not belong to a valid runtime scene
+
+            if (collectibleSpawner == null || hasInvalidSpawnerReference)
+            {
+                collectibleSpawner = FindAnyObjectByType<CollectibleSpawner>(); // finds the real scene spawner instead of using a prefab asset reference
+            }
+
             if (collectibleSpawner == null)
             {
-                collectibleSpawner = FindFirstObjectByType<CollectibleSpawner>(); // finds the spawner in the scene automatically if not assigned
+                Debug.LogWarning($"{name} could not find a scene CollectibleSpawner.", this); // tells us if the scene is missing the collectible system
             }
         }
         public void Drop()
         {
+            Debug.Log($"{name} using spawner '{collectibleSpawner?.name}' from scene '{collectibleSpawner?.gameObject.scene.name}'", this); // confirms whether the dropper is using a real scene spawner or a prefab asset reference
             TryDropGroup(pointsCollectible, pointDropChance, minPointDrops, maxPointDrops, "points");
             TryDropGroup(powerCollectible, powerDropChance, minPowerDrops, maxPowerDrops, "power");
         }

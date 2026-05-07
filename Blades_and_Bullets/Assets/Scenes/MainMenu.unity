@@ -4957,15 +4957,15 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1920141368}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 77c25bc53dd0d534e875dad19e1a0f63, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: f7a1f5fd38acf7b4c8fd528e55b350e8, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
-  m_TargetCamera: {fileID: 0}
+  m_TargetCamera: {fileID: 1373804687}
   m_TargetTexture: {fileID: 8400000, guid: 1d8d2e393738f9d48a114bca30afc05b, type: 2}
   m_TimeReference: 0
   m_TargetMaterialRenderer: {fileID: 0}
   m_TargetMaterialProperty: <noninit>
-  m_RenderMode: 2
+  m_RenderMode: 1
   m_AspectRatio: 5
   m_DataSource: 0
   m_TimeUpdateMode: 2
@@ -4980,7 +4980,7 @@ VideoPlayer:
   m_DirectAudioMutes: 00
   m_ControlledAudioTrackCount: 1
   m_PlayOnAwake: 0
-  m_SkipOnDrop: 1
+  m_SkipOnDrop: 0
   m_Looping: 0
   m_WaitForFirstFrame: 1
   m_FrameReadyEventEnabled: 0
@@ -5234,7 +5234,7 @@ MonoBehaviour:
   quitHoverBackground: {fileID: 21300000, guid: 8577a43c024364947913ac55472f44b8, type: 3}
   gameSceneName: BladesAndBullets_Ethan_withWaves
   musicFadeDuration: 1.5
-  useIntroVideo: 0
+  useIntroVideo: 1
 --- !u!4 &2141841722
 Transform:
   m_ObjectHideFlags: 0

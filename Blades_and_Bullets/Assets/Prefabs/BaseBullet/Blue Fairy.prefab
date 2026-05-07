@@ -238,11 +238,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a903c10ed0f891947b998d417dab9157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaveEnemy
-  maxHP: 20
-  pointDropCount: 0
-  powerDropCount: 0
-  pointDropPrefab: {fileID: 0}
-  powerDropPrefab: {fileID: 0}
+  collectibleSpawner: {fileID: 1408669572294973213, guid: 8e849b7a094a8e941941b51ff9e14c49, type: 3}
+  pointsCollectible: {fileID: 11400000, guid: 074c3c1177d0e234ea30a38a62426542, type: 2}
+  pointDropChance: 1
+  minPointDrops: 1
+  maxPointDrops: 3
+  powerCollectible: {fileID: 11400000, guid: c1ff022d1379e834da29def5debebece, type: 2}
+  powerDropChance: 0.35
+  minPowerDrops: 0
+  maxPowerDrops: 1
+  baseDropDirection: {x: 0, y: -1}
+  scatterAngle: 45
+  logDrops: 0
 --- !u!1 &4152218771085707651
 GameObject:
   m_ObjectHideFlags: 0
