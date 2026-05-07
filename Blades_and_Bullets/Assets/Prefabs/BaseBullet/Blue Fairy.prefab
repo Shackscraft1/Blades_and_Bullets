@@ -243,8 +243,8 @@ MonoBehaviour:
   maxHP: 20
   pointDropCount: 0
   powerDropCount: 0
-  pointDropPrefab: {fileID: 0}
-  powerDropPrefab: {fileID: 0}
+  pointDropPrefab: {fileID: 5668301637232188657, guid: 41a8ade0d7e706945825879922bbfc52, type: 3}
+  powerDropPrefab: {fileID: 2668210772348280772, guid: c731858bc2f89a447b95beb18352e84a, type: 3}
 --- !u!1 &4152218771085707651
 GameObject:
   m_ObjectHideFlags: 0
