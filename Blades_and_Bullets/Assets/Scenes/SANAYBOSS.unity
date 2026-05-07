@@ -5875,6 +5875,26 @@ Transform:
   - {fileID: 2122418364}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2074068487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2074068485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dbf93c7a40c48d8b16d0c15f0a9f321, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossPrefab: {fileID: 7074561254397432846, guid: 6b2af038e1d49f14abbd6724b879db66, type: 3}
+  bossSpawnPosition: {x: -3, y: 3.4, z: 0.8}
+  bossEntryHeight: 3.2
+  disableWavesObject: 1
+  spawnOnStartForTesting: 1
+  wavesObjectName: Waves
+  enemyContainerName: EnemyContainer
+  bossName: SANAYBOSS_Runtime
 --- !u!1 &2076784053
 GameObject:
   m_ObjectHideFlags: 0
@@ -6103,23 +6123,3 @@ SceneRoots:
   - {fileID: 2074068486}
   - {fileID: 1232934338}
   - {fileID: 248611248}
-
---- !u!114 &2074068487
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2074068485}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8dbf93c7a40c48d8b16d0c15f0a9f321, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bossSpawnPosition: {x: -3, y: 3.4, z: 0.8}
-  disableWavesObject: 1
-  wavesObjectName: Waves
-  enemyContainerName: EnemyContainer
-  bossName: SANAYBOSS_Runtime
-
-
