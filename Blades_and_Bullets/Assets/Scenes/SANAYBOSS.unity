@@ -5891,7 +5891,7 @@ MonoBehaviour:
   bossSpawnPosition: {x: -3, y: 3.4, z: 0.8}
   bossEntryHeight: 3.2
   disableWavesObject: 1
-  spawnOnStartForTesting: 1
+  spawnOnStartForTesting: 0
   wavesObjectName: Waves
   enemyContainerName: EnemyContainer
   bossName: SANAYBOSS_Runtime
