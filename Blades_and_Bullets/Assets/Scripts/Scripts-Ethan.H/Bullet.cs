@@ -186,7 +186,14 @@ public class Bullet : MonoBehaviour
         }
         movementType?.Tick(this);
 
-       
+       if (gameObject.transform.position.x < -8.75f  || gameObject.transform.position.x > 2.75f)
+        {
+            DespawnBullet();
+        }
+        if (gameObject.transform.position.y < -4.8f  || gameObject.transform.position.y > 4.8f)
+        {
+            DespawnBullet();
+        }
     }
 
     public void DespawnBullet()
