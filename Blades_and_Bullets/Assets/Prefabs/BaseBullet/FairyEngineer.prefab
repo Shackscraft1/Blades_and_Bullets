@@ -333,10 +333,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14cf84080c04eae46bbdb455a5c78e0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyShooter
-  fireRate: 1
+  fireRate: 2
   bulletPattern: {fileID: 1629577513846337166}
-  bulletPattern2: {fileID: 1629577513846337166}
-  fireRate2: 2
 --- !u!1 &5724378423445720998
 GameObject:
   m_ObjectHideFlags: 0
