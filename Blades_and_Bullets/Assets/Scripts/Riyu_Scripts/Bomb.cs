@@ -5,9 +5,10 @@ public class Bomb : MonoBehaviour
 
     void Update()
     {
-        if (transform.localScale.x < 20f)
+        if (transform.localScale.x < 25f)
         {
-            transform.localScale += new Vector3(.3f, .3f, 0f);
+            float timer = 40f * Time.deltaTime;
+            transform.localScale += new Vector3(timer, timer, 0f);
         } else
         {
             Destroy(gameObject);

@@ -76,7 +76,7 @@ public class SavedDataJSON : MonoBehaviour
         data.currentHighScore = GetDefaultHighScores();
     
         SaveHighScore(data);
-        
+        OnAllHighScoreDataGathered?.Invoke(this, new OnAllHighScoreDataGatheredArgs { AllHighScore = data.currentHighScore });
     }
 
     private void OnDestroy()
