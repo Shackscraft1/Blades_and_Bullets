@@ -4466,6 +4466,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 483673540}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1300199277
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1300199279}
+  - component: {fileID: 1300199278}
+  m_Layer: 0
+  m_Name: RandomCollectibleSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1300199278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1300199277}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 197f7f569ed5f4745804a119349b5a39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RandomCollectibleSpawner
+  pickupPrefab: {fileID: 6628992460223798247, guid: e2def857b1e5c864b8fd6a624f333dd9, type: 3}
+  pointsType: {fileID: 11400000, guid: 074c3c1177d0e234ea30a38a62426542, type: 2}
+  bombType: {fileID: 11400000, guid: c5c14474b5c7ed342a4e147d5d9ea716, type: 2}
+  powerType: {fileID: 11400000, guid: c1ff022d1379e834da29def5debebece, type: 2}
+  lifeType: {fileID: 11400000, guid: 825e555c71f90bc48a7c73f97dd05ccb, type: 2}
+  minSpawnDelay: 2
+  maxSpawnDelay: 7
+  minPosition: {x: -8, y: -3.5}
+  maxPosition: {x: 2, y: 4}
+  pointsWeight: 60
+  powerWeight: 25
+  bombWeight: 8
+  lifeWeight: 7
+--- !u!4 &1300199279
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1300199277}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1344839959
 GameObject:
   m_ObjectHideFlags: 0
@@ -5843,7 +5900,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameplayAudioManager
   sfxSource: {fileID: 1792597532}
-  musicSource: {fileID: 0}
+  musicSource: {fileID: 1792597532}
 --- !u!82 &1792597532
 AudioSource:
   m_ObjectHideFlags: 0
@@ -7255,3 +7312,4 @@ SceneRoots:
   - {fileID: 1232934338}
   - {fileID: 248611248}
   - {fileID: 1792597533}
+  - {fileID: 1300199279}
