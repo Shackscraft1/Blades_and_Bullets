@@ -7,6 +7,7 @@ public class PlayerRef : MonoBehaviour
 
     private void Awake()
     {
-        Instance = transform;
+        if (transform!= null) Instance = transform;
+
     }
 }

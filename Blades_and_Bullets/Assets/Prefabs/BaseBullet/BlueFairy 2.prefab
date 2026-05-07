@@ -384,6 +384,7 @@ MonoBehaviour:
   bulletSpawner: {fileID: 5572379025498812032}
   playerBulletSpawner: {fileID: 0}
   bulletTypeSO: {fileID: 11400000, guid: beeeabf4a37edba43bc883a0fb878091, type: 2}
+  player: {fileID: 7929682069977287586, guid: 28e92fb28f56d3046896fa18cb41c03c, type: 3}
 --- !u!1 &5724378423445720998
 GameObject:
   m_ObjectHideFlags: 0

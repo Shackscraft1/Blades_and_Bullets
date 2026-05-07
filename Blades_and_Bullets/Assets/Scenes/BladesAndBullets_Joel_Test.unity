@@ -4849,7 +4849,6 @@ GameObject:
   - component: {fileID: 1823738263}
   - component: {fileID: 1823738262}
   - component: {fileID: 1823738261}
-  - component: {fileID: 1823738265}
   - component: {fileID: 1823738260}
   - component: {fileID: 1823738264}
   - component: {fileID: 1823738266}
@@ -4962,25 +4961,11 @@ MonoBehaviour:
   abilityBarImage: {fileID: 1777348337}
   highScoreText: {fileID: 756862874}
   currentScoreText: {fileID: 1869675992}
+  dataHighScoreInputPanel: {fileID: 0}
   bombIconArea: {fileID: 1631199827}
   bombPrefab: {fileID: 900477961134284111, guid: 91a06f73790557f0ab717c7ea7e09e0a, type: 3}
   gameOverText: {fileID: 507859439}
   hpSlider: {fileID: 1591974323}
---- !u!114 &1823738265
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1823738259}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1fdf328292f203e46a8cc6f88eb68782, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  pool: {fileID: 729607376}
-  enemy: {fileID: 3959193303880153687, guid: 9442b7cd2a9f4c4488753434410c1ef3, type: 3}
-  player: {fileID: 0}
 --- !u!114 &1823738266
 MonoBehaviour:
   m_ObjectHideFlags: 0

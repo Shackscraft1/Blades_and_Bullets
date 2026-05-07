@@ -59,6 +59,13 @@ public class WaveTimeline : MonoBehaviour
             FireEvent(waveEvents[nextEvent]);
             nextEvent++;
         }
+
+        if (stageTimer > 55f)
+        {
+            waveEvents.Sort((a, b) => a.triggerTime.CompareTo(b.triggerTime));
+            stageTimer = 0f;
+            nextEvent = 0;
+        }
     }
 
 
