@@ -1,5 +1,6 @@
 using System.IO;
 using UnityEngine;
+using Game.Collectibles.Spawning;
 
 public class WaveEnemy : MonoBehaviour
 {
@@ -33,15 +34,20 @@ public class WaveEnemy : MonoBehaviour
 
     [SerializeField]
     private int maxHP;
-    private int currentHP;
-    [SerializeField]
-    private int pointDropCount;
-    [SerializeField]
-    private int powerDropCount;
-    [SerializeField]
-    private GameObject pointDropPrefab;
-    [SerializeField]
-    private GameObject powerDropPrefab;
+    private float currentHP;
+    //[SerializeField]
+    //private int pointDropCount;
+    //[SerializeField]
+    //private int powerDropCount;
+    //[SerializeField]
+    //private GameObject pointDropPrefab;
+    //[SerializeField]
+    //private GameObject powerDropPrefab;
+
+    // changed to:
+    [Header("Collectible Drops")]
+    [SerializeField] private EnemyCollectibleDropper collectibleDropper; // handles pooled point and power drops with rarity/count balancing
+
     private float phaseTimer;
 
     private Vector2 flyDirection;
@@ -77,11 +83,15 @@ public class WaveEnemy : MonoBehaviour
   
         currentPhase = Phase.Entry;
 
-        if (entryPath != null && speed > 0f)
+        if (entryPath != null)
         {
-            float t = (phaseTimer + entryStartOffset) / speed;
-            t = Mathf.Clamp01(t);
-            transform.position = entryPath.GetPoint(t) + slotOffset + new Vector3(-10,0,0);
+            float t = Mathf.Clamp01(entryStartOffset / speed);
+
+            if (t < 0f)
+                t = 0f;
+
+            transform.position = entryPath.GetPointByDistance(t) + new Vector3(-70,0,0);
+
         }
     }
 
@@ -94,29 +104,33 @@ public class WaveEnemy : MonoBehaviour
 
    private void Die()
     {
-        SpawnDrops();
-  
+        //SpawnDrops();
+        if (collectibleDropper != null)
+        {
+            collectibleDropper.Drop(); // spawns pooled point/power drops using the configured rarity settings
+        }
+
         Destroy(gameObject);
     }
 
-    private void SpawnDrops()
-    {
-        for (int i = 0; i < pointDropCount; i++)
-        {
-            if (pointDropPrefab != null)
-            {
-                Instantiate(pointDropPrefab, transform.position, Quaternion.identity);
-            }
-        }
+    //private void SpawnDrops()
+    //{
+    //    for (int i = 0; i < pointDropCount; i++)
+    //    {
+    //        if (pointDropPrefab != null)
+    //        {
+    //            Instantiate(pointDropPrefab, transform.position, Quaternion.identity);
+    //        }
+    //    }
 
-        for (int i = 0; i < powerDropCount; i++)
-        {
-            if (powerDropPrefab != null)
-            {
-                Instantiate(powerDropPrefab, transform.position, Quaternion.identity);
-            }
-        }
-    }
+    //    for (int i = 0; i < powerDropCount; i++)
+    //    {
+    //        if (powerDropPrefab != null)
+    //        {
+    //            Instantiate(powerDropPrefab, transform.position, Quaternion.identity);
+    //        }
+    //    }
+    //}
 
    private void Start()
     {
@@ -143,6 +157,7 @@ public class WaveEnemy : MonoBehaviour
                 break;
 
         }
+
     }
 
 
@@ -163,7 +178,7 @@ public class WaveEnemy : MonoBehaviour
             return;
 
         t = Mathf.Clamp01(t);
-        transform.position = entryPath.GetPoint(t) + slotOffset;
+        transform.position = entryPath.GetPointByDistance(t) + slotOffset;
 
         if (t >= 1f)
         {
@@ -203,7 +218,7 @@ public class WaveEnemy : MonoBehaviour
         Vector2 p2 = entryPath.GetPoint(1f);
         Vector2 tangent = (p2 - p1).normalized;
 
-        float angle = Random.Range(-100f, 100f);
+        float angle = Random.Range(-50f, 50f);
         flyDirection = (Quaternion.Euler(0f, 0f, angle) * tangent).normalized;
 
         flyTimer = 0f;
@@ -224,11 +239,25 @@ public class WaveEnemy : MonoBehaviour
     private void OnSlashingSomething(object sender, SlashScript.OnSlashingSomethingArgs e)
     {
 
-        if (e.TargetHit.Equals(gameObject)) Destroy(gameObject);
+        if (e.TargetHit.Equals(gameObject))
+        {
+            Die(); // uses the normal death path so drops happen when enemy killed
+        }
     }
 
     private void OnDestroy()
     {
         SlashScript.OnSlashingSomething -= OnSlashingSomething;
+    }
+
+    public void TakeDamage(float damage)
+    {   
+
+        currentHP -= damage;
+        if (currentHP <= 0)
+        {
+            Die();
+
+        }
     }
 }
