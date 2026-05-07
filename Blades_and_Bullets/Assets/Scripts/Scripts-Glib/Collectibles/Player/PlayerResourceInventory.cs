@@ -2,9 +2,8 @@ using System;
 using Game.Collectibles.Data;
 using UnityEngine;
 
-namespace Game.Collectibles.Player
-{
-    public sealed class PlayerResourceInventory : MonoBehaviour
+
+    public class PlayerResourceInventory : MonoBehaviour
     {
         [Header("starting values")]
         [Min(0)][SerializeField] private int startingScore = 0;
@@ -44,8 +43,17 @@ namespace Game.Collectibles.Player
 
         void Start()
         {
+            WaveTimeline.onWaveRepeat += OnWaveRepeat;
             OnSendPlayerData?.Invoke(this, new  OnSendPlayerDataArgs{BombsRemaining = bombs, LivesRemaining = lives});
         }
+
+        private void OnWaveRepeat(object sender, EventArgs e)
+        {
+            bombs++;
+            lives++;
+            LogState("wave reached");
+        }
+
         private void OnDestroy()
         {
             
@@ -173,4 +181,4 @@ namespace Game.Collectibles.Player
         }
 #endif
     }
-}
+

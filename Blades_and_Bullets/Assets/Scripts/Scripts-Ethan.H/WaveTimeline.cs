@@ -1,7 +1,9 @@
+using System;
 using System.Collections.Generic;
 using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.InputSystem.LowLevel;
+
 
 public class WaveTimeline : MonoBehaviour
 {
@@ -9,6 +11,8 @@ public class WaveTimeline : MonoBehaviour
     private List<WaveEvent> waveEvents = new();
     [SerializeField]
     private WaveCreator waveCreator;
+
+    public static EventHandler onWaveRepeat;
 
     private float stageTimer;
     private bool isPlaying;
@@ -62,6 +66,7 @@ public class WaveTimeline : MonoBehaviour
 
         if (stageTimer > 55f)
         {
+            onWaveRepeat?.Invoke(this, EventArgs.Empty);
             waveEvents.Sort((a, b) => a.triggerTime.CompareTo(b.triggerTime));
             stageTimer = 0f;
             nextEvent = 0;
