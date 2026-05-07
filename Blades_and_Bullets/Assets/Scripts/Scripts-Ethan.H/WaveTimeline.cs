@@ -1,7 +1,5 @@
 using System.Collections.Generic;
-using UnityEditor.PackageManager;
 using UnityEngine;
-using UnityEngine.InputSystem.LowLevel;
 
 public class WaveTimeline : MonoBehaviour
 {
@@ -29,14 +27,7 @@ public class WaveTimeline : MonoBehaviour
         isPlaying = true;
     }
 
-
-    private void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-   private void Update()
+    private void Update()
     {
         if (!isPlaying) return;
 
@@ -50,8 +41,7 @@ public class WaveTimeline : MonoBehaviour
         }
     }
 
-
-   private void FireEvent(WaveEvent waveEvent)
+    private void FireEvent(WaveEvent waveEvent)
     {
         switch (waveEvent.waveEvents)
         {
@@ -59,24 +49,29 @@ public class WaveTimeline : MonoBehaviour
                 if (waveEvent.waveToSpawn != null)
                 {
                     waveCreator.RunWave(
-                   waveEvent.waveToSpawn,
-                   waveEvent.spawnPOS,
-                   waveEvent.entryPath
-               );
+                        waveEvent.waveToSpawn,
+                        waveEvent.spawnPOS,
+                        waveEvent.entryPath
+                    );
                 }
                 break;
-
 
             case WaveEvent.waveEventsType.ChangeMusic:
                 Debug.Log("Change music to: ");
                 break;
 
             case WaveEvent.waveEventsType.StartBoss:
-                Debug.Log("Start boss!");
+                SanayBossBootstrap bootstrap = FindObjectOfType<SanayBossBootstrap>();
+                if (bootstrap != null)
+                {
+                    bootstrap.StartBossEncounter();
+                }
+                else
+                {
+                    Debug.LogWarning("StartBoss event fired, but no SanayBossBootstrap was found in the scene.", this);
+                }
                 break;
-
         }
-
     }
 
     public void Play()
@@ -95,5 +90,4 @@ public class WaveTimeline : MonoBehaviour
         nextEvent = 0;
         isPlaying = true;
     }
-
 }
