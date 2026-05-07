@@ -854,7 +854,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: NewHighScore!  Enter Name here...
+  m_text: New HighScore!  Enter Name here...
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4f79589a7e8bb6c45ba57c8018125a0c, type: 2}
   m_sharedMaterial: {fileID: 6162607476839293097, guid: 4f79589a7e8bb6c45ba57c8018125a0c, type: 2}

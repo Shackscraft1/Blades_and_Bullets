@@ -78,10 +78,7 @@ public class GameControllerScript : MonoBehaviour
 
     }
     
-    private void Update()
-    {
-        
-    }
+ 
 
 
     private void OnHighScoreDataGathered(object sender, SavedDataJSON.OnHighScoreDataGatheredArgs e)
@@ -139,7 +136,11 @@ public class GameControllerScript : MonoBehaviour
         OnChangeWaveTimer?.Invoke(this, new OnChangeWaveTimerArgs{newTimer = 0, isPlayingValue = false});
         OnPlayerDeath?.Invoke(this, EventArgs.Empty);
         gameOverText.gameObject.SetActive(true);
-        if (_highSoreState.Equals(HighScoreAchieved.NewHighScore)) dataHighScoreInputPanel.gameObject.SetActive(true);
+        if (_highSoreState.Equals(HighScoreAchieved.NewHighScore))
+        {
+            dataHighScoreInputPanel.gameObject.SetActive(true);
+            dataHighScoreInputPanel.Select();
+        }
         else StartCoroutine(FinishGameScene(3f));
     }
 
