@@ -315,7 +315,7 @@ PrefabInstance:
     - target: {fileID: 7480652313341984890, guid: 544ee3a97a3de574a843248b966f8881, type: 3}
       propertyPath: bulletPattern
       value: 
-      objectReference: {fileID: 450696138}
+      objectReference: {fileID: 1548962651}
     - target: {fileID: 7480652313341984890, guid: 544ee3a97a3de574a843248b966f8881, type: 3}
       propertyPath: bulletPattern2
       value: 
@@ -327,6 +327,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 629105644629215058, guid: 544ee3a97a3de574a843248b966f8881, type: 3}
       insertIndex: -1
       addedObject: {fileID: 450696137}
+    - targetCorrespondingSourceObject: {fileID: 629105644629215058, guid: 544ee3a97a3de574a843248b966f8881, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1548962650}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 544ee3a97a3de574a843248b966f8881, type: 3}
 --- !u!114 &247372912 stripped
@@ -432,9 +435,58 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SpiralStream
   bulletSpawner: {fileID: 247372912}
   playerBulletSpawner: {fileID: 0}
-  bulletType: {fileID: 11400000, guid: beeeabf4a37edba43bc883a0fb878091, type: 2}
-  arms: 5
+  bulletType: {fileID: 11400000, guid: def8ec08fb59e9f45babff5ec12bb76f, type: 2}
+  arms: 10
   angle: 45
+--- !u!1 &1548962649
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1548962650}
+  - component: {fileID: 1548962651}
+  m_Layer: 0
+  m_Name: Pattern
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1548962650
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1548962649}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2083903927}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1548962651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1548962649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f973ce84165858845a03dbe969a532d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ConeBulletPattern
+  bulletSpawner: {fileID: 247372912}
+  playerBulletSpawner: {fileID: 0}
+  bulletCount: 4
+  spreadAngle: 20
+  bulletType: {fileID: 11400000, guid: def8ec08fb59e9f45babff5ec12bb76f, type: 2}
 --- !u!1 &1595975615
 GameObject:
   m_ObjectHideFlags: 0

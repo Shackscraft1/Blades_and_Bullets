@@ -114,6 +114,55 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &2386478135055459674
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8607053716175578528}
+  - component: {fileID: 1416158314905064292}
+  m_Layer: 0
+  m_Name: Spiral
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8607053716175578528
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2386478135055459674}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 629105644629215058}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1416158314905064292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2386478135055459674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5fc4927da576994bbbc451ae5a6f1cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpiralStream
+  bulletSpawner: {fileID: 5572379025498812032}
+  playerBulletSpawner: {fileID: 0}
+  bulletType: {fileID: 11400000, guid: d744ce06e9db45c4298d4b0b4348df0b, type: 2}
+  arms: 10
+  angle: 25
 --- !u!1 &3959193303880153687
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,8 +199,8 @@ Transform:
   - {fileID: 2889854929312052164}
   - {fileID: 6071260728410973830}
   - {fileID: 4195697450775555191}
-  - {fileID: 6647728555356129600}
   - {fileID: 7873895316870267690}
+  - {fileID: 8607053716175578528}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1374706214812242739
@@ -368,10 +417,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14cf84080c04eae46bbdb455a5c78e0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyShooter
-  fireRate: 1
-  bulletPattern: {fileID: 1629577513846337166}
-  bulletPattern2: {fileID: 1629577513846337166}
-  fireRate2: 2
+  fireRate: 0.25
+  bulletPattern: {fileID: 1416158314905064292}
 --- !u!1 &5724378423445720998
 GameObject:
   m_ObjectHideFlags: 0
@@ -416,52 +463,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49c77ca8dd5ff19458a9c0c3d00d39aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BulletSpawner
---- !u!1 &6486796175213607779
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6647728555356129600}
-  - component: {fileID: 1629577513846337166}
-  m_Layer: 0
-  m_Name: ConeBulletPattern
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6647728555356129600
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6486796175213607779}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.29951, y: -1.88066, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
-  m_ConstrainProportionsScale: 1
-  m_Children: []
-  m_Father: {fileID: 629105644629215058}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1629577513846337166
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6486796175213607779}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f973ce84165858845a03dbe969a532d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ConeBulletPattern
-  bulletSpawner: {fileID: 5572379025498812032}
-  playerBulletSpawner: {fileID: 0}
-  bulletCount: 4
-  spreadAngle: 25
-  bulletType: {fileID: 11400000, guid: d744ce06e9db45c4298d4b0b4348df0b, type: 2}

@@ -142,7 +142,7 @@ Transform:
   m_GameObject: {fileID: 3959193303880153687}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.4423, y: 2.5574, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2.1958683, y: 2.1127708, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -335,8 +335,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyShooter
   fireRate: 1
   bulletPattern: {fileID: 1629577513846337166}
-  bulletPattern2: {fileID: 1629577513846337166}
-  fireRate2: 2
 --- !u!1 &5724378423445720998
 GameObject:
   m_ObjectHideFlags: 0
@@ -429,4 +427,4 @@ MonoBehaviour:
   playerBulletSpawner: {fileID: 0}
   bulletCount: 4
   spreadAngle: 25
-  bulletType: {fileID: 11400000, guid: beeeabf4a37edba43bc883a0fb878091, type: 2}
+  bulletType: {fileID: 11400000, guid: a9176f69f55bd0b4fbbd01d945bf9593, type: 2}
