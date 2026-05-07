@@ -12,6 +12,7 @@ public class GameControllerScript : MonoBehaviour
     [SerializeField] private Image abilityBarImage;
     [SerializeField] private TextMeshProUGUI highScoreText;
     [SerializeField] private TextMeshProUGUI currentScoreText;
+    [SerializeField] private TMP_InputField dataHighScoreInputPanel;
     [SerializeField] private RectTransform bombIconArea;
     [SerializeField] private GameObject bombPrefab;
     [SerializeField] private TextMeshProUGUI gameOverText;
@@ -30,6 +31,17 @@ public class GameControllerScript : MonoBehaviour
         public int newHighScore;
         public string nickName;
     }
+    
+    
+    public static EventHandler<OnChangeWaveTimerArgs> OnChangeWaveTimer;
+
+    public class OnChangeWaveTimerArgs : EventArgs
+    {
+        public float newTimer;
+        public bool isPlayingValue;
+    }
+    
+    
     private enum HighScoreAchieved
     {
         NoHighScore,
@@ -66,10 +78,7 @@ public class GameControllerScript : MonoBehaviour
 
     }
     
-    private void Update()
-    {
-        
-    }
+ 
 
 
     private void OnHighScoreDataGathered(object sender, SavedDataJSON.OnHighScoreDataGatheredArgs e)
@@ -124,17 +133,25 @@ public class GameControllerScript : MonoBehaviour
 
     private void HpDropsToZero()
     { 
-        //When there's a new highscore a window will popup to ask for your nickname so you can replace the nickname field for that new string
-        if(_highSoreState.Equals(HighScoreAchieved.NewHighScore)) OnNewHighScoreChange?.Invoke(this, new OnHighScoreDataGatheredArgs{nickName = "Player", newHighScore = _HighScore});
+        OnChangeWaveTimer?.Invoke(this, new OnChangeWaveTimerArgs{newTimer = 0, isPlayingValue = false});
         OnPlayerDeath?.Invoke(this, EventArgs.Empty);
-        GameOverEvent();
+        gameOverText.gameObject.SetActive(true);
+        if (_highSoreState.Equals(HighScoreAchieved.NewHighScore))
+        {
+            dataHighScoreInputPanel.gameObject.SetActive(true);
+            dataHighScoreInputPanel.Select();
+        }
+        else StartCoroutine(FinishGameScene(3f));
     }
 
-    private void GameOverEvent()
+    public void InputFieldDataHighScore(string input)
     {
-        gameOverText.gameObject.SetActive(true);
-        StartCoroutine(FinishGameScene());
+        
+        OnNewHighScoreChange?.Invoke(this, new OnHighScoreDataGatheredArgs{nickName = input, newHighScore = _HighScore});
+        StartCoroutine(FinishGameScene(1f));
+        dataHighScoreInputPanel.gameObject.SetActive(false);
     }
+    
     
     public void LoadMainMenu()
     {
@@ -143,15 +160,15 @@ public class GameControllerScript : MonoBehaviour
 
         IEnumerator _LoadCredits()
         {
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(2f);
             AsyncOperation loadOperation = SceneManager.LoadSceneAsync("MainMenu");
             while(!loadOperation!.isDone) yield return null;
         }
     }
     
-    private IEnumerator FinishGameScene()
+    private IEnumerator FinishGameScene(float timeToWait)
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(timeToWait);
         //go back to main menu scene
         LoadMainMenu();
     }

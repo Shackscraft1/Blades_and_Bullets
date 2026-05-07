@@ -32,7 +32,18 @@ public class WaveTimeline : MonoBehaviour
 
     private void Start()
     {
-        
+        GameControllerScript.OnChangeWaveTimer += OnChangeWaveTimer;
+    }
+
+    private void OnDestroy()
+    {
+        GameControllerScript.OnChangeWaveTimer -= OnChangeWaveTimer;
+    }
+
+    private void OnChangeWaveTimer(object sender, GameControllerScript.OnChangeWaveTimerArgs e)
+    {
+        stageTimer = e.newTimer;
+        isPlaying = e.isPlayingValue;
     }
 
     // Update is called once per frame
