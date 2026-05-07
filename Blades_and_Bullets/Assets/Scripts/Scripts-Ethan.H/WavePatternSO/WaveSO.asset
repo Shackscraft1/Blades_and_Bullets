@@ -16,7 +16,7 @@ MonoBehaviour:
   enemyCount: 6
   speed: 6
   entryGap: 1
-  endBehavior: 2
+  endBehavior: 0
   spawnInFormation: 0
   formationType: 1
   slotSpacing: 1
