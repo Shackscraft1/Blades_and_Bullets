@@ -17,7 +17,7 @@ public class Hitbox : MonoBehaviour
                 default:
             case Player.MoveState.Normal:
                 GetComponent<Collider2D>().enabled = true;
-                hitboxSprite.enabled = false;
+                hitboxSprite.enabled = true;
                 break;
             case Player.MoveState.Focused:
                 GetComponent<Collider2D>().enabled = true;

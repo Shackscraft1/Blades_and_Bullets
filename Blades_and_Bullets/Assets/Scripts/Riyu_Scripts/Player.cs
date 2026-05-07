@@ -167,21 +167,22 @@ public class Player : MonoBehaviour
     }
     public void Death()
     {
-        Instantiate(bombPrefab, transform.position, Quaternion.Euler(0f, 0f, 0f));
+        
         deathTimer = 2f;
         //transform.position = new Vector3(-3f, -4f, transform.position.z);
         StartCoroutine(RespawnPoint());
         bombCooldown = 8f;
         inventory.SubtractLife();
+        
         OnPlayerGetsHit?.Invoke(this, new OnPlayerGetsHitArgs());
+        
     }
 
     IEnumerator RespawnPoint()
     {
-        Debug.Log("Respawning starts now");
         yield return new WaitForSeconds(2f);  // Pause for 2 seconds
         transform.position = new Vector3(-3f, -4f, transform.position.z);
-        Debug.Log("Respawn has succeeded passed");
+        Instantiate(bombPrefab, transform.position, Quaternion.Euler(0f, 0f, 0f));
     }
 
     private void OnDestroy()
