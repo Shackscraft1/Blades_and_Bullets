@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2889854929312052164}
   - component: {fileID: 4031411003376306859}
-  - component: {fileID: 6001543893248286469}
+  - component: {fileID: 7013281958154033160}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -28,8 +28,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.31, y: 0.63, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 629105644629215058}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -82,17 +82,17 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -266259734498339714, guid: f281f23eba70d884cbca15cdda71b3ac, type: 3}
+  m_Sprite: {fileID: -8185244218803469019, guid: f281f23eba70d884cbca15cdda71b3ac, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.15, y: 0.15}
+  m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
---- !u!95 &6001543893248286469
+--- !u!95 &7013281958154033160
 Animator:
   serializedVersion: 7
   m_ObjectHideFlags: 0
@@ -102,7 +102,7 @@ Animator:
   m_GameObject: {fileID: 310248060603434235}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4be1bb5638e17e247806e521f6e8d8a9, type: 2}
+  m_Controller: {fileID: 9100000, guid: 264faf1a9e44d1d468c492685e028c50, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -125,9 +125,9 @@ GameObject:
   - component: {fileID: 629105644629215058}
   - component: {fileID: 6666774985133033823}
   - component: {fileID: 8324258520741104912}
-  - component: {fileID: -6571467653809018054}
+  - component: {fileID: 4714304423183899682}
   m_Layer: 0
-  m_Name: Drone
+  m_Name: BlueFairy 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -143,7 +143,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0.8}
-  m_LocalScale: {x: 2.195868, y: 2.1127706, z: 1}
+  m_LocalScale: {x: 2.1958683, y: 2.1127708, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2889854929312052164}
@@ -151,6 +151,8 @@ Transform:
   - {fileID: 4195697450775555191}
   - {fileID: 6647728555356129600}
   - {fileID: 7873895316870267690}
+  - {fileID: 3734353879456137439}
+  - {fileID: 8179695530141469536}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &6666774985133033823
@@ -187,7 +189,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.31, y: 0.64}
+  m_Offset: {x: 0.31807303, y: 0.6730019}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -197,7 +199,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.2, y: 0.23}
+  m_Size: {x: 0.23717642, y: 0.51852894}
   m_EdgeRadius: 0
 --- !u!50 &8324258520741104912
 Rigidbody2D:
@@ -226,7 +228,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &-6571467653809018054
+--- !u!114 &4714304423183899682
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -238,7 +240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ad20a0f178cb6f44acd1e9fc2c257ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WaveEnemy
-  maxHP: 40
+  maxHP: 15
   pointDropCount: 0
   powerDropCount: 0
   pointDropPrefab: {fileID: 0}
@@ -287,7 +289,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d13d53e90815faf47a10705c19d397fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BulletPool
-  bulletPrefab: {fileID: 1013922471934456146, guid: 6eaa5c627bd62bc40bf40a58beb8c083, type: 3}
+  bulletPrefab: {fileID: 1013922471934456146, guid: bad876a32bdc4a047b20e717869a0b03, type: 3}
   bulletPoolStartingSize: 100
 --- !u!1 &4693087008615098999
 GameObject:
@@ -333,8 +335,56 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14cf84080c04eae46bbdb455a5c78e0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyShooter
-  fireRate: 1
-  bulletPattern: {fileID: 1629577513846337166}
+  fireRate: 0.25
+  bulletPattern: {fileID: 6026928747950562021}
+--- !u!1 &5456556117616637786
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3734353879456137439}
+  - component: {fileID: 507277141804842315}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3734353879456137439
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5456556117616637786}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.09803411, y: 1.3350004, z: -0.8}
+  m_LocalScale: {x: 0.45540074, y: 0.47331208, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 629105644629215058}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &507277141804842315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5456556117616637786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ee7dd980c8c063439847321643f86c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerBulletPattern
+  bulletSpawner: {fileID: 5572379025498812032}
+  playerBulletSpawner: {fileID: 0}
+  bulletTypeSO: {fileID: 11400000, guid: beeeabf4a37edba43bc883a0fb878091, type: 2}
+  player: {fileID: 7929682069977287586, guid: 28e92fb28f56d3046896fa18cb41c03c, type: 3}
 --- !u!1 &5724378423445720998
 GameObject:
   m_ObjectHideFlags: 0
@@ -361,7 +411,7 @@ Transform:
   m_GameObject: {fileID: 5724378423445720998}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: -1, w: 0}
-  m_LocalPosition: {x: 0.3097, y: 0.63164026, z: 0}
+  m_LocalPosition: {x: 0.35, y: 0.5, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -427,4 +477,53 @@ MonoBehaviour:
   playerBulletSpawner: {fileID: 0}
   bulletCount: 4
   spreadAngle: 25
-  bulletType: {fileID: 11400000, guid: bacf961df21583c46bccde9315a9b3ec, type: 2}
+  bulletType: {fileID: 11400000, guid: beeeabf4a37edba43bc883a0fb878091, type: 2}
+--- !u!1 &6649901977734452534
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8179695530141469536}
+  - component: {fileID: 6026928747950562021}
+  m_Layer: 0
+  m_Name: Spiral Wave
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8179695530141469536
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6649901977734452534}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.3100004, y: 0.63113326, z: -0.8}
+  m_LocalScale: {x: 0.45540074, y: 0.47331208, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 629105644629215058}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6026928747950562021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6649901977734452534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5fc4927da576994bbbc451ae5a6f1cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SpiralStream
+  bulletSpawner: {fileID: 5572379025498812032}
+  playerBulletSpawner: {fileID: 0}
+  bulletType: {fileID: 11400000, guid: beeeabf4a37edba43bc883a0fb878091, type: 2}
+  arms: 5
+  angle: 25

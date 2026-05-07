@@ -9,6 +9,8 @@ public class BulletSpawner : MonoBehaviour
 
     private BulletPool bulletPool;
 
+    public float PatternAngle {  get; set; }
+
 
    public void Init(BulletPool pool)
     {

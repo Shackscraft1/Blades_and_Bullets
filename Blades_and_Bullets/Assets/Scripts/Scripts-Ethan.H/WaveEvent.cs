@@ -1,3 +1,4 @@
+using System;
 using NUnit.Framework;
 using UnityEditor.Overlays;
 using UnityEngine;
@@ -6,6 +7,7 @@ using UnityEngine;
 [System.Serializable]
 public class WaveEvent : MonoBehaviour
 {
+    
     public float triggerTime;
     public WaveSO waveToSpawn;
     public Transform spawnRoot;
@@ -25,6 +27,4 @@ public class WaveEvent : MonoBehaviour
     }
 
    
-
-
 }

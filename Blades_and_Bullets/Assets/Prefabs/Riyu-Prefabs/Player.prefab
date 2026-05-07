@@ -312,6 +312,7 @@ GameObject:
   - component: {fileID: 2500974141188796974}
   - component: {fileID: 83631453407380104}
   - component: {fileID: 5400948278897896176}
+  - component: {fileID: 5648072818548820354}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -384,6 +385,7 @@ MonoBehaviour:
   moveState: 0
   speed: 6
   bombPrefab: {fileID: 8692893170456775137, guid: 60c7af1bed16f5f4e96668f6a5c30846, type: 3}
+  animator: {fileID: 0}
 --- !u!114 &-4900743506263423311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -494,6 +496,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &5648072818548820354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1937136267326504230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb916b2f97cac2c49930d5f5ceb21fe7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerRef
 --- !u!1 &3907783316633412573
 GameObject:
   m_ObjectHideFlags: 0
