@@ -212,7 +212,6 @@ public class Player : MonoBehaviour
 
     private IEnumerator GameOverRoutine() // waits briefly before pausing the game
     {
-        Debug.Log("You Lost"); // logs final death state
         yield return new WaitForSecondsRealtime(1f); // gives death sound time to play
         Time.timeScale = 0f; // pauses the game after the sound starts
     }
