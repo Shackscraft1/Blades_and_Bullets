@@ -49,7 +49,7 @@ public class PlayerAnim : MonoBehaviour
             animator.SetBool(IS_WALKING_LEFT, false);
         }
 
-        if (Keyboard.current.spaceKey.isPressed && Keyboard.current.shiftKey.isPressed)
+        if ((Keyboard.current.spaceKey.isPressed || Keyboard.current.zKey.isPressed || Keyboard.current.slashKey.isPressed) && Keyboard.current.shiftKey.isPressed)
         {
             animator.SetBool(IS_FOCUSED, true);
         }
@@ -58,7 +58,7 @@ public class PlayerAnim : MonoBehaviour
             animator.SetBool(IS_FOCUSED, false);
         }
 
-        if (Keyboard.current.spaceKey.isPressed && !Keyboard.current.shiftKey.isPressed)
+        if ((Keyboard.current.spaceKey.isPressed || Keyboard.current.zKey.isPressed || Keyboard.current.slashKey.isPressed) && !Keyboard.current.shiftKey.isPressed)
         {
             animator.SetBool(IS_UNFOCUSED1, true);
         }
@@ -67,7 +67,7 @@ public class PlayerAnim : MonoBehaviour
             animator.SetBool(IS_UNFOCUSED1, false);
         }
 
-        if (Keyboard.current.cKey.wasPressedThisFrame)
+        if (Keyboard.current.cKey.wasPressedThisFrame || Keyboard.current.commaKey.wasPressedThisFrame )
         {
             animator.SetBool(IS_SPECIAL, true);
         }
@@ -76,15 +76,15 @@ public class PlayerAnim : MonoBehaviour
             animator.SetBool(IS_SPECIAL, false);
         }
 
-        if (Keyboard.current.zKey.wasPressedThisFrame && specialSlashActive)
-        {
-            animator.SetBool(IS_SPECIALABILITY, true);
-            specialSlashActive = false;
-        }
-        else
-        {
-            animator.SetBool(IS_SPECIALABILITY, false);
-        }
+        // if (Keyboard.current.zKey.wasPressedThisFrame && specialSlashActive)
+        // {
+        //     animator.SetBool(IS_SPECIALABILITY, true);
+        //     specialSlashActive = false;
+        // }
+        // else
+        // {
+        //     animator.SetBool(IS_SPECIALABILITY, false);
+        // }
         if (Player.Instance.moveState == Player.MoveState.Death)
         {
             animator.SetBool(IS_KILLED, true);

@@ -43,7 +43,7 @@ public class Shooting : MonoBehaviour
 
         if (Player.Instance.moveState != Player.MoveState.Death)
         {   
-            if((Keyboard.current.zKey.isPressed || Keyboard.current.periodKey.wasPressedThisFrame) && _specialSlashActive == true)
+            if((Keyboard.current.cKey.isPressed || Keyboard.current.commaKey.wasPressedThisFrame) && _specialSlashActive == true)
             {
                 SpecialSlash();
             }
@@ -53,7 +53,7 @@ public class Shooting : MonoBehaviour
             }
         }
         power = Mathf.Clamp(inventory.Power, 2f, 100f);
-        damage = Mathf.Lerp(2f, 20f, Mathf.InverseLerp(2f, 100f, inventory.Power));
+        damage = Mathf.Lerp(3f, 20f, Mathf.InverseLerp(2f, 100f, inventory.Power));
     }
     private void AbilityActiveStatus(object sender, EventArgs e)
     {
@@ -70,7 +70,7 @@ public class Shooting : MonoBehaviour
 
     private void HandleShoot()
     {
-        if (Keyboard.current.spaceKey.isPressed)
+        if (Keyboard.current.spaceKey.isPressed || Keyboard.current.zKey.isPressed || Keyboard.current.slashKey.isPressed)
         {
             switch (Player.Instance.moveState)
             {

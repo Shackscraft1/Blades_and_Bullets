@@ -118,7 +118,7 @@ public class Player : MonoBehaviour
 
     private void HandleInteraction()
     {        
-        if(Keyboard.current.bKey.wasPressedThisFrame || Keyboard.current.slashKey.wasPressedThisFrame)
+        if(Keyboard.current.xKey.wasPressedThisFrame || Keyboard.current.periodKey.wasPressedThisFrame)
         {   
             if (inventory.Bombs > 0 && bombCooldown <= 0)
             {
