@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2889854929312052164}
   - component: {fileID: 4031411003376306859}
   - component: {fileID: 7013281958154033160}
+  - component: {fileID: 695300834343457319}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -114,6 +115,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &695300834343457319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 310248060603434235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c1f643408c55d94090e0934f53d6efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemySpriteScript
 --- !u!1 &3959193303880153687
 GameObject:
   m_ObjectHideFlags: 0
