@@ -70,6 +70,7 @@ public class PlayerAnim : MonoBehaviour
         if (Keyboard.current.cKey.wasPressedThisFrame || Keyboard.current.commaKey.wasPressedThisFrame )
         {
             animator.SetBool(IS_SPECIAL, true);
+            specialSlashActive = true;
         }
         else
         {
