@@ -17,6 +17,7 @@ public class GameControllerScript : MonoBehaviour
     [SerializeField] private RectTransform bombIconArea;
     [SerializeField] private GameObject bombPrefab;
     [SerializeField] private TextMeshProUGUI gameOverText;
+    [SerializeField] private TextMeshProUGUI currentWave;
     public static EventHandler AbilityActiveStatus; 
     
     public static EventHandler OnPlayerDeath; 
@@ -24,6 +25,7 @@ public class GameControllerScript : MonoBehaviour
     private float _currentPlayerHp = 1f;
     private int _currentScore = 0;
     private int _HighScore = 0;
+    private int currentWaveNumber = 1;
     
     public static EventHandler<OnHighScoreDataGatheredArgs> OnNewHighScoreChange;
 
@@ -75,12 +77,26 @@ public class GameControllerScript : MonoBehaviour
         // Player.OnPlayerGetsHit += PlayerGetsHit;
         SlashScript.OnSlashingSomething += OnSlashingSomething;
         SavedDataJSON.OnHighScoreDataGathered +=OnHighScoreDataGathered;
-        
+        WaveTimeline.onWaveRepeat += OnWaveRepeat;
+        StartCoroutine(CurrentWave());
 
     }
-    
- 
 
+    private void OnWaveRepeat(object sender, EventArgs e)
+    {
+        StartCoroutine(CurrentWave());
+    }
+
+    private IEnumerator CurrentWave()
+    {
+        currentWave.text = $"Current Wave: {currentWaveNumber}";
+        currentWave.gameObject.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        currentWaveNumber++;
+        currentWave.gameObject.SetActive(false);
+        //go back to main menu scene
+
+    }
 
     private void OnHighScoreDataGathered(object sender, SavedDataJSON.OnHighScoreDataGatheredArgs e)
     {
@@ -101,6 +117,7 @@ public class GameControllerScript : MonoBehaviour
         SlashScript.OnSlashingSomething -= OnSlashingSomething;
         SavedDataJSON.OnHighScoreDataGathered -=OnHighScoreDataGathered;
         PlayerResourceInventory.OnSendPlayerData -=OnSendPlayerData;
+        WaveTimeline.onWaveRepeat -= OnWaveRepeat;
     }
 
     // private void PlayerGetsHit(object sender, EventArgs e)
@@ -162,7 +179,7 @@ public class GameControllerScript : MonoBehaviour
         IEnumerator _LoadCredits()
         {
             yield return new WaitForSeconds(2f);
-            AsyncOperation loadOperation = SceneManager.LoadSceneAsync("MainMenu");
+            AsyncOperation loadOperation = SceneManager.LoadSceneAsync("MainMenuGood");
             while(!loadOperation!.isDone) yield return null;
         }
     }

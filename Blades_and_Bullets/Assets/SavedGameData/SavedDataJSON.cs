@@ -52,7 +52,7 @@ public class SavedDataJSON : MonoBehaviour
         data = new HighScoreData();
 
         GameControllerScript.OnNewHighScoreChange += OnNewHighScoreChange;
-
+        
         LoadHighScore();
         OnAllHighScoreDataGathered?.Invoke(this, new OnAllHighScoreDataGatheredArgs { AllHighScore = data.currentHighScore });
     }
@@ -77,6 +77,11 @@ public class SavedDataJSON : MonoBehaviour
     
         SaveHighScore(data);
         OnAllHighScoreDataGathered?.Invoke(this, new OnAllHighScoreDataGatheredArgs { AllHighScore = data.currentHighScore });
+    }
+    
+    public void BackToMainMenu()
+    {
+       gameObject.SetActive(false);
     }
 
     private void OnDestroy()

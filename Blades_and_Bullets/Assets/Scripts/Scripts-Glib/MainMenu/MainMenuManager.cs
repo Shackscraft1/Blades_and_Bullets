@@ -93,10 +93,9 @@ public class MainMenuManager : MonoBehaviour
 
     public void ShowHighScores()
     {
-        mainMenuPanel.SetActive(false);
+        
         highScoresPanel.SetActive(true);
-        optionsPanel.SetActive(false);
-        creditsPanel.SetActive(false);
+        
     }
 
     public void ShowOptions()
@@ -117,7 +116,6 @@ public class MainMenuManager : MonoBehaviour
 
     public void QuitGame()
     {
-        Debug.Log("Quit button clicked");
         Application.Quit();
     }
     private void OnDestroy()
