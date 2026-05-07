@@ -168,7 +168,7 @@ public class Player : MonoBehaviour
     public void Death()
     {
         
-        deathTimer = 2f;
+        deathTimer = 1f;
         //transform.position = new Vector3(-3f, -4f, transform.position.z);
         StartCoroutine(RespawnPoint());
         bombCooldown = 8f;
@@ -180,7 +180,7 @@ public class Player : MonoBehaviour
 
     IEnumerator RespawnPoint()
     {
-        yield return new WaitForSeconds(2f);  // Pause for 2 seconds
+        yield return new WaitForSeconds(.8f);  // Pause for 2 seconds
         transform.position = new Vector3(-3f, -4f, transform.position.z);
         Instantiate(bombPrefab, transform.position, Quaternion.Euler(0f, 0f, 0f));
     }
